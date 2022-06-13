@@ -11,5 +11,4 @@
 <!-- 4. View Api in : https://niraulabijay.github.io/hrm_swagger/ -->
 
 #### Reference `https://joolfe.github.io/postman-to-openapi/`
-# phase_one_swagger
 # hrm-swagger

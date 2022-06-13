@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Hrm
-  description: Hrm
+  title: hrm
+  description: hrm
   version: '1.0'
   x-logo:
     url: https://github.com/joolfe/logoBanner.png
