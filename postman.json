@@ -3,7 +3,7 @@
 		"_postman_id": "5ccca77b-3171-4c0f-9662-1d40c038ce67",
 		"name": "hrm-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16179347"
+		"_exporter_id": "19791325"
 	},
 	"item": [
 		{
@@ -123,6 +123,53 @@
 							"response": []
 						},
 						{
+							"name": "change active",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "value",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "patch",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/admin/company/:slug/change-active",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"company",
+										":slug",
+										"change-active"
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "company-one-edit"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "find by slug",
 							"request": {
 								"auth": {
@@ -187,13 +234,27 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/admin/company",
+									"raw": "{{url}}/admin/company?sort_key=name&sort_order=desc&limit=1",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
 										"company"
+									],
+									"query": [
+										{
+											"key": "sort_key",
+											"value": "name"
+										},
+										{
+											"key": "sort_order",
+											"value": "desc"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -432,7 +493,7 @@
 						},
 						{
 							"key": "email",
-							"value": "superadmin2@admin.com",
+							"value": "superadmin22@admin.com",
 							"type": "text"
 						},
 						{
