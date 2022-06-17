@@ -8,7 +8,7 @@
 
 3. Run `make doc` in terminal to generate openApi.
 
-<!-- 4. View Api in : https://niraulabijay.github.io/hrm_swagger/ -->
+4. View Api in : https://scodus.github.io/hrm-swagger/
 
 #### Reference `https://joolfe.github.io/postman-to-openapi/`
 # hrm-swagger
