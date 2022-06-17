@@ -70,6 +70,22 @@ paths:
       tags:
         - Admin > Company
       summary: all
+      parameters:
+        - name: sort_key
+          in: query
+          schema:
+            type: string
+          example: name
+        - name: sort_order
+          in: query
+          schema:
+            type: string
+          example: desc
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -140,6 +156,40 @@ paths:
       tags:
         - Admin > Company
       summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: company-one-edit
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/company/{slug}/change-active:
+    post:
+      tags:
+        - Admin > Company
+      summary: change active
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: integer
+                  example: '1'
+                _method:
+                  type: string
+                  example: patch
       parameters:
         - name: Accept
           in: header
@@ -283,7 +333,7 @@ paths:
                   example: superadmin2
                 email:
                   type: string
-                  example: superadmin2@admin.com
+                  example: superadmin22@admin.com
                 password:
                   type: string
                   example: P@ssw0rd
