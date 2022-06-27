@@ -13,8 +13,102 @@
 					"name": "Company",
 					"item": [
 						{
+							"name": "Verify Mail",
+							"item": [
+								{
+									"name": "send verification mail",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "leon.schiffer360@gmail.com",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/company/send-admin-verification-mail",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"company",
+												"send-admin-verification-mail"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "verify by changing password",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "leon.schiffer360@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "old_password",
+													"value": "66wEJ5O9",
+													"type": "text"
+												},
+												{
+													"key": "old_password_confirmation",
+													"value": "66wEJ5O9",
+													"type": "text"
+												},
+												{
+													"key": "new_password",
+													"value": "asd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/company/verify-admin-mail",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"company",
+												"verify-admin-mail"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "store",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -28,7 +122,12 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "Company One",
+											"value": "Company Two",
+											"type": "text"
+										},
+										{
+											"key": "short_name",
+											"value": "three",
 											"type": "text"
 										},
 										{
@@ -38,12 +137,103 @@
 										},
 										{
 											"key": "email",
-											"value": "abc@gmail.com",
+											"value": "abcde@gmail.comss",
 											"type": "text"
 										},
 										{
 											"key": "status_id",
 											"value": "1",
+											"description": "values-> 0:inactive, 1:active",
+											"type": "text"
+										},
+										{
+											"key": "tax_id",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "regon",
+											"value": "1234asdasasd",
+											"type": "text"
+										},
+										{
+											"key": "bdo",
+											"value": "123456saw",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9808908",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][country]",
+											"value": "Nepal",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][zip_code]",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][street]",
+											"value": "kalika marg",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][community]",
+											"value": "Kalika Tol",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][county]",
+											"value": "Kalika County",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][voivodeship]",
+											"value": "Kalika Voivodeship",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][type]",
+											"value": "default",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][city]",
+											"value": "bhairahawa",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][country]",
+											"value": "India",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][street]",
+											"value": "Seto Pul",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][type]",
+											"value": "business",
+											"type": "text"
+										},
+										{
+											"key": "is_business_address_same",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "user[name]",
+											"value": "Bishal Gurung",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "leon.schiffesr3asdw600@gmail.co",
 											"type": "text"
 										}
 									]
@@ -77,12 +267,17 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "Company One edit",
+											"value": "Company One",
+											"type": "text"
+										},
+										{
+											"key": "short_name",
+											"value": "one",
 											"type": "text"
 										},
 										{
 											"key": "address",
-											"value": "Kalikasthans",
+											"value": "Kalikasthan",
 											"type": "text"
 										},
 										{
@@ -91,13 +286,88 @@
 											"type": "text"
 										},
 										{
-											"key": "_method",
-											"value": "PUT",
+											"key": "status_id",
+											"value": "1",
 											"type": "text"
 										},
 										{
-											"key": "status_id",
+											"key": "tax_id",
+											"value": "12333",
+											"type": "text"
+										},
+										{
+											"key": "regon",
+											"value": "1234ads",
+											"type": "text"
+										},
+										{
+											"key": "bdo",
+											"value": "12345asd",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9808908",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][country]",
+											"value": "Nepal",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][zip_code]",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][street]",
+											"value": "kalika marg",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][community]",
+											"value": "Kalika Tol",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][county]",
+											"value": "Kalika County",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][voivodeship]",
+											"value": "Kalika Voivodeship",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][type]",
+											"value": "default",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][country]",
+											"value": "India",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][street]",
+											"value": "Seto Pul",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][type]",
+											"value": "business",
+											"type": "text"
+										},
+										{
+											"key": "is_business_address_same",
 											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
 											"type": "text"
 										}
 									]
@@ -115,7 +385,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one-edit"
+											"value": "company-one"
 										}
 									]
 								}
@@ -162,7 +432,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one-edit"
+											"value": "company-one"
 										}
 									]
 								}
@@ -176,7 +446,14 @@
 									"type": "noauth"
 								},
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"url": {
 									"raw": "{{url}}/admin/company/:slug",
 									"host": [
@@ -221,7 +498,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one-edit"
+											"value": "company-two"
 										}
 									]
 								}
@@ -234,7 +511,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/admin/company?sort_key=name&sort_order=desc&limit=1",
+									"raw": "{{url}}/admin/company?sort_key=name&sort_order=desc&limit=",
 									"host": [
 										"{{url}}"
 									],
@@ -253,7 +530,7 @@
 										},
 										{
 											"key": "limit",
-											"value": "1"
+											"value": ""
 										}
 									]
 								}
@@ -368,13 +645,13 @@
 			]
 		},
 		{
-			"name": "Client",
+			"name": "Company",
 			"item": [
 				{
-					"name": "Company",
+					"name": "Employee",
 					"item": [
 						{
-							"name": "my company",
+							"name": "store",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -386,28 +663,432 @@
 										}
 									]
 								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"\",\n    \"middle_name\": \"\",\n    \"last_name\": \"\",\n    \"pesel\": \"\",\n    \"tax_id\": \"\",\n    \"gender\": \"\",\n    \"email\": \"\",\n\n    \"father_name\": \"\",\n    \"mother_name\": \"\",\n    \"citizenship\": \"\",\n    \"dob\": \"\",\n    \"pob\": \"\",\n    \"identification_type\": \"\",\n    \"identification_number\": \"\",\n    \"state_issued_document\": \"\",\n    \"bank_name\": \"\",\n    \"bank_account_number\": \"\",\n    \"id_number\": \"\",\n    \"department\": \"\",\n\n    \"address\": {\n        \"home_address\": {\n            \"zip\": \"\",\n            \"street\": \"\",\n            \"house_number\": \"\",\n            \"number_of_premises\": \"\",\n            \"city\": \"\",\n            \"post\": \"\",\n            \"community\": \"\",\n            \"county\": \"\",\n            \"voivodeship\": \"\",\n            \"country\": \"\"\n        },\n        \"registered_address\": {\n            \"zip\": \"\",\n            \"street\": \"\",\n            \"house_number\": \"\",\n            \"number_of_premises\": \"\",\n            \"city\": \"\",\n            \"post\": \"\",\n            \"community\": \"\",\n            \"county\": \"\",\n            \"voivodeship\": \"\",\n            \"country\": \"\"\n        }\n    },\n    \"is_same_registerd_address\": \"\",\n    \n    \"zus\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
 									}
-								],
+								},
 								"url": {
-									"raw": "{{url}}/client/my-company",
+									"raw": "{{url}}/company/employee",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"client",
-										"my-company"
+										"company",
+										"employee"
 									]
 								}
 							},
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "my company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/client/my-company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"client",
+								"my-company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"login"
+							],
+							"query": [
+								{
+									"key": "superadmin@admin.com",
+									"value": "P@ssword",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parameter",
+			"item": [
+				{
+					"name": "get all parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/parameter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 1,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"company_id\": 1,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1 edit\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter/:parameter_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter",
+								":parameter_id"
+							],
+							"variable": [
+								{
+									"key": "parameter_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single parameter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter/:parameter_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter",
+								":parameter_id"
+							],
+							"variable": [
+								{
+									"key": "parameter_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter/:parameter_id/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter",
+								":parameter_id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "parameter_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Password Reset",
+			"item": [
+				{
+					"name": "send password reset mail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "superadmin@admin.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/password-reset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"password-reset"
+							],
+							"query": [
+								{
+									"key": "superadmin@admin.com",
+									"value": "P@ssword",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password via reset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "MNXEPIllGP41pQDzjhU0",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "asd",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "asd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/password-reset/change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"password-reset",
+								"change"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -440,45 +1121,6 @@
 			"response": []
 		},
 		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "superadmin@admin.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/api/login?superadmin@admin.com=P@ssword",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"login"
-					],
-					"query": [
-						{
-							"key": "superadmin@admin.com",
-							"value": "P@ssword"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "register",
 			"request": {
 				"method": "POST",
@@ -488,12 +1130,12 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "superadmin2",
+							"value": "test one",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "superadmin22@admin.com",
+							"value": "testone@gmail.com",
 							"type": "text"
 						},
 						{
