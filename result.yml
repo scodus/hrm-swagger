@@ -26,6 +26,7 @@ components:
       type: http
       scheme: bearer
 tags:
+<<<<<<< HEAD
   - name: Super admin
   - name: Super admin > Company
   - name: Super admin > Company > Verify Mail
@@ -35,11 +36,25 @@ tags:
   - name: Parameter
   - name: Password Reset
   - name: auth
+=======
+  - name: Admin
+  - name: Admin > Company
+  - name: Admin > Company > Verify Mail
+  - name: Admin > Status
+  - name: Company
+  - name: Company > Employee
+  - name: Parameter
+  - name: Password Reset
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
 paths:
   /api/company/send-admin-verification-mail:
     post:
       tags:
+<<<<<<< HEAD
         - Super admin > Company > Verify Mail
+=======
+        - Admin > Company > Verify Mail
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       summary: send verification mail
       requestBody:
         content:
@@ -60,7 +75,11 @@ paths:
   /api/company/verify-admin-mail:
     post:
       tags:
+<<<<<<< HEAD
         - Super admin > Company > Verify Mail
+=======
+        - Admin > Company > Verify Mail
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       summary: verify by changing password
       requestBody:
         content:
@@ -68,6 +87,7 @@ paths:
             schema:
               type: object
               properties:
+<<<<<<< HEAD
                 token:
                   type: string
                   example: Y5OWJBZXMQDcKwkSVQaM
@@ -77,6 +97,20 @@ paths:
                 new_password_confirmation:
                   type: string
                   example: P@ssword1
+=======
+                email:
+                  type: string
+                  example: leon.schiffer360@gmail.com
+                old_password:
+                  type: string
+                  example: 66wEJ5O9
+                old_password_confirmation:
+                  type: string
+                  example: 66wEJ5O9
+                new_password:
+                  type: string
+                  example: asd
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       security:
         - noauthAuth: []
       responses:
@@ -104,12 +138,19 @@ paths:
                 address:
                   type: string
                   example: Kalikasthan
+<<<<<<< HEAD
+=======
+                email:
+                  type: string
+                  example: abcde@gmail.comss
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
                 status_id:
                   type: integer
                   description: values-> 0:inactive, 1:active
                   example: '1'
                 tax_id:
                   type: integer
+<<<<<<< HEAD
                   example: '12345678111212'
                 regon:
                   type: string
@@ -123,6 +164,18 @@ paths:
                 company_detail[email]:
                   type: string
                   example: abcdefghass2dw@gmail.comss
+=======
+                  example: '12345678'
+                regon:
+                  type: string
+                  example: 1234asdasasd
+                bdo:
+                  type: string
+                  example: 123456saw
+                phone_number:
+                  type: integer
+                  example: '9808908'
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
                 addresses[0][country]:
                   type: string
                   example: Nepal
@@ -161,10 +214,17 @@ paths:
                   example: '0'
                 user[name]:
                   type: string
+<<<<<<< HEAD
                   example: Tom n Jerry
                 user[email]:
                   type: string
                   example: tomnjerry8963@gmail.com
+=======
+                  example: Bishal Gurung
+                user[email]:
+                  type: string
+                  example: leon.schiffesr3asdw600@gmail.co
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       security:
         - bearerAuth: []
       parameters:
@@ -202,11 +262,14 @@ paths:
           in: query
           schema:
             type: string
+<<<<<<< HEAD
         - name: status
           in: query
           schema:
             type: string
           description: 'values: active, inactive'
+=======
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       responses:
         '200':
           description: Successful response
@@ -375,7 +438,11 @@ paths:
           schema:
             type: string
           required: true
+<<<<<<< HEAD
           example: company-two
+=======
+          example: company-one
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       responses:
         '200':
           description: Successful response
@@ -498,6 +565,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+<<<<<<< HEAD
     get:
       tags:
         - Company Admin > Employee
@@ -551,6 +619,75 @@ paths:
                     type: home
                 is_same_registered_address: 1
                 status_id: 0
+=======
+  /company/employee:
+    post:
+      tags:
+        - Company > Employee
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: ''
+                middle_name: ''
+                last_name: ''
+                pesel: ''
+                tax_id: ''
+                gender: ''
+                email: ''
+                father_name: ''
+                mother_name: ''
+                citizenship: ''
+                dob: ''
+                pob: ''
+                identification_type: ''
+                identification_number: ''
+                state_issued_document: ''
+                bank_name: ''
+                bank_account_number: ''
+                id_number: ''
+                department: ''
+                address:
+                  home_address:
+                    zip: ''
+                    street: ''
+                    house_number: ''
+                    number_of_premises: ''
+                    city: ''
+                    post: ''
+                    community: ''
+                    county: ''
+                    voivodeship: ''
+                    country: ''
+                  registered_address:
+                    zip: ''
+                    street: ''
+                    house_number: ''
+                    number_of_premises: ''
+                    city: ''
+                    post: ''
+                    community: ''
+                    county: ''
+                    voivodeship: ''
+                    country: ''
+                is_same_registerd_address: ''
+                zus: ''
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /client/my-company:
+    get:
+      tags:
+        - Company
+      summary: my company
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       security:
         - bearerAuth: []
       parameters:
@@ -565,6 +702,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+<<<<<<< HEAD
     delete:
       tags:
         - Company Admin > Employee
@@ -578,6 +716,27 @@ paths:
             type: integer
           required: true
           example: '54'
+=======
+  /company/login:
+    post:
+      tags:
+        - Company
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - bearerAuth: []
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       responses:
         '200':
           description: Successful response
@@ -588,6 +747,7 @@ paths:
       tags:
         - Parameter
       summary: get all parameter
+<<<<<<< HEAD
       security:
         - bearerAuth: []
       responses:
@@ -614,6 +774,8 @@ paths:
                 par_value_d2: 100.11
                 par_value_i: 10
                 par_value_d4: 100.1111
+=======
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       security:
         - bearerAuth: []
       responses:
@@ -621,6 +783,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+<<<<<<< HEAD
   /api/parameter/{parameter_id}:
     post:
       tags:
@@ -757,6 +920,111 @@ paths:
       tags:
         - auth
       summary: login
+=======
+    post:
+      tags:
+        - Parameter
+      summary: store parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                date_s: '2021-01-01'
+                date_e: '2021-10-10'
+                par_name: parameter name 1
+                par_type: parameter type
+                par_value_s: parameter value string
+                par_value_d2: 100.11
+                par_value_i: 10
+                par_value_d4: 100.1111
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/parameter/{parameter_id}:
+    post:
+      tags:
+        - Parameter
+      summary: update parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                company_id: 1
+                date_s: '2021-01-01'
+                date_e: '2021-10-10'
+                par_name: parameter name 1 edit
+                par_type: parameter type
+                par_value_s: parameter value string
+                par_value_d2: 100.11
+                par_value_i: 10
+                par_value_d4: 100.1111
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parameter_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Parameter
+      summary: get single parameter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parameter_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/parameter/{parameter_id}/delete:
+    delete:
+      tags:
+        - Parameter
+      summary: delete parameter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parameter_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/password-reset:
+    post:
+      tags:
+        - Password Reset
+      summary: send password reset mail
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       requestBody:
         content:
           multipart/form-data:
@@ -766,9 +1034,6 @@ paths:
                 email:
                   type: string
                   example: superadmin@admin.com
-                password:
-                  type: string
-                  example: P@ssw0rd
       security:
         - bearerAuth: []
       parameters:
@@ -777,6 +1042,58 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/password-reset/change:
+    post:
+      tags:
+        - Password Reset
+      summary: change password via reset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+<<<<<<< HEAD
+                  example: P@ssw0rd
+=======
+                  example: MNXEPIllGP41pQDzjhU0
+                new_password:
+                  type: string
+                  example: asd
+                new_password_confirmation:
+                  type: string
+                  example: asd
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+<<<<<<< HEAD
+=======
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user:
+    get:
+      tags:
+        - default
+      summary: test
+      security:
+        - bearerAuth: []
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       responses:
         '200':
           description: Successful response
@@ -793,6 +1110,7 @@ paths:
             schema:
               type: object
               properties:
+<<<<<<< HEAD
                 email:
                   type: string
                   example: tomnjerry8963@gmail.com
@@ -874,6 +1192,26 @@ paths:
           schema:
             type: string
           example: application/json
+=======
+                name:
+                  type: string
+                  example: test one
+                email:
+                  type: string
+                  example: testone@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                company_id:
+                  type: string
+                  description: nullable
+                status_id:
+                  type: string
+                  description: nullable
+>>>>>>> df9ccb304031d9afef9dc5e05238261dc153b7e3
       responses:
         '200':
           description: Successful response
