@@ -3,18 +3,118 @@
 		"_postman_id": "5ccca77b-3171-4c0f-9662-1d40c038ce67",
 		"name": "hrm-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19791325"
+		"_exporter_id": "16179347"
 	},
 	"item": [
 		{
-			"name": "Admin",
+			"name": "Super admin",
 			"item": [
 				{
 					"name": "Company",
 					"item": [
 						{
+							"name": "Verify Mail",
+							"item": [
+								{
+									"name": "send verification mail",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "leon.schiffer360@gmail.com",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/company/send-admin-verification-mail",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"company",
+												"send-admin-verification-mail"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "verify by changing password",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "token",
+													"value": "Y5OWJBZXMQDcKwkSVQaM",
+													"type": "text"
+												},
+												{
+													"key": "new_password",
+													"value": "P@ssword1",
+													"type": "text"
+												},
+												{
+													"key": "new_password_confirmation",
+													"value": "P@ssword1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/company/verify-admin-mail",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"company",
+												"verify-admin-mail"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -28,7 +128,12 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "Company One",
+											"value": "Company Two",
+											"type": "text"
+										},
+										{
+											"key": "short_name",
+											"value": "three",
 											"type": "text"
 										},
 										{
@@ -37,13 +142,104 @@
 											"type": "text"
 										},
 										{
-											"key": "email",
-											"value": "abc@gmail.com",
+											"key": "status_id",
+											"value": "1",
+											"description": "values-> 0:inactive, 1:active",
 											"type": "text"
 										},
 										{
-											"key": "status_id",
-											"value": "1",
+											"key": "tax_id",
+											"value": "12345678111212",
+											"type": "text"
+										},
+										{
+											"key": "regon",
+											"value": "1234asdasasd113112",
+											"type": "text"
+										},
+										{
+											"key": "bdo",
+											"value": "123456saw11asd12",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "98089081",
+											"type": "text"
+										},
+										{
+											"key": "company_detail[email]",
+											"value": "abcdefghass2dw@gmail.comss",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][country]",
+											"value": "Nepal",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][zip_code]",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][street]",
+											"value": "kalika marg",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][community]",
+											"value": "Kalika Tol",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][county]",
+											"value": "Kalika County",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][voivodeship]",
+											"value": "Kalika Voivodeship",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][type]",
+											"value": "default",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][city]",
+											"value": "bhairahawa",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][country]",
+											"value": "India",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][street]",
+											"value": "Seto Pul",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][type]",
+											"value": "business",
+											"type": "text"
+										},
+										{
+											"key": "is_business_address_same",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "user[name]",
+											"value": "Tom n Jerry",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "tomnjerry8963@gmail.com",
 											"type": "text"
 										}
 									]
@@ -77,12 +273,17 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "Company One edit",
+											"value": "Company One",
+											"type": "text"
+										},
+										{
+											"key": "short_name",
+											"value": "one",
 											"type": "text"
 										},
 										{
 											"key": "address",
-											"value": "Kalikasthans",
+											"value": "Kalikasthan",
 											"type": "text"
 										},
 										{
@@ -91,13 +292,88 @@
 											"type": "text"
 										},
 										{
-											"key": "_method",
-											"value": "PUT",
+											"key": "status_id",
+											"value": "1",
 											"type": "text"
 										},
 										{
-											"key": "status_id",
+											"key": "tax_id",
+											"value": "12333",
+											"type": "text"
+										},
+										{
+											"key": "regon",
+											"value": "1234ads",
+											"type": "text"
+										},
+										{
+											"key": "bdo",
+											"value": "12345asd",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9808908",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][country]",
+											"value": "Nepal",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][zip_code]",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][street]",
+											"value": "kalika marg",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][community]",
+											"value": "Kalika Tol",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][county]",
+											"value": "Kalika County",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][voivodeship]",
+											"value": "Kalika Voivodeship",
+											"type": "text"
+										},
+										{
+											"key": "addresses[0][type]",
+											"value": "default",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][country]",
+											"value": "India",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][street]",
+											"value": "Seto Pul",
+											"type": "text"
+										},
+										{
+											"key": "addresses[1][type]",
+											"value": "business",
+											"type": "text"
+										},
+										{
+											"key": "is_business_address_same",
 											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
 											"type": "text"
 										}
 									]
@@ -115,7 +391,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one-edit"
+											"value": "company-one"
 										}
 									]
 								}
@@ -123,7 +399,7 @@
 							"response": []
 						},
 						{
-							"name": "change active",
+							"name": "change active status",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -138,7 +414,7 @@
 									"formdata": [
 										{
 											"key": "value",
-											"value": "1",
+											"value": "0",
 											"type": "text"
 										},
 										{
@@ -162,7 +438,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one-edit"
+											"value": "company-two"
 										}
 									]
 								}
@@ -171,12 +447,251 @@
 						},
 						{
 							"name": "find by slug",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+											"  \"type\": \"object\",\r",
+											"  \"properties\": {\r",
+											"    \"message\": {\r",
+											"      \"type\": \"string\"\r",
+											"    },\r",
+											"    \"data\": {\r",
+											"      \"type\": \"object\",\r",
+											"      \"properties\": {\r",
+											"        \"id\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"name\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"short_name\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"tax_id\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"regon\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"bdo\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"phone_number\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"slug\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"addresses\": {\r",
+											"          \"type\": \"array\",\r",
+											"          \"items\": [\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"country\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"zip_code\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"street\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"city\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"community\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"county\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"voivodeship\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"type\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"country\",\r",
+											"                \"zip_code\",\r",
+											"                \"street\",\r",
+											"                \"city\",\r",
+											"                \"community\",\r",
+											"                \"county\",\r",
+											"                \"voivodeship\",\r",
+											"                \"type\"\r",
+											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"country\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"zip_code\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"street\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"city\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"community\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"county\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"voivodeship\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"type\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"country\",\r",
+											"                \"zip_code\",\r",
+											"                \"street\",\r",
+											"                \"city\",\r",
+											"                \"community\",\r",
+											"                \"county\",\r",
+											"                \"voivodeship\",\r",
+											"                \"type\"\r",
+											"              ]\r",
+											"            }\r",
+											"          ]\r",
+											"        },\r",
+											"        \"status\": {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"title\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"title\"\r",
+											"          ]\r",
+											"        },\r",
+											"        \"detail\": {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"email\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"email\"\r",
+											"          ]\r",
+											"        },\r",
+											"        \"user\": {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"email\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"email_verified_at\": {\r",
+											"              \"type\": \"null\"\r",
+											"            },\r",
+											"            \"company_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"updated_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"email\",\r",
+											"            \"email_verified_at\",\r",
+											"            \"company_id\",\r",
+											"            \"created_at\",\r",
+											"            \"updated_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        \"created_at\": {\r",
+											"          \"type\": \"string\"\r",
+											"        }\r",
+											"      },\r",
+											"      \"required\": [\r",
+											"        \"id\",\r",
+											"        \"name\",\r",
+											"        \"short_name\",\r",
+											"        \"tax_id\",\r",
+											"        \"regon\",\r",
+											"        \"bdo\",\r",
+											"        \"phone_number\",\r",
+											"        \"slug\",\r",
+											"        \"addresses\",\r",
+											"        \"status\",\r",
+											"        \"detail\",\r",
+											"        \"user\",\r",
+											"        \"created_at\"\r",
+											"      ]\r",
+											"    }\r",
+											"  },\r",
+											"  \"required\": [\r",
+											"    \"message\",\r",
+											"    \"data\"\r",
+											"  ]\r",
+											"};\r",
+											"\r",
+											"var jsonresp = pm.response.json();\r",
+											"\r",
+											"pm.test('Schema is valid', function () {\r",
+											"    pm.expect(tv4.validate(jsonresp, schema)).to.be.true;\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "noauth"
 								},
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
 								"url": {
 									"raw": "{{url}}/admin/company/:slug",
 									"host": [
@@ -190,7 +705,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one"
+											"value": "company-two"
 										}
 									]
 								}
@@ -221,7 +736,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one-edit"
+											"value": "company-two"
 										}
 									]
 								}
@@ -230,11 +745,2150 @@
 						},
 						{
 							"name": "all",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+											"  \"type\": \"object\",\r",
+											"  \"properties\": {\r",
+											"    \"data\": {\r",
+											"      \"type\": \"array\",\r",
+											"      \"items\": [\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip_code\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"country\",\r",
+											"                    \"zip_code\",\r",
+											"                    \"street\",\r",
+											"                    \"city\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"detail\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"email\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email_verified_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"company_id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"updated_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"email_verified_at\",\r",
+											"                \"company_id\",\r",
+											"                \"created_at\",\r",
+											"                \"updated_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"addresses\",\r",
+											"            \"status\",\r",
+											"            \"detail\",\r",
+											"            \"user\",\r",
+											"            \"created_at\"\r",
+											"          ]\r",
+											"        }\r",
+											"      ]\r",
+											"    },\r",
+											"    \"links\": {\r",
+											"      \"type\": \"object\",\r",
+											"      \"properties\": {\r",
+											"        \"first\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"last\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"prev\": {\r",
+											"          \"type\": \"null\"\r",
+											"        },\r",
+											"        \"next\": {\r",
+											"          \"type\": \"string\"\r",
+											"        }\r",
+											"      },\r",
+											"      \"required\": [\r",
+											"        \"first\",\r",
+											"        \"last\",\r",
+											"        \"prev\",\r",
+											"        \"next\"\r",
+											"      ]\r",
+											"    },\r",
+											"    \"meta\": {\r",
+											"      \"type\": \"object\",\r",
+											"      \"properties\": {\r",
+											"        \"current_page\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"from\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"last_page\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"links\": {\r",
+											"          \"type\": \"array\",\r",
+											"          \"items\": [\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"null\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
+											"            }\r",
+											"          ]\r",
+											"        },\r",
+											"        \"path\": {\r",
+											"          \"type\": \"string\"\r",
+											"        },\r",
+											"        \"per_page\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"to\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        },\r",
+											"        \"total\": {\r",
+											"          \"type\": \"integer\"\r",
+											"        }\r",
+											"      },\r",
+											"      \"required\": [\r",
+											"        \"current_page\",\r",
+											"        \"from\",\r",
+											"        \"last_page\",\r",
+											"        \"links\",\r",
+											"        \"path\",\r",
+											"        \"per_page\",\r",
+											"        \"to\",\r",
+											"        \"total\"\r",
+											"      ]\r",
+											"    }\r",
+											"  },\r",
+											"  \"required\": [\r",
+											"    \"data\",\r",
+											"    \"links\",\r",
+											"    \"meta\"\r",
+											"  ]\r",
+											"};\r",
+											"\r",
+											"var jsonResponse= pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test('Validate schema', function () {\r",
+											"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
 								"url": {
-									"raw": "{{url}}/admin/company?sort_key=name&sort_order=desc&limit=1",
+									"raw": "{{url}}/admin/company?sort_key=name&sort_order=desc&limit=&status=",
 									"host": [
 										"{{url}}"
 									],
@@ -253,7 +2907,12 @@
 										},
 										{
 											"key": "limit",
-											"value": "1"
+											"value": ""
+										},
+										{
+											"key": "status",
+											"value": "",
+											"description": "values: active, inactive"
 										}
 									]
 								}
@@ -273,7 +2932,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{admin_token}}",
+											"value": "{{superadmin_token}}",
 											"type": "string"
 										}
 									]
@@ -332,7 +2991,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{admin_token}}",
+											"value": "{{superadmin_token}}",
 											"type": "string"
 										}
 									]
@@ -356,7 +3015,7 @@
 									"variable": [
 										{
 											"key": "status_id",
-											"value": "21"
+											"value": "2"
 										}
 									]
 								}
@@ -368,13 +3027,126 @@
 			]
 		},
 		{
-			"name": "Client",
+			"name": "Company Admin",
 			"item": [
 				{
-					"name": "Company",
+					"name": "Employee",
 					"item": [
 						{
-							"name": "my company",
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 1,\n    \"first_name\": \"Lal\",\n    \"middle_name\": \"\",\n    \"last_name\": \"Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"home\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/employee",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"patch\",\n    \"company_id\": 1,\n    \"first_name\": \"Laluu\",\n    \"middle_name\": \"Prasad\",\n    \"last_name\": \"Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"home\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/employee/:employee_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"employee",
+										":employee_id"
+									],
+									"variable": [
+										{
+											"key": "employee_id",
+											"value": "61"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/employee/:employee_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"employee",
+										":employee_id"
+									],
+									"variable": [
+										{
+											"key": "employee_id",
+											"value": "54"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all employee",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -387,21 +3159,14 @@
 									]
 								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
-									"raw": "{{url}}/client/my-company",
+									"raw": "{{url}}/employee",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"client",
-										"my-company"
+										"employee"
 									]
 								}
 							},
@@ -412,122 +3177,531 @@
 			]
 		},
 		{
+			"name": "Parameter",
+			"item": [
+				{
+					"name": "get all parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/parameter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 36,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"company_id\": 1,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1 edit\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter/:parameter_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter",
+								":parameter_id"
+							],
+							"variable": [
+								{
+									"key": "parameter_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single parameter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter/:parameter_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter",
+								":parameter_id"
+							],
+							"variable": [
+								{
+									"key": "parameter_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete parameter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/parameter/:parameter_id/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"parameter",
+								":parameter_id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "parameter_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Password Reset",
+			"item": [
+				{
+					"name": "send password reset mail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "yaredip664@runqx.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/password-reset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"password-reset"
+							],
+							"query": [
+								{
+									"key": "superadmin@admin.com",
+									"value": "P@ssword",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password via reset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "0jAgPYYbWXFPUKhaLP7l",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "asdf",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "asdf",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/password-reset/change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"password-reset",
+								"change"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "superadmin@admin.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password reset email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/password-reset-email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"password-reset-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "0fT6B8qJVB5G6SKkqAl5U7niWB0GM2zOU0jNpctdztZXu01OqIcI4jAJ1X9U4VFL",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/password-reset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"password-reset"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "0fT6B8qJVB5G6SKkqAl5U7niWB0GM2zOU0jNpctdztZXu01OqIcI4jAJ1X9U4VFL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "oauth test",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"grant_type\" : \"password\",\n    \"client_id\" : 2,\n    \"client_secret\" : \"UyBVGrF6kQ4cQv5o0n9WKsTjkEU1pFMB5tW3Fw3P\",\n    \"scope\" : \"*\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/oauth/token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token test",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/refresh-token/:refresh_token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"refresh-token",
+								":refresh_token"
+							],
+							"variable": [
+								{
+									"key": "refresh_token",
+									"value": "def502006f9d5d73b922f6c125532ead503018578c0d268907d849e463232a6fb592f61b0ce69ead3f81429a6dc67d9229bf8ecf6c8898997f5e31bad665c6f95245f440b198cf192e3f1be04b099b9f82c3093f08467c1bf0c99c1c5ff58900f5a8e1a7fce716a428183c38d087c802db661b870f6ad2a105e65c555db81347a44ee181ab1d9c708ac62d4fff6817a4742f1c8a0275489058b98d766e4fcd78849c9bbc911bed897dac1cef9d0161c3699ac28ce354981dc197cba08f2bf70bcc3a90932fceb1294e0ee6127da666693a1ff125c27ab3747dbbc47bfac35d1d573b63586f948ae1bda4083f7b16436d3f06b4a499315346a558f6777f3cbcc24e28da6e758ab00f2ab5b4017082374c92d6142e87310aa1e60e634b8b362d62bb0022a5ba05d2da34180238776ade1a166f9389f13e12dd2cf47cb8e3bae4b988f408b21a94b4ab7178f13d8e18f9afcdefe94bbab68b767b3aae0fe65ac25228b04971"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "test",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{admin_token}}",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/user",
+					"raw": "{{url}}/test",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "superadmin@admin.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/api/login?superadmin@admin.com=P@ssword",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"login"
-					],
-					"query": [
-						{
-							"key": "superadmin@admin.com",
-							"value": "P@ssword"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "superadmin2",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "superadmin22@admin.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text"
-						},
-						{
-							"key": "password_confirmation",
-							"value": "P@ssw0rd",
-							"type": "text"
-						},
-						{
-							"key": "company_id",
-							"value": "",
-							"description": "nullable",
-							"type": "text"
-						},
-						{
-							"key": "status_id",
-							"value": "",
-							"description": "nullable",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/api/register",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"register"
+						"test"
 					]
 				}
 			},
@@ -549,6 +3723,40 @@
 					"path": [
 						"api",
 						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my company",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admin_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/client/my-company",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"client",
+						"my-company"
 					]
 				}
 			},
