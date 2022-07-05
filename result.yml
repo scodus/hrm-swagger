@@ -37,6 +37,7 @@ tags:
   - name: Company Admin > Parameter
   - name: Password Reset
   - name: auth
+  - name: Folder
 paths:
   /api/company/send-admin-verification-mail:
     post:
@@ -245,7 +246,7 @@ paths:
                   example: Kalikasthan
                 status_id:
                   type: integer
-                  example: '1'
+                  example: '0'
                 tax_id:
                   type: integer
                   example: '12333'
@@ -308,7 +309,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-one
+          example: test1
       responses:
         '200':
           description: Successful response
@@ -444,108 +445,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /admin/parameter:
+  /admin/parameter/bulk-update:
+    post:
+      tags:
+        - Super admin > Parameter
+      summary: update or create parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - par_name: parameter 1
+                  par_type: string
+                  par_value: string
+                  status_id: 1
+                - par_name: parameter 2
+                  par_type: integer
+                  par_value: 100
+                  status_id: 1
+                - par_name: parameter 3
+                  par_type: float
+                  par_value: 99.99
+                  status_id: 1
+                - par_name: parameter 4
+                  par_type: double
+                  par_value: 100.1
+                  status_id: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/parameters:
     get:
       tags:
         - Super admin > Parameter
       summary: get all parameter
       security:
         - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    post:
-      tags:
-        - Super admin > Parameter
-      summary: store parameter
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                par_name: parameter name 1
-                par_type: parameter type
-                par_value_s: parameter value string
-                par_value_d2: 100.11
-                par_value_i: 10
-                par_value_d4: 100.1111
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /admin/parameter/{parameter_id}:
-    post:
-      tags:
-        - Super admin > Parameter
-      summary: update parameter
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                company_id: 1
-                date_s: '2021-01-01'
-                date_e: '2021-10-10'
-                par_name: parameter name 1 edit
-                par_type: parameter type
-                par_value_s: parameter value string
-                par_value_d2: 100.11
-                par_value_i: 10
-                par_value_d4: 100.1111
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: parameter_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Super admin > Parameter
-      summary: get single parameter
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: parameter_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /admin/parameter/{parameter_id}/delete:
-    delete:
-      tags:
-        - Super admin > Parameter
-      summary: delete parameter
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: parameter_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -644,17 +584,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - Company Admin > Employee
-      summary: get all employee
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /employee/{employee_id}:
     post:
       tags:
@@ -703,25 +632,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '12'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Company Admin > Employee
-      summary: get single employee
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: employee_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -739,7 +650,58 @@ paths:
           schema:
             type: integer
           required: true
-          example: '54'
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /employee/filter:
+    post:
+      tags:
+        - Company Admin > Employee
+      summary: get all employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                limit: null
+                search_keyword:
+                  - column_name: name
+                    value: a
+                where_condition:
+                  - column_name: gender
+                    value: male
+                operator_condition:
+                  - column_name: created_date
+                    operator: '>'
+                    value: '2022-01-01'
+                between_condition:
+                  - column_name: created_at
+                    value:
+                      - '2022-01-10'
+                      - '2022-10-10'
+                sort_condition:
+                  - column_name: id
+                    sort: DESC
+                custom_condition:
+                  - name: custom_name
+                    value: custom_value
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Company Admin > Employee
+      summary: get single employee
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -840,7 +802,53 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/parameter:
+  /current-parameter:
+    get:
+      tags:
+        - Company Admin > Parameter
+      summary: get parameters added by superadmin
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /parameter:
+    post:
+      tags:
+        - Company Admin > Parameter
+      summary: update or create new parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                parameter:
+                  - date_s: '2021-01-04'
+                    par_name: parameter 1
+                    par_type: string
+                    par_value: string
+                  - date_s: '2021-01-06'
+                    par_name: parameter 2
+                    par_type: integer
+                    par_value: 100
+                  - date_s: '2021-01-03'
+                    par_name: parameter 3
+                    par_type: float
+                    par_value: 99.99
+                  - date_s: '2021-01-03'
+                    par_name: parameter 4
+                    par_type: double
+                    par_value: 100.111
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     get:
       tags:
         - Company Admin > Parameter
@@ -852,67 +860,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    post:
-      tags:
-        - Company Admin > Parameter
-      summary: store parameter
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                company_id: 36
-                date_s: '2021-01-01'
-                date_e: '2021-10-10'
-                par_name: parameter name 1
-                par_type: parameter type
-                par_value_s: parameter value string
-                par_value_d2: 100.11
-                par_value_i: 10
-                par_value_d4: 100.1111
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/parameter/{parameter_id}:
-    post:
-      tags:
-        - Company Admin > Parameter
-      summary: update parameter
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                company_id: 1
-                date_s: '2021-01-01'
-                date_e: '2021-10-10'
-                par_name: parameter name 1 edit
-                par_type: parameter type
-                par_value_s: parameter value string
-                par_value_d2: 100.11
-                par_value_i: 10
-                par_value_d4: 100.1111
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: parameter_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+  /parameter/{parameter_id}:
     get:
       tags:
         - Company Admin > Parameter
@@ -925,13 +873,13 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '28'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/parameter/{parameter_id}/delete:
+  /parameter/{parameter_id}/delete:
     delete:
       tags:
         - Company Admin > Parameter
@@ -944,7 +892,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -1082,6 +1030,23 @@ paths:
           required: true
           example: >-
             def502006f9d5d73b922f6c125532ead503018578c0d268907d849e463232a6fb592f61b0ce69ead3f81429a6dc67d9229bf8ecf6c8898997f5e31bad665c6f95245f440b198cf192e3f1be04b099b9f82c3093f08467c1bf0c99c1c5ff58900f5a8e1a7fce716a428183c38d087c802db661b870f6ad2a105e65c555db81347a44ee181ab1d9c708ac62d4fff6817a4742f1c8a0275489058b98d766e4fcd78849c9bbc911bed897dac1cef9d0161c3699ac28ce354981dc197cba08f2bf70bcc3a90932fceb1294e0ee6127da666693a1ff125c27ab3747dbbc47bfac35d1d573b63586f948ae1bda4083f7b16436d3f06b4a499315346a558f6777f3cbcc24e28da6e758ab00f2ab5b4017082374c92d6142e87310aa1e60e634b8b362d62bb0022a5ba05d2da34180238776ade1a166f9389f13e12dd2cf47cb8e3bae4b988f408b21a94b4ab7178f13d8e18f9afcdefe94bbab68b767b3aae0fe65ac25228b04971
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder:
+    post:
+      tags:
+        - Folder
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Documents
       responses:
         '200':
           description: Successful response
