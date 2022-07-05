@@ -30,9 +30,11 @@ tags:
   - name: Super admin > Company
   - name: Super admin > Company > Verify Mail
   - name: Super admin > Status
+  - name: Super admin > Parameter
   - name: Company Admin
   - name: Company Admin > Employee
-  - name: Parameter
+  - name: Company Admin > Department
+  - name: Company Admin > Parameter
   - name: Password Reset
   - name: auth
 paths:
@@ -70,13 +72,13 @@ paths:
               properties:
                 token:
                   type: string
-                  example: Y5OWJBZXMQDcKwkSVQaM
+                  example: 91iY4iJftIIDpmzRhbf2
                 new_password:
                   type: string
-                  example: P@ssword1
+                  example: P@ssw0rd
                 new_password_confirmation:
                   type: string
-                  example: P@ssword1
+                  example: P@ssw0rd
       security:
         - noauthAuth: []
       responses:
@@ -110,25 +112,34 @@ paths:
                   example: '1'
                 tax_id:
                   type: integer
-                  example: '12345678111212'
+                  example: '1234567'
                 regon:
                   type: string
-                  example: 1234asdasasd113112
+                  example: 1234as
                 bdo:
-                  type: string
-                  example: 123456saw11asd12
+                  type: integer
+                  example: '12345'
                 phone_number:
                   type: integer
                   example: '98089081'
                 company_detail[email]:
                   type: string
-                  example: abcdefghass2dw@gmail.comss
+                  example: ab10@gmail.com
                 addresses[0][country]:
                   type: string
                   example: Nepal
-                addresses[0][zip_code]:
+                addresses[0][zip]:
                   type: integer
                   example: '12'
+                addresses[0][post]:
+                  type: string
+                  example: post
+                addresses[0][house_number]:
+                  type: integer
+                  example: '72'
+                addresses[0][number_of_premises]:
+                  type: integer
+                  example: '5'
                 addresses[0][street]:
                   type: string
                   example: kalika marg
@@ -158,10 +169,10 @@ paths:
                   example: business
                 is_business_address_same:
                   type: integer
-                  example: '0'
+                  example: '1'
                 user[name]:
                   type: string
-                  example: Tom n Jerry
+                  example: Scodus
                 user[email]:
                   type: string
                   example: tomnjerry8963@gmail.com
@@ -232,9 +243,6 @@ paths:
                 address:
                   type: string
                   example: Kalikasthan
-                email:
-                  type: string
-                  example: abcd@gmail.com
                 status_id:
                   type: integer
                   example: '1'
@@ -250,6 +258,9 @@ paths:
                 phone_number:
                   type: integer
                   example: '9808908'
+                company_detail[email]:
+                  type: string
+                  example: ssssadaw@gmail.com
                 addresses[0][country]:
                   type: string
                   example: Nepal
@@ -282,10 +293,10 @@ paths:
                   example: business
                 is_business_address_same:
                   type: integer
-                  example: '1'
+                  example: '0'
                 _method:
                   type: string
-                  example: PUT
+                  example: put
       parameters:
         - name: Accept
           in: header
@@ -320,7 +331,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-two
+          example: company-one
       responses:
         '200':
           description: Successful response
@@ -341,7 +352,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-two
+          example: company-two-10
       responses:
         '200':
           description: Successful response
@@ -360,7 +371,7 @@ paths:
               properties:
                 value:
                   type: integer
-                  example: '0'
+                  example: '1'
                 _method:
                   type: string
                   example: patch
@@ -375,7 +386,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-two
+          example: company-one
       responses:
         '200':
           description: Successful response
@@ -433,11 +444,148 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/parameter:
+    get:
+      tags:
+        - Super admin > Parameter
+      summary: get all parameter
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super admin > Parameter
+      summary: store parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                par_name: parameter name 1
+                par_type: parameter type
+                par_value_s: parameter value string
+                par_value_d2: 100.11
+                par_value_i: 10
+                par_value_d4: 100.1111
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/parameter/{parameter_id}:
+    post:
+      tags:
+        - Super admin > Parameter
+      summary: update parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                company_id: 1
+                date_s: '2021-01-01'
+                date_e: '2021-10-10'
+                par_name: parameter name 1 edit
+                par_type: parameter type
+                par_value_s: parameter value string
+                par_value_d2: 100.11
+                par_value_i: 10
+                par_value_d4: 100.1111
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parameter_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Parameter
+      summary: get single parameter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parameter_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/parameter/{parameter_id}/delete:
+    delete:
+      tags:
+        - Super admin > Parameter
+      summary: delete parameter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parameter_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/login:
+    post:
+      tags:
+        - Super admin
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /employee:
     post:
       tags:
         - Company Admin > Employee
-      summary: store
+      summary: store employee
       requestBody:
         content:
           application/json:
@@ -445,9 +593,7 @@ paths:
               type: object
               example:
                 company_id: 1
-                first_name: Lal
-                middle_name: ''
-                last_name: Bahadur
+                fullname: Lal Bahadur
                 pesel: pesel
                 tax_id: 123
                 gender: male
@@ -477,7 +623,7 @@ paths:
                     county: county-1
                     voivodeship: voivodeship-1
                     country: Nepal
-                    type: home
+                    type: default
                   - zip: '446002'
                     street: street2
                     house_number: house-12342
@@ -513,18 +659,16 @@ paths:
     post:
       tags:
         - Company Admin > Employee
-      summary: update
+      summary: update employee
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
-                method: patch
+                method: put
                 company_id: 1
-                first_name: Laluu
-                middle_name: Prasad
-                last_name: Bahadur
+                fullname: lal Jung Bahadur
                 pesel: pesel
                 tax_id: 123
                 gender: male
@@ -548,7 +692,7 @@ paths:
                     county: county-1
                     voivodeship: voivodeship-1
                     country: Nepal
-                    type: home
+                    type: default
                 is_same_registered_address: 1
                 status_id: 0
       security:
@@ -559,7 +703,25 @@ paths:
           schema:
             type: integer
           required: true
-          example: '61'
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Company Admin > Employee
+      summary: get single employee
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: employee_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -568,7 +730,7 @@ paths:
     delete:
       tags:
         - Company Admin > Employee
-      summary: delete
+      summary: delete employee
       security:
         - bearerAuth: []
       parameters:
@@ -583,10 +745,105 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /department:
+    post:
+      tags:
+        - Company Admin > Department
+      summary: store department
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Department 1
+                status_id: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Company Admin > Department
+      summary: get all deparmtnet
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /department/{department_id}:
+    post:
+      tags:
+        - Company Admin > Department
+      summary: update department
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                method: put
+                title: Department 1 edit
+                status_id: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: department_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Company Admin > Department
+      summary: get single department
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: department_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Company Admin > Department
+      summary: delete department
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: department_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/parameter:
     get:
       tags:
-        - Parameter
+        - Company Admin > Parameter
       summary: get all parameter
       security:
         - bearerAuth: []
@@ -597,7 +854,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - Parameter
+        - Company Admin > Parameter
       summary: store parameter
       requestBody:
         content:
@@ -624,7 +881,7 @@ paths:
   /api/parameter/{parameter_id}:
     post:
       tags:
-        - Parameter
+        - Company Admin > Parameter
       summary: update parameter
       requestBody:
         content:
@@ -658,7 +915,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - Parameter
+        - Company Admin > Parameter
       summary: get single parameter
       security:
         - bearerAuth: []
@@ -677,7 +934,7 @@ paths:
   /api/parameter/{parameter_id}/delete:
     delete:
       tags:
-        - Parameter
+        - Company Admin > Parameter
       summary: delete parameter
       security:
         - bearerAuth: []
@@ -696,24 +953,25 @@ paths:
   /api/password-reset:
     post:
       tags:
-        - auth
-      summary: password reset
+        - Password Reset
+      summary: send password reset mail
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                password:
+                email:
                   type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-                token:
-                  type: string
-                  example: >-
-                    0fT6B8qJVB5G6SKkqAl5U7niWB0GM2zOU0jNpctdztZXu01OqIcI4jAJ1X9U4VFL
+                  example: yaredip664@runqx.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -765,7 +1023,6 @@ paths:
               properties:
                 email:
                   type: string
-                  example: superadmin@admin.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -777,25 +1034,6 @@ paths:
           schema:
             type: string
           example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /password-reset-email:
-    post:
-      tags:
-        - auth
-      summary: password reset email
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: tomnjerry8963@gmail.com
       responses:
         '200':
           description: Successful response
