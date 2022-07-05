@@ -60,7 +60,7 @@
 											"formdata": [
 												{
 													"key": "token",
-													"value": "91iY4iJftIIDpmzRhbf2",
+													"value": "sEmLa4DMrJFExCsPOGcl",
 													"type": "text"
 												},
 												{
@@ -172,7 +172,7 @@
 										},
 										{
 											"key": "company_detail[email]",
-											"value": "ab10@gmail.com",
+											"value": "ab1000@gmail.com",
 											"type": "text"
 										},
 										{
@@ -268,7 +268,7 @@
 										},
 										{
 											"key": "user[email]",
-											"value": "tomnjerry8963@gmail.com",
+											"value": "grgbishal360@gmail.com",
 											"type": "text"
 										}
 									]
@@ -318,9 +318,8 @@
 										},
 										{
 											"key": "status_id",
-											"value": "1",
-											"type": "text",
-											"disabled": true
+											"value": "0",
+											"type": "text"
 										},
 										{
 											"key": "tax_id",
@@ -432,7 +431,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one"
+											"value": "company-two"
 										}
 									]
 								}
@@ -3049,6 +3048,44 @@
 					"name": "Parameter",
 					"item": [
 						{
+							"name": "update or create parameter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"par_name\": \"parameter 1\",\n        \"par_type\": \"string\",\n        \"par_value\": \"string\",\n        \"status_id\": 1\n    },\n    {\n        \"par_name\": \"parameter 2\",\n        \"par_type\": \"integer\",\n        \"par_value\": 100,\n        \"status_id\": 1\n    },\n    {\n        \"par_name\": \"parameter 3\",\n        \"par_type\": \"float\",\n        \"par_value\": 99.99,\n        \"status_id\": 1\n    },\n    {\n        \"par_name\": \"parameter 4\",\n        \"par_type\": \"double\",\n        \"par_value\": 100.10,\n        \"status_id\": 1\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin/parameter/bulk-update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"parameter",
+										"bulk-update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "get all parameter",
 							"request": {
 								"auth": {
@@ -3064,20 +3101,25 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/admin/parameter",
+									"raw": "{{url}}/admin/parameters",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
-										"parameter"
+										"parameters"
 									]
 								}
 							},
 							"response": []
-						},
+						}
+					]
+				},
+				{
+					"name": "Agreement",
+					"item": [
 						{
-							"name": "store parameter",
+							"name": "store",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3093,7 +3135,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"par_name\": \"parameter name 1\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+									"raw": "{\n    \"name\": \"agreement 1\",\n    \"par_name\": \"param 1\",\n    \"par_type\": \"param type 1\",\n    \"par_value\": \"param value 1\",\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3101,20 +3143,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/admin/parameter",
+									"raw": "{{url}}/admin/agreement",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
-										"parameter"
+										"agreement"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "update parameter",
+							"name": "update",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3130,7 +3172,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"_method\": \"patch\",\n    \"company_id\": 1,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1 edit\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+									"raw": "{\n    \"method\": \"put\",\n    \"name\": \"agreement 1 edit\",\n    \"par_name\": \"param 1\",\n    \"par_type\": \"param type 1\",\n    \"par_value\": \"param value 1\",\n    \"status_id\": 0\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3138,18 +3180,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/admin/parameter/:parameter_id",
+									"raw": "{{url}}/admin/agreement/:agreement_id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
-										"parameter",
-										":parameter_id"
+										"agreement",
+										":agreement_id"
 									],
 									"variable": [
 										{
-											"key": "parameter_id",
+											"key": "agreement_id",
 											"value": "1"
 										}
 									]
@@ -3158,54 +3200,7 @@
 							"response": []
 						},
 						{
-							"name": "get single parameter",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{superadmin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/admin/parameter/:parameter_id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"admin",
-										"parameter",
-										":parameter_id"
-									],
-									"variable": [
-										{
-											"key": "parameter_id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete parameter",
+							"name": "delete",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3229,19 +3224,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/admin/parameter/:parameter_id/delete",
+									"raw": "{{url}}/admin/agreement/:agreement_id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
-										"parameter",
-										":parameter_id",
-										"delete"
+										"agreement",
+										":agreement_id"
 									],
 									"variable": [
 										{
-											"key": "parameter_id",
+											"key": "agreement_id",
 											"value": "1"
 										}
 									]
@@ -3277,9 +3271,8 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "superadmin@admin.com",
-									"type": "text",
-									"disabled": true
+									"value": "leon.schiffer360@gmail.com",
+									"type": "text"
 								},
 								{
 									"key": "password",
@@ -3289,7 +3282,8 @@
 								{
 									"key": "email",
 									"value": "tomnjerry8963@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -3331,7 +3325,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"company_id\": 1,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3367,7 +3361,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
+									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3386,7 +3380,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "12"
+											"value": "10"
 										}
 									]
 								}
@@ -3406,14 +3400,25 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"fullname\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{url}}/employee",
+									"raw": "{{url}}//filter/employee",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"",
+										"filter",
 										"employee"
 									]
 								}
@@ -3447,7 +3452,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "3"
+											"value": "10"
 										}
 									]
 								}
@@ -3481,7 +3486,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "54"
+											"value": "1"
 										}
 									]
 								}
@@ -3546,7 +3551,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"method\": \"put\",\n    \"title\": \"Department 1 edit\",\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"method\": \"put\",\n    \"title\": \"Department 2 edit\",\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3565,7 +3570,7 @@
 									"variable": [
 										{
 											"key": "department_id",
-											"value": "1"
+											"value": "2"
 										}
 									]
 								}
@@ -3673,7 +3678,7 @@
 					"name": "Parameter",
 					"item": [
 						{
-							"name": "get all parameter",
+							"name": "get parameters added by superadmin",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3688,20 +3693,19 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/parameter",
+									"raw": "{{url}}/current-parameter",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"api",
-										"parameter"
+										"current-parameter"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "store parameter",
+							"name": "update or create new parameter",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3717,7 +3721,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 36,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"pension_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": \"30\"\n        },\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"disablitiy_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": 30\n        },\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"sickness_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": 72\n        },\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"pension_insurance_employer\",\n            \"par_type\": \"integer\",\n            \"par_value\": 90\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3725,12 +3729,11 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/parameter",
+									"raw": "{{url}}/parameter",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"api",
 										"parameter"
 									]
 								}
@@ -3738,7 +3741,10 @@
 							"response": []
 						},
 						{
-							"name": "update parameter",
+							"name": "get all parameter",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3750,11 +3756,11 @@
 										}
 									]
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"_method\": \"patch\",\n    \"company_id\": 1,\n    \"date_s\": \"2021-01-01\",\n    \"date_e\": \"2021-10-10\",\n    \"par_name\": \"parameter name 1 edit\",\n    \"par_type\": \"parameter type\",\n    \"par_value_s\": \"parameter value string\",\n    \"par_value_d2\": 100.11,\n    \"par_value_i\": 10,\n    \"par_value_d4\": 100.1111\n}",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"fullname\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        \n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3762,20 +3768,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/parameter/:parameter_id",
+									"raw": "{{url}}/parameter",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"api",
-										"parameter",
-										":parameter_id"
-									],
-									"variable": [
-										{
-											"key": "parameter_id",
-											"value": "1"
-										}
+										"parameter"
 									]
 								}
 							},
@@ -3809,19 +3807,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/parameter/:parameter_id",
+									"raw": "{{url}}/parameter/:parameter_id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"api",
 										"parameter",
 										":parameter_id"
 									],
 									"variable": [
 										{
 											"key": "parameter_id",
-											"value": "1"
+											"value": "20"
 										}
 									]
 								}
@@ -3853,12 +3850,11 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/parameter/:parameter_id/delete",
+									"raw": "{{url}}/parameter/:parameter_id/delete",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"api",
 										"parameter",
 										":parameter_id",
 										"delete"
@@ -3866,7 +3862,7 @@
 									"variable": [
 										{
 											"key": "parameter_id",
-											"value": "1"
+											"value": "19"
 										}
 									]
 								}
@@ -4103,6 +4099,186 @@
 									"key": "refresh_token",
 									"value": "def502006f9d5d73b922f6c125532ead503018578c0d268907d849e463232a6fb592f61b0ce69ead3f81429a6dc67d9229bf8ecf6c8898997f5e31bad665c6f95245f440b198cf192e3f1be04b099b9f82c3093f08467c1bf0c99c1c5ff58900f5a8e1a7fce716a428183c38d087c802db661b870f6ad2a105e65c555db81347a44ee181ab1d9c708ac62d4fff6817a4742f1c8a0275489058b98d766e4fcd78849c9bbc911bed897dac1cef9d0161c3699ac28ce354981dc197cba08f2bf70bcc3a90932fceb1294e0ee6127da666693a1ff125c27ab3747dbbc47bfac35d1d573b63586f948ae1bda4083f7b16436d3f06b4a499315346a558f6777f3cbcc24e28da6e758ab00f2ab5b4017082374c92d6142e87310aa1e60e634b8b362d62bb0022a5ba05d2da34180238776ade1a166f9389f13e12dd2cf47cb8e3bae4b988f408b21a94b4ab7178f13d8e18f9afcdefe94bbab68b767b3aae0fe65ac25228b04971"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Folder",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/folder",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/folder/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sub Document 1\",\r\n    \"parent_id\": 1,\r\n    \"is_employee_folder\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/3008924_01171de4a5d31he9.jpg"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/store-files",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"store-files"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get employee folders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/get-employee-folders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-employee-folders"
 							]
 						}
 					},
