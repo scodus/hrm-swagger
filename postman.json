@@ -431,7 +431,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "test1"
+											"value": "company-two"
 										}
 									]
 								}
@@ -3195,7 +3195,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"company_id\": 1,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3231,7 +3231,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
+									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 1,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3274,7 +3274,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"name\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        \n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"fullname\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3282,13 +3282,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/employee/filter",
+									"raw": "{{url}}//filter/employee",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"employee",
-										"filter"
+										"",
+										"filter",
+										"employee"
 									]
 								}
 							},
@@ -3314,7 +3315,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"search_keyword\": \"\",\n    \"where_condition\" : {\n        \"email\": \"\",\n        \"gender\": \"\",\n        \"pesel\": \"\",\n        \"tax_id\": \"\"\n    }\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3322,13 +3323,19 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/employee/filter",
+									"raw": "{{url}}/employee/:employee_id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"employee",
-										"filter"
+										":employee_id"
+									],
+									"variable": [
+										{
+											"key": "employee_id",
+											"value": null
+										}
 									]
 								}
 							},
@@ -3596,7 +3603,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2021-01-04\",\n            \"par_name\": \"parameter 1\",\n            \"par_type\": \"string\",\n            \"par_value\": \"string\"\n        },\n        {\n            \"date_s\": \"2021-01-06\",\n            \"par_name\": \"parameter 2\",\n            \"par_type\": \"integer\",\n            \"par_value\": 100\n        },\n        {\n            \"date_s\": \"2021-01-03\",\n            \"par_name\": \"parameter 3\",\n            \"par_type\": \"float\",\n            \"par_value\": 99.99\n        },\n        {\n            \"date_s\": \"2021-01-03\",\n            \"par_name\": \"parameter 4\",\n            \"par_type\": \"double\",\n            \"par_value\": 100.111\n        }\n    ]\n}",
+									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"parameter 1\",\n            \"par_type\": \"string\",\n            \"par_value\": \"string\"\n        },\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"parameter 2\",\n            \"par_type\": \"integer\",\n            \"par_value\": 100\n        },\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"parameter 3\",\n            \"par_type\": \"float\",\n            \"par_value\": 99.99\n        },\n        {\n            \"date_s\": \"2021-01-11\",\n            \"par_name\": \"parameter 4\",\n            \"par_type\": \"double\",\n            \"par_value\": 100.111\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3617,6 +3624,9 @@
 						},
 						{
 							"name": "get all parameter",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3630,12 +3640,22 @@
 								},
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"fullname\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        \n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{url}}/parameter",
+									"raw": "{{url}}/filter/parameter",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"filter",
 										"parameter"
 									]
 								}
@@ -3729,6 +3749,14 @@
 										}
 									]
 								}
+							},
+							"response": []
+						},
+						{
+							"name": "get parameter history",
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						}
@@ -3973,13 +4001,31 @@
 			"name": "Folder",
 			"item": [
 				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/folder",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "store",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Documents\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Sub Sub Document 2\",\r\n    \"parent_id\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3994,6 +4040,41 @@
 							"path": [
 								"api",
 								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/3008924_01171de4a5d31he9.jpg"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/1/store-files",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								"1",
+								"store-files"
 							]
 						}
 					},
