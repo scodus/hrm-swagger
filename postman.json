@@ -3,7 +3,7 @@
 		"_postman_id": "5ccca77b-3171-4c0f-9662-1d40c038ce67",
 		"name": "hrm-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19791325"
+		"_exporter_id": "16179347"
 	},
 	"item": [
 		{
@@ -60,7 +60,7 @@
 											"formdata": [
 												{
 													"key": "token",
-													"value": "sEmLa4DMrJFExCsPOGcl",
+													"value": "UeMQjqdAgvNhHs0DRWFs",
 													"type": "text"
 												},
 												{
@@ -172,7 +172,7 @@
 										},
 										{
 											"key": "company_detail[email]",
-											"value": "ab1000@gmail.com",
+											"value": "ab@gmail.com",
 											"type": "text"
 										},
 										{
@@ -268,7 +268,7 @@
 										},
 										{
 											"key": "user[email]",
-											"value": "grgbishal360@gmail.com",
+											"value": "leon.schiffer36@gmail.com",
 											"type": "text"
 										}
 									]
@@ -281,6 +281,79 @@
 									"path": [
 										"admin",
 										"company"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update company admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Bishal Gurung",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "leon.schiffer360@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/admin/company/:company_id/admin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"company",
+										":company_id",
+										"admin"
+									],
+									"variable": [
+										{
+											"key": "company_id",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -745,7 +818,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one"
+											"value": "company-two"
 										}
 									]
 								}
@@ -3135,7 +3208,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"agreement 1\",\n    \"par_name\": \"param 1\",\n    \"par_type\": \"param type 1\",\n    \"par_value\": \"param value 1\",\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"name\": \"agreement 1\",\n    \"par_name\": \"param 1\",\n    \"par_type\": \"param type 1\",\n    \"par_value\": \"param value 1\",\n    \"status_id\": 0\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3242,6 +3315,43 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "get all agreement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin/all-agreement",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"all-agreement"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -3253,7 +3363,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin_token}}",
+									"value": "{{superadmin_token}}",
 									"type": "string"
 								}
 							]
@@ -3271,7 +3381,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "leon.schiffer360@gmail.com",
+									"value": "grgbishal360@gmail.com",
 									"type": "text"
 								},
 								{
@@ -3325,7 +3435,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"company_id\": 11,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"slalbahadursss@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3380,7 +3490,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "10"
+											"value": "48"
 										}
 									]
 								}
@@ -3404,7 +3514,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"fullname\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3412,14 +3522,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}//filter/employee",
+									"raw": "{{url}}/all-employee",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"",
-										"filter",
-										"employee"
+										"all-employee"
 									]
 								}
 							},
@@ -3590,15 +3698,24 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{url}}/department",
+									"raw": "{{url}}/all-department",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"department"
+										"all-department"
 									]
 								}
 							},
@@ -3631,7 +3748,7 @@
 									"variable": [
 										{
 											"key": "department_id",
-											"value": "1"
+											"value": "2"
 										}
 									]
 								}
@@ -3742,9 +3859,6 @@
 						},
 						{
 							"name": "get all parameter",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3756,11 +3870,11 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": \"fullname\",\n            \"value\": \"a\"\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": \"gender\",\n            \"value\": \"male\"\n        \n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": \"created_date\", \n            \"operator\": \">\",\n            \"value\": \"2022-01-01\"\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": \"created_at\",\n            \"value\": [\"2022-01-10\", \"2022-10-10\"]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": \"id\",\n            \"sort\": \"DESC\"\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": \"custom_name\",\n            \"value\": \"custom_value\"\n        }\n    ]   \n}",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3768,12 +3882,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/parameter",
+									"raw": "{{url}}/all-parameter",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"parameter"
+										"all-parameter"
 									]
 								}
 							},
@@ -3870,6 +3984,309 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Agreement",
+					"item": [
+						{
+							"name": "get agreement added by superadmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/current-agreement",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"current-agreement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update or create new agreement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"agreement\": [\n        {\n            \"name\": \"agreement 1\",\n            \"par_name\": \"name 1\",\n            \"par_type\": \"type 1\",\n            \"par_value\": \"value 1 111\",\n            \"status_id\": 1\n        },\n        {\n            \"name\": \"agreement 1\",\n            \"par_name\": \"name 2\",\n            \"par_type\": \"type 2\",\n            \"par_value\": \"value 2\",\n            \"status_id\": 1\n        },\n        {\n            \"name\": \"agreement 2\",\n            \"par_name\": \"name 1\",\n            \"par_type\": \"type 1\",\n            \"par_value\": \"value 1\",\n            \"status_id\": 1\n        },\n        {\n            \"name\": \"agreement 2\",\n            \"par_name\": \"name 2\",\n            \"par_type\": \"type 2\",\n            \"par_value\": \"value 22\",\n            \"status_id\": 0\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/agreement",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all agreement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/all-agreement",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"all-agreement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get single agreement",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/agreement/:agreement_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement",
+										":agreement_id"
+									],
+									"variable": [
+										{
+											"key": "agreement_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete agreement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/agreement/:agreement_id/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement",
+										":agreement_id",
+										"delete"
+									],
+									"variable": [
+										{
+											"key": "agreement_id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "leon.schiffer36@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "P@ssw0rd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "oauth test",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"grant_type\" : \"password\",\n    \"client_id\" : 2,\n    \"client_secret\" : \"UyBVGrF6kQ4cQv5o0n9WKsTjkEU1pFMB5tW3Fw3P\",\n    \"scope\" : \"*\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/oauth/token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refresh token",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/refresh-token/:refresh_token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"refresh-token",
+										":refresh_token"
+									],
+									"variable": [
+										{
+											"key": "refresh_token",
+											"value": "def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -3902,7 +4319,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "yaredip664@runqx.com",
+									"value": "leon.schiffer360@gmail.com",
 									"type": "text"
 								}
 							]
@@ -3985,128 +4402,6 @@
 			]
 		},
 		{
-			"name": "auth",
-			"item": [
-				{
-					"name": "login",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "P@ssw0rd",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "oauth test",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"grant_type\" : \"password\",\n    \"client_id\" : 2,\n    \"client_secret\" : \"UyBVGrF6kQ4cQv5o0n9WKsTjkEU1pFMB5tW3Fw3P\",\n    \"scope\" : \"*\"\n    \n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/oauth/token",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"oauth",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "refresh token test",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/refresh-token/:refresh_token",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"refresh-token",
-								":refresh_token"
-							],
-							"variable": [
-								{
-									"key": "refresh_token",
-									"value": "def502006f9d5d73b922f6c125532ead503018578c0d268907d849e463232a6fb592f61b0ce69ead3f81429a6dc67d9229bf8ecf6c8898997f5e31bad665c6f95245f440b198cf192e3f1be04b099b9f82c3093f08467c1bf0c99c1c5ff58900f5a8e1a7fce716a428183c38d087c802db661b870f6ad2a105e65c555db81347a44ee181ab1d9c708ac62d4fff6817a4742f1c8a0275489058b98d766e4fcd78849c9bbc911bed897dac1cef9d0161c3699ac28ce354981dc197cba08f2bf70bcc3a90932fceb1294e0ee6127da666693a1ff125c27ab3747dbbc47bfac35d1d573b63586f948ae1bda4083f7b16436d3f06b4a499315346a558f6777f3cbcc24e28da6e758ab00f2ab5b4017082374c92d6142e87310aa1e60e634b8b362d62bb0022a5ba05d2da34180238776ade1a166f9389f13e12dd2cf47cb8e3bae4b988f408b21a94b4ab7178f13d8e18f9afcdefe94bbab68b767b3aae0fe65ac25228b04971"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Folder",
 			"item": [
 				{
@@ -4165,7 +4460,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "262"
 								}
 							]
 						}
@@ -4195,7 +4490,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Sub Document 1\",\r\n    \"parent_id\": 1,\r\n    \"is_employee_folder\": 0\r\n}",
+							"raw": "{\r\n    \"name\": \"Sub Sub Sub Document 1\",\r\n    \"parent_id\": 10\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4218,8 +4513,24 @@
 				{
 					"name": "store file",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -4249,7 +4560,7 @@
 							"variable": [
 								{
 									"key": "folder_id",
-									"value": "4"
+									"value": "256"
 								}
 							]
 						}
