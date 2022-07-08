@@ -60,29 +60,17 @@
 											"formdata": [
 												{
 													"key": "token",
-<<<<<<< HEAD
 													"value": "NGiQFoXeoZ6rFJqAAXnR",
-=======
-													"value": "UeMQjqdAgvNhHs0DRWFs",
->>>>>>> main
 													"type": "text"
 												},
 												{
 													"key": "new_password",
-<<<<<<< HEAD
 													"value": "Asd@360",
-=======
-													"value": "P@ssw0rd",
->>>>>>> main
 													"type": "text"
 												},
 												{
 													"key": "new_password_confirmation",
-<<<<<<< HEAD
 													"value": "Asd@360",
-=======
-													"value": "P@ssw0rd",
->>>>>>> main
 													"type": "text"
 												}
 											]
@@ -751,20 +739,12 @@
 									"formdata": [
 										{
 											"key": "name",
-<<<<<<< HEAD
 											"value": "Bishals Gurung",
-=======
-											"value": "Bishal Gurung",
->>>>>>> main
 											"type": "text"
 										},
 										{
 											"key": "email",
-<<<<<<< HEAD
 											"value": "pobozoxe@fxcoral.biz",
-=======
-											"value": "leon.schiffer360@gmail.com",
->>>>>>> main
 											"type": "text"
 										},
 										{
@@ -788,11 +768,7 @@
 									"variable": [
 										{
 											"key": "company_id",
-<<<<<<< HEAD
 											"value": "5"
-=======
-											"value": "1"
->>>>>>> main
 										}
 									]
 								}
@@ -3773,11 +3749,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-<<<<<<< HEAD
 									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
-=======
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
->>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3825,11 +3797,7 @@
 							"formdata": [
 								{
 									"key": "email",
-<<<<<<< HEAD
 									"value": "superadmin@admin.com",
-=======
-									"value": "grgbishal360@gmail.com",
->>>>>>> main
 									"type": "text"
 								},
 								{
@@ -3962,11 +3930,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-<<<<<<< HEAD
 									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
-=======
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
->>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4154,11 +4118,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-<<<<<<< HEAD
 									"raw": "{\n    \"paginate\": 0,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
-=======
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
->>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4330,11 +4290,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-<<<<<<< HEAD
 									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
-=======
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
->>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4528,11 +4484,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-<<<<<<< HEAD
 									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
-=======
-									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
->>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4665,20 +4617,12 @@
 									"formdata": [
 										{
 											"key": "email",
-<<<<<<< HEAD
 											"value": "pobozoxe@fxcoral.biz",
-=======
-											"value": "leon.schiffer36@gmail.com",
->>>>>>> main
 											"type": "text"
 										},
 										{
 											"key": "password",
-<<<<<<< HEAD
 											"value": "Password@360",
-=======
-											"value": "P@ssw0rd",
->>>>>>> main
 											"type": "text"
 										}
 									]
@@ -4759,7 +4703,6 @@
 							"response": []
 						}
 					]
-<<<<<<< HEAD
 				},
 				{
 					"name": "Insurance Code",
@@ -4824,8 +4767,6 @@
 							"response": []
 						}
 					]
-=======
->>>>>>> main
 				}
 			]
 		},
