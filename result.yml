@@ -29,6 +29,8 @@ tags:
   - name: Super admin
   - name: Super admin > Company
   - name: Super admin > Company > Verify Mail
+  - name: Super admin > Company > Insurance Code
+  - name: Super admin > Company > Occupation Code
   - name: Super admin > Status
   - name: Super admin > Parameter
   - name: Super admin > Agreement
@@ -36,8 +38,11 @@ tags:
   - name: Company Admin > Employee
   - name: Company Admin > Department
   - name: Company Admin > Parameter
+  - name: Company Admin > Agreement
+  - name: Company Admin > auth
+  - name: Company Admin > Insurance Code
+  - name: Company Admin > Occupation Code
   - name: Password Reset
-  - name: auth
   - name: Folder
 paths:
   /api/company/send-admin-verification-mail:
@@ -74,15 +79,243 @@ paths:
               properties:
                 token:
                   type: string
-                  example: sEmLa4DMrJFExCsPOGcl
+                  example: NGiQFoXeoZ6rFJqAAXnR
                 new_password:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
                 new_password_confirmation:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
       security:
         - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/insurance-code:
+    post:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: ASd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/insurance-code/{id}:
+    post:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: asd
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: find
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/occupation-code:
+    post:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: ASd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/occupation-code/{id}:
+    post:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: asd
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: find
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -126,7 +359,7 @@ paths:
                   example: '98089081'
                 company_detail[email]:
                   type: string
-                  example: ab1000@gmail.com
+                  example: ab@gmail.com
                 addresses[0][country]:
                   type: string
                   example: Nepal
@@ -177,7 +410,7 @@ paths:
                   example: Scodus
                 user[email]:
                   type: string
-                  example: grgbishal360@gmail.com
+                  example: leon.schiffer36@gmail.com
       security:
         - bearerAuth: []
       parameters:
@@ -220,6 +453,45 @@ paths:
           schema:
             type: string
           description: 'values: active, inactive'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/company/{company_id}/admin:
+    post:
+      tags:
+        - Super admin > Company
+      summary: update company admin
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Bishals Gurung
+                email:
+                  type: string
+                  example: pobozoxe@fxcoral.biz
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -333,7 +605,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-one
+          example: company-two
       responses:
         '200':
           description: Successful response
@@ -507,7 +779,7 @@ paths:
                 par_name: param 1
                 par_type: param type 1
                 par_value: param value 1
-                status_id: 1
+                status_id: 0
       security:
         - bearerAuth: []
       responses:
@@ -564,6 +836,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/all-agreement:
+    post:
+      tags:
+        - Super admin > Agreement
+      summary: get all agreement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paginate: 1
+                limit: null
+                search_keyword:
+                  - column_name: null
+                    value: null
+                where_condition:
+                  - column_name: null
+                    value: null
+                operator_condition:
+                  - column_name: null
+                    operator: null
+                    value: null
+                between_condition:
+                  - column_name: null
+                    value:
+                      - null
+                      - null
+                sort_condition:
+                  - column_name: null
+                    sort: null
+                custom_condition:
+                  - name: null
+                    value: null
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /admin/login:
     post:
       tags:
@@ -605,12 +918,12 @@ paths:
             schema:
               type: object
               example:
-                company_id: 1
+                company_id: 11
                 fullname: Lal Bahadur
                 pesel: pesel
                 tax_id: 123
                 gender: male
-                email: lalbahadur@email.com
+                email: slalbahadursss@semail.com
                 department_id: 2
                 employeed_from: '2022-01-01'
                 employeed_to: ''
@@ -705,7 +1018,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '10'
+          example: '48'
       responses:
         '200':
           description: Successful response
@@ -747,7 +1060,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  //filter/employee:
+  /all-employee:
     post:
       tags:
         - Company Admin > Employee
@@ -758,28 +1071,29 @@ paths:
             schema:
               type: object
               example:
+                paginate: 1
                 limit: null
                 search_keyword:
-                  - column_name: fullname
-                    value: a
+                  - column_name: null
+                    value: null
                 where_condition:
-                  - column_name: gender
-                    value: male
+                  - column_name: null
+                    value: null
                 operator_condition:
-                  - column_name: created_date
-                    operator: '>'
-                    value: '2022-01-01'
+                  - column_name: null
+                    operator: null
+                    value: null
                 between_condition:
-                  - column_name: created_at
+                  - column_name: null
                     value:
-                      - '2022-01-10'
-                      - '2022-10-10'
+                      - null
+                      - null
                 sort_condition:
-                  - column_name: id
-                    sort: DESC
+                  - column_name: null
+                    sort: null
                 custom_condition:
-                  - name: custom_name
-                    value: custom_value
+                  - name: null
+                    value: null
       security:
         - bearerAuth: []
       responses:
@@ -800,17 +1114,6 @@ paths:
               example:
                 title: Department 1
                 status_id: 1
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Company Admin > Department
-      summary: get all deparmtnet
       security:
         - bearerAuth: []
       responses:
@@ -858,7 +1161,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -877,6 +1180,47 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /all-department:
+    post:
+      tags:
+        - Company Admin > Department
+      summary: get all deparmtnet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paginate: 0
+                limit: null
+                search_keyword:
+                  - column_name: null
+                    value: null
+                where_condition:
+                  - column_name: null
+                    value: null
+                operator_condition:
+                  - column_name: null
+                    operator: null
+                    value: null
+                between_condition:
+                  - column_name: null
+                    value:
+                      - null
+                      - null
+                sort_condition:
+                  - column_name: null
+                    sort: null
+                custom_condition:
+                  - name: null
+                    value: null
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -929,10 +1273,40 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
+  /all-parameter:
+    post:
       tags:
         - Company Admin > Parameter
       summary: get all parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paginate: 1
+                limit: null
+                search_keyword:
+                  - column_name: null
+                    value: null
+                where_condition:
+                  - column_name: null
+                    value: null
+                operator_condition:
+                  - column_name: null
+                    operator: null
+                    value: null
+                between_condition:
+                  - column_name: null
+                    value:
+                      - null
+                      - null
+                sort_condition:
+                  - column_name: null
+                    sort: null
+                custom_condition:
+                  - name: null
+                    value: null
       security:
         - bearerAuth: []
       responses:
@@ -978,6 +1352,238 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /current-agreement:
+    get:
+      tags:
+        - Company Admin > Agreement
+      summary: get agreement added by superadmin
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement:
+    post:
+      tags:
+        - Company Admin > Agreement
+      summary: update or create new agreement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agreement:
+                  - name: agreement 1
+                    par_name: name 1
+                    par_type: type 1
+                    par_value: value 1 111
+                    status_id: 1
+                  - name: agreement 1
+                    par_name: name 2
+                    par_type: type 2
+                    par_value: value 2
+                    status_id: 1
+                  - name: agreement 2
+                    par_name: name 1
+                    par_type: type 1
+                    par_value: value 1
+                    status_id: 1
+                  - name: agreement 2
+                    par_name: name 2
+                    par_type: type 2
+                    par_value: value 22
+                    status_id: 0
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /all-agreement:
+    post:
+      tags:
+        - Company Admin > Agreement
+      summary: get all agreement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paginate: 1
+                limit: null
+                search_keyword:
+                  - column_name: null
+                    value: null
+                where_condition:
+                  - column_name: null
+                    value: null
+                operator_condition:
+                  - column_name: null
+                    operator: null
+                    value: null
+                between_condition:
+                  - column_name: null
+                    value:
+                      - null
+                      - null
+                sort_condition:
+                  - column_name: null
+                    sort: null
+                custom_condition:
+                  - name: null
+                    value: null
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement/{agreement_id}:
+    get:
+      tags:
+        - Company Admin > Agreement
+      summary: get single agreement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: agreement_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement/{agreement_id}/delete:
+    delete:
+      tags:
+        - Company Admin > Agreement
+      summary: delete agreement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: agreement_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Company Admin > auth
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: pobozoxe@fxcoral.biz
+                password:
+                  type: string
+                  example: Password@360
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /oauth/token:
+    post:
+      tags:
+        - Company Admin > auth
+      summary: oauth test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                grant_type: password
+                client_id: 2
+                client_secret: UyBVGrF6kQ4cQv5o0n9WKsTjkEU1pFMB5tW3Fw3P
+                scope: '*'
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/refresh-token/{refresh_token}:
+    post:
+      tags:
+        - Company Admin > auth
+      summary: refresh token
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: refresh_token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: >-
+            def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /insurance-code:
+    get:
+      tags:
+        - Company Admin > Insurance Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /occupation-code:
+    get:
+      tags:
+        - Company Admin > Occupation Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/password-reset:
     post:
       tags:
@@ -991,7 +1597,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: yaredip664@runqx.com
+                  example: leon.schiffer360@gmail.com
       security:
         - bearerAuth: []
       parameters:
@@ -1038,83 +1644,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/login:
-    post:
-      tags:
-        - auth
-      summary: login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-                  example: P@ssw0rd
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /oauth/token:
-    post:
-      tags:
-        - auth
-      summary: oauth test
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                grant_type: password
-                client_id: 2
-                client_secret: UyBVGrF6kQ4cQv5o0n9WKsTjkEU1pFMB5tW3Fw3P
-                scope: '*'
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/refresh-token/{refresh_token}:
-    post:
-      tags:
-        - auth
-      summary: refresh token test
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties: {}
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: refresh_token
-          in: path
-          schema:
-            type: string
-          required: true
-          example: >-
-            def502006f9d5d73b922f6c125532ead503018578c0d268907d849e463232a6fb592f61b0ce69ead3f81429a6dc67d9229bf8ecf6c8898997f5e31bad665c6f95245f440b198cf192e3f1be04b099b9f82c3093f08467c1bf0c99c1c5ff58900f5a8e1a7fce716a428183c38d087c802db661b870f6ad2a105e65c555db81347a44ee181ab1d9c708ac62d4fff6817a4742f1c8a0275489058b98d766e4fcd78849c9bbc911bed897dac1cef9d0161c3699ac28ce354981dc197cba08f2bf70bcc3a90932fceb1294e0ee6127da666693a1ff125c27ab3747dbbc47bfac35d1d573b63586f948ae1bda4083f7b16436d3f06b4a499315346a558f6777f3cbcc24e28da6e758ab00f2ab5b4017082374c92d6142e87310aa1e60e634b8b362d62bb0022a5ba05d2da34180238776ade1a166f9389f13e12dd2cf47cb8e3bae4b988f408b21a94b4ab7178f13d8e18f9afcdefe94bbab68b767b3aae0fe65ac25228b04971
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/folder:
     get:
       tags:
@@ -1137,9 +1666,8 @@ paths:
             schema:
               type: object
               example:
-                name: Sub Document 1
-                parent_id: 1
-                is_employee_folder: 0
+                name: Sub Sub Sub Document 1
+                parent_id: 10
       security:
         - bearerAuth: []
       parameters:
@@ -1166,7 +1694,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '262'
       responses:
         '200':
           description: Successful response
@@ -1189,13 +1717,20 @@ paths:
                 _method:
                   type: string
                   example: PUT
+      security:
+        - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: folder_id
           in: path
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '256'
       responses:
         '200':
           description: Successful response
