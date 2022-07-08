@@ -60,17 +60,29 @@
 											"formdata": [
 												{
 													"key": "token",
+<<<<<<< HEAD
+													"value": "NGiQFoXeoZ6rFJqAAXnR",
+=======
 													"value": "UeMQjqdAgvNhHs0DRWFs",
+>>>>>>> main
 													"type": "text"
 												},
 												{
 													"key": "new_password",
+<<<<<<< HEAD
+													"value": "Asd@360",
+=======
 													"value": "P@ssw0rd",
+>>>>>>> main
 													"type": "text"
 												},
 												{
 													"key": "new_password_confirmation",
+<<<<<<< HEAD
+													"value": "Asd@360",
+=======
 													"value": "P@ssw0rd",
+>>>>>>> main
 													"type": "text"
 												}
 											]
@@ -84,6 +96,422 @@
 												"api",
 												"company",
 												"verify-admin-mail"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Insurance Code",
+							"item": [
+								{
+									"name": "store",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"ASd\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/insurance-code",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"insurance-code"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"asd\",\r\n    \"_method\": \"PUT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/insurance-code/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"insurance-code",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{superadmin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/insurance-code",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"insurance-code"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "find",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/insurance-code/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"insurance-code",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/insurance-code/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"insurance-code",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Occupation Code",
+							"item": [
+								{
+									"name": "store",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{superadmin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"ASd\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/occupation-code",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"occupation-code"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{superadmin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"asd\",\r\n    \"_method\": \"PUT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/occupation-code/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"occupation-code",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{superadmin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/occupation-code",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"occupation-code"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "find",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{superadmin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/occupation-code/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"occupation-code",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{superadmin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/occupation-code/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"occupation-code",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
 											]
 										}
 									},
@@ -323,12 +751,20 @@
 									"formdata": [
 										{
 											"key": "name",
+<<<<<<< HEAD
+											"value": "Bishals Gurung",
+=======
 											"value": "Bishal Gurung",
+>>>>>>> main
 											"type": "text"
 										},
 										{
 											"key": "email",
+<<<<<<< HEAD
+											"value": "pobozoxe@fxcoral.biz",
+=======
 											"value": "leon.schiffer360@gmail.com",
+>>>>>>> main
 											"type": "text"
 										},
 										{
@@ -352,7 +788,11 @@
 									"variable": [
 										{
 											"key": "company_id",
+<<<<<<< HEAD
+											"value": "5"
+=======
 											"value": "1"
+>>>>>>> main
 										}
 									]
 								}
@@ -3333,7 +3773,11 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
+<<<<<<< HEAD
+									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+=======
 									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+>>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3381,7 +3825,11 @@
 							"formdata": [
 								{
 									"key": "email",
+<<<<<<< HEAD
+									"value": "superadmin@admin.com",
+=======
 									"value": "grgbishal360@gmail.com",
+>>>>>>> main
 									"type": "text"
 								},
 								{
@@ -3514,7 +3962,11 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
+<<<<<<< HEAD
+									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+=======
 									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+>>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3702,7 +4154,11 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
+<<<<<<< HEAD
+									"raw": "{\n    \"paginate\": 0,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+=======
 									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+>>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3874,7 +4330,11 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
+<<<<<<< HEAD
+									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+=======
 									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+>>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4068,7 +4528,11 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
+<<<<<<< HEAD
+									"raw": "{\n    \"paginate\": 1,\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+=======
 									"raw": "{\n    \"limit\": null,\n    \"search_keyword\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"where_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": null\n        }\n    ],\n    \"operator_condition\": [\n        {\n            \"column_name\": null,\n            \"operator\": null,\n            \"value\": null\n        }\n    ],\n    \"between_condition\": [\n        {\n            \"column_name\": null,\n            \"value\": [null, null]\n        }\n    ],\n    \"sort_condition\": [\n        {\n            \"column_name\": null,\n            \"sort\": null\n        }\n    ],\n    \"custom_condition\": [\n        {\n            \"name\": null,\n            \"value\": null\n        }\n    ]   \n}",
+>>>>>>> main
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4201,12 +4665,20 @@
 									"formdata": [
 										{
 											"key": "email",
+<<<<<<< HEAD
+											"value": "pobozoxe@fxcoral.biz",
+=======
 											"value": "leon.schiffer36@gmail.com",
+>>>>>>> main
 											"type": "text"
 										},
 										{
 											"key": "password",
+<<<<<<< HEAD
+											"value": "Password@360",
+=======
 											"value": "P@ssw0rd",
+>>>>>>> main
 											"type": "text"
 										}
 									]
@@ -4287,6 +4759,73 @@
 							"response": []
 						}
 					]
+<<<<<<< HEAD
+				},
+				{
+					"name": "Insurance Code",
+					"item": [
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/insurance-code",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"insurance-code"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Occupation Code",
+					"item": [
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/occupation-code",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"occupation-code"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+=======
+>>>>>>> main
 				}
 			]
 		},
