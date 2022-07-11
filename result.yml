@@ -29,6 +29,8 @@ tags:
   - name: Super admin
   - name: Super admin > Company
   - name: Super admin > Company > Verify Mail
+  - name: Super admin > Company > Insurance Code
+  - name: Super admin > Company > Occupation Code
   - name: Super admin > Status
   - name: Super admin > Parameter
   - name: Super admin > Agreement
@@ -38,6 +40,8 @@ tags:
   - name: Company Admin > Parameter
   - name: Company Admin > Agreement
   - name: Company Admin > auth
+  - name: Company Admin > Insurance Code
+  - name: Company Admin > Occupation Code
   - name: Password Reset
   - name: Folder
 paths:
@@ -75,15 +79,243 @@ paths:
               properties:
                 token:
                   type: string
-                  example: UeMQjqdAgvNhHs0DRWFs
+                  example: NGiQFoXeoZ6rFJqAAXnR
                 new_password:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
                 new_password_confirmation:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
       security:
         - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/insurance-code:
+    post:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: ASd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/insurance-code/{id}:
+    post:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: asd
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: find
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super admin > Company > Insurance Code
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/occupation-code:
+    post:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: ASd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/occupation-code/{id}:
+    post:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: asd
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: find
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super admin > Company > Occupation Code
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -239,10 +471,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Bishal Gurung
+                  example: Bishals Gurung
                 email:
                   type: string
-                  example: leon.schiffer360@gmail.com
+                  example: pobozoxe@fxcoral.biz
                 _method:
                   type: string
                   example: PUT
@@ -259,7 +491,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -615,6 +847,7 @@ paths:
             schema:
               type: object
               example:
+                paginate: 1
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -838,6 +1071,7 @@ paths:
             schema:
               type: object
               example:
+                paginate: 0
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -962,6 +1196,7 @@ paths:
             schema:
               type: object
               example:
+                paginate: 0
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -1049,6 +1284,7 @@ paths:
             schema:
               type: object
               example:
+                paginate: 1
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -1178,6 +1414,7 @@ paths:
             schema:
               type: object
               example:
+                paginate: 1
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -1258,10 +1495,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: leon.schiffer36@gmail.com
+                  example: pobozoxe@fxcoral.biz
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Password@360
       security:
         - noauthAuth: []
       parameters:
@@ -1318,6 +1555,30 @@ paths:
           required: true
           example: >-
             def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /insurance-code:
+    get:
+      tags:
+        - Company Admin > Insurance Code
+      summary: all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /occupation-code:
+    get:
+      tags:
+        - Company Admin > Occupation Code
+      summary: all
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
