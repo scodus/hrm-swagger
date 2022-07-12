@@ -1340,7 +1340,7 @@ paths:
             schema:
               type: object
               example:
-                paginate: 0
+                paginate: 1
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -1507,7 +1507,7 @@ paths:
                   example: grgbishal360@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Password@360
       security:
         - noauthAuth: []
       parameters:
