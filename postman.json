@@ -4069,6 +4069,44 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "get all company agreements",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/agreement?company_id=1&employee_id=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"agreement"
+									],
+									"query": [
+										{
+											"key": "company_id",
+											"value": "1"
+										},
+										{
+											"key": "employee_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4163,6 +4201,127 @@
 					]
 				},
 				{
+					"name": "Closing Period",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "closing period 2",
+											"type": "text"
+										},
+										{
+											"key": "closing_date",
+											"value": "2022-01-01",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/admin/closing-period",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"closing-period"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/closing-period/:closing_period_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"closing-period",
+										":closing_period_id"
+									],
+									"variable": [
+										{
+											"key": "closing_period_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "yearly closing period",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "year",
+											"value": "2022",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/admin/yearly-closing-period",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"yearly-closing-period"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "login",
 					"request": {
 						"auth": {
@@ -4242,7 +4401,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 11,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"slalbahadursss@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"company_id\": 11,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"slalbahadurssss@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"permanent\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"temporary\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4278,7 +4437,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
+									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"permanent\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4297,7 +4456,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "48"
+											"value": "2"
 										}
 									]
 								}
@@ -4645,7 +4804,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2023-01-11\",\n            \"par_name\": \"pension_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": \"30\"\n        },\n        {\n            \"date_s\": \"2023-02-11\",\n            \"par_name\": \"disablitiy_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": 30\n        },\n        {\n            \"date_s\": \"2023-03-11\",\n            \"par_name\": \"sickness_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": 72\n        },\n        {\n            \"date_s\": \"2023-04-11\",\n            \"par_name\": \"accident-insurance_employer\",\n            \"par_type\": \"integer\",\n            \"par_value\": 90\n        }\n    ]\n}",
+									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par1\",\n            \"par_type\": \"integer\",\n            \"par_value\": 301\n        },\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par2\",\n            \"par_type\": \"integer\",\n            \"par_value\": 302\n        },\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par3\",\n            \"par_type\": \"integer\",\n            \"par_value\": 721\n        },\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par4\",\n            \"par_type\": \"integer\",\n            \"par_value\": 902\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4916,6 +5075,39 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "get all agreements",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/agreement?employee_id=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4941,7 +5133,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "grgbishal360@gmail.com",
+											"value": "scodusnp@gmail.com",
 											"type": "text"
 										},
 										{
@@ -5332,7 +5524,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Sub Sub Sub Document 1\",\r\n    \"parent_id\": 10\r\n    \r\n}",
+							"raw": "{\r\n    \"name\": \"Sub Sub Sub Document 1\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5379,7 +5571,13 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Downloads/memes/3008924_01171de4a5d31he9.jpg"
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/hair remover.png"
+								},
+								{
+									"key": "name",
+									"value": "asdw",
+									"description": "nullable",
+									"type": "text"
 								},
 								{
 									"key": "_method",
@@ -5402,8 +5600,55 @@
 							"variable": [
 								{
 									"key": "folder_id",
-									"value": "256"
+									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get private image",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "1/3008924_01171de4a5d31he9.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/get-image/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-image",
+								"7"
 							]
 						}
 					},
@@ -5443,7 +5688,14 @@
 			"name": "test",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{superadmin_token}}",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],

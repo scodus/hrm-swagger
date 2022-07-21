@@ -35,6 +35,7 @@ tags:
   - name: Super admin > Parameter
   - name: Super admin > Agreement
   - name: Super admin > Agreement Type
+  - name: Super admin > Closing Period
   - name: Company Admin
   - name: Company Admin > Employee
   - name: Company Admin > Department
@@ -795,6 +796,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    get:
+      tags:
+        - Super admin > Agreement
+      summary: get all company agreements
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /admin/agreement/{agreement_id}:
     post:
       tags:
@@ -933,6 +956,70 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/closing-period:
+    post:
+      tags:
+        - Super admin > Closing Period
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: closing period 2
+                closing_date:
+                  type: string
+                  example: '2022-01-01'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/closing-period/{closing_period_id}:
+    delete:
+      tags:
+        - Super admin > Closing Period
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: closing_period_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/yearly-closing-period:
+    post:
+      tags:
+        - Super admin > Closing Period
+      summary: yearly closing period
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                year:
+                  type: integer
+                  example: '2022'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /admin/login:
     post:
       tags:
@@ -979,7 +1066,7 @@ paths:
                 pesel: pesel
                 tax_id: 123
                 gender: male
-                email: slalbahadursss@semail.com
+                email: slalbahadurssss@semail.com
                 department_id: 2
                 employeed_from: '2022-01-01'
                 employeed_to: ''
@@ -1005,7 +1092,7 @@ paths:
                     county: county-1
                     voivodeship: voivodeship-1
                     country: Nepal
-                    type: default
+                    type: permanent
                   - zip: '446002'
                     street: street2
                     house_number: house-12342
@@ -1016,7 +1103,7 @@ paths:
                     county: county-12
                     voivodeship: voivodeship-21
                     country: Nepal
-                    type: registered
+                    type: temporary
                 is_same_registered_address: 0
                 status_id: 1
       security:
@@ -1063,7 +1150,7 @@ paths:
                     county: county-1
                     voivodeship: voivodeship-1
                     country: Nepal
-                    type: default
+                    type: permanent
                 is_same_registered_address: 1
                 status_id: 0
       security:
@@ -1074,7 +1161,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '48'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -1306,22 +1393,22 @@ paths:
               type: object
               example:
                 parameter:
-                  - date_s: '2023-01-11'
-                    par_name: pension_insurance_employee
+                  - date_s: '2023-12-11'
+                    par_name: par1
                     par_type: integer
-                    par_value: '30'
-                  - date_s: '2023-02-11'
-                    par_name: disablitiy_insurance_employee
+                    par_value: 301
+                  - date_s: '2023-12-11'
+                    par_name: par2
                     par_type: integer
-                    par_value: 30
-                  - date_s: '2023-03-11'
-                    par_name: sickness_insurance_employee
+                    par_value: 302
+                  - date_s: '2023-12-11'
+                    par_name: par3
                     par_type: integer
-                    par_value: 72
-                  - date_s: '2023-04-11'
-                    par_name: accident-insurance_employer
+                    par_value: 721
+                  - date_s: '2023-12-11'
+                    par_name: par4
                     par_type: integer
-                    par_value: 90
+                    par_value: 902
       security:
         - bearerAuth: []
       responses:
@@ -1340,7 +1427,7 @@ paths:
             schema:
               type: object
               example:
-                paginate: 1
+                paginate: 0
                 limit: null
                 search_keyword:
                   - column_name: null
@@ -1444,6 +1531,23 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    get:
+      tags:
+        - Company Admin > Agreement
+      summary: get all agreements
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /agreement/{id}:
     get:
       tags:
@@ -1504,10 +1608,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: grgbishal360@gmail.com
+                  example: scodusnp@gmail.com
                 password:
                   type: string
-                  example: Password@360
+                  example: P@ssw0rd
       security:
         - noauthAuth: []
       parameters:
@@ -1694,7 +1798,6 @@ paths:
               type: object
               example:
                 name: Sub Sub Sub Document 1
-                parent_id: 10
       security:
         - bearerAuth: []
       parameters:
@@ -1741,6 +1844,10 @@ paths:
                 file:
                   type: string
                   format: binary
+                name:
+                  type: string
+                  description: nullable
+                  example: asdw
                 _method:
                   type: string
                   example: PUT
@@ -1757,7 +1864,25 @@ paths:
           schema:
             type: integer
           required: true
-          example: '256'
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /get-image/7:
+    get:
+      tags:
+        - Folder
+      summary: get private image
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -1781,7 +1906,7 @@ paths:
         - default
       summary: test
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
