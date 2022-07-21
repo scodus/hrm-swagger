@@ -5702,7 +5702,7 @@
 					"response": []
 				},
 				{
-					"name": "get single employee folder",
+					"name": "get folder id from employee id",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -5717,7 +5717,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/folder/:employee_id/single",
+							"raw": "{{url}}/api/folder/:employee_id/folder-id",
 							"host": [
 								"{{url}}"
 							],
@@ -5725,7 +5725,7 @@
 								"api",
 								"folder",
 								":employee_id",
-								"single"
+								"folder-id"
 							],
 							"variable": [
 								{
