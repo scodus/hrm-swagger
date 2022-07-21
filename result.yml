@@ -1900,11 +1900,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/folder/{employee_id}/single:
+  /api/folder/{employee_id}/folder-id:
     get:
       tags:
         - Folder
-      summary: get single employee folder
+      summary: get folder id from employee id
       security:
         - bearerAuth: []
       parameters:
