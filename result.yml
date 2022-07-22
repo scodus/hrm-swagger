@@ -1062,11 +1062,13 @@ paths:
               type: object
               example:
                 company_id: 11
-                fullname: Lal Bahadur
-                pesel: pesel
+                first_name: Lal
+                middle_name: null
+                last_name: Shreshta
+                pesel: '12345678912'
                 tax_id: 123
                 gender: male
-                email: slalbahadurssss1@semail.com
+                email: lalbahadur2@gmail.com
                 department_id: 2
                 employeed_from: '2022-01-01'
                 employeed_to: ''
@@ -1126,8 +1128,10 @@ paths:
               example:
                 method: put
                 company_id: 1
-                fullname: lal Jung Bahadur
-                pesel: pesel
+                first_name: Bunu
+                middle_name: Lal
+                last_name: Shrestha
+                pesel: '12345678912'
                 tax_id: 123
                 gender: male
                 email: lalbahadur@email.com
@@ -1161,7 +1165,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -1633,6 +1637,30 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement/{agreement_id}/logs:
+    get:
+      tags:
+        - Company Admin > Agreement
+      summary: logs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: agreement_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
       responses:
         '200':
           description: Successful response
