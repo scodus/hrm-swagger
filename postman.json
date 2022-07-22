@@ -28,7 +28,7 @@
 											"formdata": [
 												{
 													"key": "email",
-													"value": "leon.schiffer360@gmail.com",
+													"value": "rehacawu@decabg.eu",
 													"type": "text"
 												}
 											]
@@ -3312,13 +3312,13 @@
 											"              \"type\": \"string\"\r",
 											"            },\r",
 											"            \"tax_id\": {\r",
-											"              \"type\": \"integer\"\r",
+											"              \"type\": \"null\"\r",
 											"            },\r",
 											"            \"regon\": {\r",
-											"              \"type\": \"string\"\r",
+											"              \"type\": \"null\"\r",
 											"            },\r",
 											"            \"bdo\": {\r",
-											"              \"type\": \"string\"\r",
+											"              \"type\": \"null\"\r",
 											"            },\r",
 											"            \"phone_number\": {\r",
 											"              \"type\": \"string\"\r",
@@ -4917,7 +4917,7 @@
 									"variable": [
 										{
 											"key": "parameter_id",
-											"value": "20"
+											"value": "68"
 										}
 									]
 								}
@@ -5010,6 +5010,55 @@
 									],
 									"path": [
 										"agreement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 2,\r\n    \"gross_salary\": 2000.222,\r\n    \"type\": \"type\",\r\n    \"date_of_signing\" : \"2022-02-02\",\r\n    \"start_date\": \"2022-02-04\",\r\n    \"end_date\": null,\r\n    \"position\": null,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": 2,\r\n        \"work_hour_denominator\": 4,\r\n        \"cost_of_getting_income\": \"lack\"\r\n    },\r\n    \"_method\": \"PUT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/agreement/:agreement_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement",
+										":agreement_id"
+									],
+									"variable": [
+										{
+											"key": "agreement_id",
+											"value": "10"
+										}
 									]
 								}
 							},
@@ -5715,7 +5764,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/folder/:employee_id/folder-id",
 							"host": [
@@ -5730,7 +5785,7 @@
 							"variable": [
 								{
 									"key": "employee_id",
-									"value": "11"
+									"value": "13"
 								}
 							]
 						}
