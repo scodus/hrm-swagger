@@ -36,6 +36,8 @@ tags:
   - name: Super admin > Agreement
   - name: Super admin > Agreement Type
   - name: Super admin > Closing Period
+  - name: Super admin > Tax Office
+  - name: Super admin > Nfz Branch
   - name: Company Admin
   - name: Company Admin > Employee
   - name: Company Admin > Department
@@ -45,6 +47,8 @@ tags:
   - name: Company Admin > Insurance Code
   - name: Company Admin > Occupation Code
   - name: Company Admin > Agreement Type
+  - name: Company Admin > Tax Office
+  - name: Company Admin > Nfz Branch
   - name: Password Reset
   - name: Folder
 paths:
@@ -368,7 +372,7 @@ paths:
                   example: '98089081'
                 company_detail[email]:
                   type: string
-                  example: abc@gmail.com
+                  example: asdasds@gmail.com
                 addresses[0][country]:
                   type: string
                   example: Nepal
@@ -399,6 +403,8 @@ paths:
                 addresses[0][type]:
                   type: string
                   example: default
+                addresses[0][same_address_type]:
+                  type: string
                 addresses[0][city]:
                   type: string
                   example: bhairahawa
@@ -411,15 +417,20 @@ paths:
                 addresses[1][type]:
                   type: string
                   example: business
-                is_business_address_same:
-                  type: integer
-                  example: '1'
+                addresses[1][same_address_type]:
+                  type: string
                 user[name]:
                   type: string
                   example: Scodus
                 user[email]:
                   type: string
-                  example: leon.schiffer360@gmail.com
+                  example: scodusnp@gmail.com
+                addresses[3][type]:
+                  type: string
+                  example: type 2
+                addresses[3][same_address_type]:
+                  type: string
+                  example: default
       security:
         - bearerAuth: []
       parameters:
@@ -1020,6 +1031,52 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/tax-office:
+    get:
+      tags:
+        - Super admin > Tax Office
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pagination
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/nfz-branch:
+    get:
+      tags:
+        - Super admin > Nfz Branch
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pagination
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /admin/login:
     post:
       tags:
@@ -1068,7 +1125,7 @@ paths:
                 pesel: '12345678912'
                 tax_id: 123
                 gender: male
-                email: lalbahadur2@gmail.com
+                email: asdasdasd@asd
                 department_id: 2
                 employeed_from: '2022-01-01'
                 employeed_to: ''
@@ -1095,6 +1152,7 @@ paths:
                     voivodeship: voivodeship-1
                     country: Nepal
                     type: permanent
+                    same_address_type: ''
                   - zip: '446002'
                     street: street2
                     house_number: house-12342
@@ -1106,7 +1164,11 @@ paths:
                     voivodeship: voivodeship-21
                     country: Nepal
                     type: temporary
-                is_same_registered_address: 0
+                    same_address_type: ''
+                  - type: new type 1
+                    same_address_type: temporary
+                  - type: new type 2
+                    same_address_type: temporary
                 status_id: 1
       security:
         - bearerAuth: []
@@ -1154,8 +1216,12 @@ paths:
                     county: county-1
                     voivodeship: voivodeship-1
                     country: Nepal
-                    type: permanent
-                is_same_registered_address: 1
+                    type: temporary
+                    same_address_type: ''
+                  - type: new type 1
+                    same_address_type: temporary
+                  - type: new type 2
+                    same_address_type: temporary
                 status_id: 0
       security:
         - bearerAuth: []
@@ -1165,7 +1231,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '11'
+          example: '87'
       responses:
         '200':
           description: Successful response
@@ -1679,10 +1745,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: scodusnp@gmail.com
+                  example: leon.schiffer360@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
       security:
         - noauthAuth: []
       parameters:
@@ -1738,7 +1804,7 @@ paths:
             type: string
           required: true
           example: >-
-            def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f
+            def50200c6875ba06dea2bf73fcf3a0bb01ace239fb4b7c45ae092e495825cf039b95e53249017909db6494d6c3fa0c48dbf5bef79f433fd803e5554a53c4d4f8c0f73e11702492720cec4fa1079b76249a85550d47af91547b78743d3024fece0c3836a9a1d2baae6b6e4ca456d065d21546598f1316766bd2709c26e4cd034e85e04dd97fcd4f0591648996ac494c893f552a5535f21b69083867eb5644017834c1e8b34f9be1e07664e4bf44f75aa76a961de9bdeb8d7da2742cb08cf85ba4974d343641cfd31df307dab0bef428857841a0b31cb2fd15720721be0a43ba51aa4c4aac6a920dd3b6bd00aa82b94ee3fe90b02ba2206da581bab1d13daf5cef21d7410580e17a0465ab101136dc9bb67d8812bfebee78640f0946354e25d3d80b1487b77cee7cdab57fd743ef17df426c9d7a65b988ccd1b81393d89dacbde46affbb46a458461b7d69019533cb94972f6d7d0322874772750af9ee4531076ad8d83b9
       responses:
         '200':
           description: Successful response
@@ -1781,6 +1847,52 @@ paths:
       summary: get active
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tax-office:
+    get:
+      tags:
+        - Company Admin > Tax Office
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pagination
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /nfz-branch:
+    get:
+      tags:
+        - Company Admin > Nfz Branch
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pagination
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response
