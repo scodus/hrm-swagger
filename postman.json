@@ -28,7 +28,7 @@
 											"formdata": [
 												{
 													"key": "email",
-													"value": "leon.schiffer360@gmail.com",
+													"value": "rehacawu@decabg.eu",
 													"type": "text"
 												}
 											]
@@ -594,7 +594,7 @@
 										},
 										{
 											"key": "company_detail[email]",
-											"value": "abc@gmail.com",
+											"value": "asdasds@gmail.com",
 											"type": "text"
 										},
 										{
@@ -652,6 +652,11 @@
 											"type": "text"
 										},
 										{
+											"key": "addresses[0][same_address_type]",
+											"value": "",
+											"type": "text"
+										},
+										{
 											"key": "addresses[0][city]",
 											"value": "bhairahawa",
 											"type": "text",
@@ -673,8 +678,8 @@
 											"type": "text"
 										},
 										{
-											"key": "is_business_address_same",
-											"value": "1",
+											"key": "addresses[1][same_address_type]",
+											"value": "",
 											"type": "text"
 										},
 										{
@@ -684,7 +689,17 @@
 										},
 										{
 											"key": "user[email]",
-											"value": "leon.schiffer360@gmail.com",
+											"value": "scodusnp@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "addresses[3][type]",
+											"value": "type 2",
+											"type": "text"
+										},
+										{
+											"key": "addresses[3][same_address_type]",
+											"value": "default",
 											"type": "text"
 										}
 									]
@@ -778,6 +793,16 @@
 						{
 							"name": "update",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -930,6 +955,16 @@
 						{
 							"name": "change active status",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -967,7 +1002,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one"
+											"value": "company-two"
 										}
 									]
 								}
@@ -1273,6 +1308,16 @@
 						{
 							"name": "delete",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -2432,13 +2477,13 @@
 											"              \"type\": \"string\"\r",
 											"            },\r",
 											"            \"tax_id\": {\r",
-											"              \"type\": \"null\"\r",
+											"              \"type\": \"integer\"\r",
 											"            },\r",
 											"            \"regon\": {\r",
-											"              \"type\": \"null\"\r",
+											"              \"type\": \"string\"\r",
 											"            },\r",
 											"            \"bdo\": {\r",
-											"              \"type\": \"null\"\r",
+											"              \"type\": \"string\"\r",
 											"            },\r",
 											"            \"phone_number\": {\r",
 											"              \"type\": \"string\"\r",
@@ -2502,25 +2547,25 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"street\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"post\": {\r",
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"community\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"county\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"voivodeship\": {\r",
 											"                      \"type\": \"null\"\r",
@@ -2557,25 +2602,25 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"street\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"post\": {\r",
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"community\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"county\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"voivodeship\": {\r",
 											"                      \"type\": \"null\"\r",
@@ -2725,13 +2770,13 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"post\": {\r",
 											"                      \"type\": \"string\"\r",
@@ -2743,7 +2788,7 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"voivodeship\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"country\": {\r",
 											"                      \"type\": \"string\"\r",
@@ -2780,13 +2825,13 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"post\": {\r",
 											"                      \"type\": \"string\"\r",
@@ -2796,226 +2841,6 @@
 											"                    },\r",
 											"                    \"county\": {\r",
 											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"voivodeship\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"country\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"is_same_address_type\": {\r",
-											"                      \"type\": \"integer\"\r",
-											"                    }\r",
-											"                  },\r",
-											"                  \"required\": [\r",
-											"                    \"address_type\",\r",
-											"                    \"zip\",\r",
-											"                    \"street\",\r",
-											"                    \"house_number\",\r",
-											"                    \"number_of_premises\",\r",
-											"                    \"city\",\r",
-											"                    \"post\",\r",
-											"                    \"community\",\r",
-											"                    \"county\",\r",
-											"                    \"voivodeship\",\r",
-											"                    \"country\",\r",
-											"                    \"is_same_address_type\"\r",
-											"                  ]\r",
-											"                }\r",
-											"              ]\r",
-											"            },\r",
-											"            \"created_at\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"status\": {\r",
-											"              \"type\": \"object\",\r",
-											"              \"properties\": {\r",
-											"                \"id\": {\r",
-											"                  \"type\": \"integer\"\r",
-											"                },\r",
-											"                \"title\": {\r",
-											"                  \"type\": \"string\"\r",
-											"                }\r",
-											"              },\r",
-											"              \"required\": [\r",
-											"                \"id\",\r",
-											"                \"title\"\r",
-											"              ]\r",
-											"            }\r",
-											"          },\r",
-											"          \"required\": [\r",
-											"            \"id\",\r",
-											"            \"name\",\r",
-											"            \"short_name\",\r",
-											"            \"tax_id\",\r",
-											"            \"regon\",\r",
-											"            \"bdo\",\r",
-											"            \"phone_number\",\r",
-											"            \"slug\",\r",
-											"            \"user\",\r",
-											"            \"company_detail\",\r",
-											"            \"addresses\",\r",
-											"            \"created_at\",\r",
-											"            \"status\"\r",
-											"          ]\r",
-											"        },\r",
-											"        {\r",
-											"          \"type\": \"object\",\r",
-											"          \"properties\": {\r",
-											"            \"id\": {\r",
-											"              \"type\": \"integer\"\r",
-											"            },\r",
-											"            \"name\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"short_name\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"tax_id\": {\r",
-											"              \"type\": \"integer\"\r",
-											"            },\r",
-											"            \"regon\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"bdo\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"phone_number\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"slug\": {\r",
-											"              \"type\": \"string\"\r",
-											"            },\r",
-											"            \"user\": {\r",
-											"              \"type\": \"object\",\r",
-											"              \"properties\": {\r",
-											"                \"id\": {\r",
-											"                  \"type\": \"integer\"\r",
-											"                },\r",
-											"                \"name\": {\r",
-											"                  \"type\": \"string\"\r",
-											"                },\r",
-											"                \"email\": {\r",
-											"                  \"type\": \"string\"\r",
-											"                },\r",
-											"                \"created_at\": {\r",
-											"                  \"type\": \"string\"\r",
-											"                }\r",
-											"              },\r",
-											"              \"required\": [\r",
-											"                \"id\",\r",
-											"                \"name\",\r",
-											"                \"email\",\r",
-											"                \"created_at\"\r",
-											"              ]\r",
-											"            },\r",
-											"            \"company_detail\": {\r",
-											"              \"type\": \"array\",\r",
-											"              \"items\": [\r",
-											"                {\r",
-											"                  \"type\": \"object\",\r",
-											"                  \"properties\": {\r",
-											"                    \"key\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"value\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    }\r",
-											"                  },\r",
-											"                  \"required\": [\r",
-											"                    \"key\",\r",
-											"                    \"value\"\r",
-											"                  ]\r",
-											"                }\r",
-											"              ]\r",
-											"            },\r",
-											"            \"addresses\": {\r",
-											"              \"type\": \"array\",\r",
-											"              \"items\": [\r",
-											"                {\r",
-											"                  \"type\": \"object\",\r",
-											"                  \"properties\": {\r",
-											"                    \"address_type\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"zip\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"street\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"post\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"community\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"county\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"voivodeship\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"country\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"is_same_address_type\": {\r",
-											"                      \"type\": \"integer\"\r",
-											"                    }\r",
-											"                  },\r",
-											"                  \"required\": [\r",
-											"                    \"address_type\",\r",
-											"                    \"zip\",\r",
-											"                    \"street\",\r",
-											"                    \"house_number\",\r",
-											"                    \"number_of_premises\",\r",
-											"                    \"city\",\r",
-											"                    \"post\",\r",
-											"                    \"community\",\r",
-											"                    \"county\",\r",
-											"                    \"voivodeship\",\r",
-											"                    \"country\",\r",
-											"                    \"is_same_address_type\"\r",
-											"                  ]\r",
-											"                },\r",
-											"                {\r",
-											"                  \"type\": \"object\",\r",
-											"                  \"properties\": {\r",
-											"                    \"address_type\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"zip\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"street\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"post\": {\r",
-											"                      \"type\": \"string\"\r",
-											"                    },\r",
-											"                    \"community\": {\r",
-											"                      \"type\": \"null\"\r",
-											"                    },\r",
-											"                    \"county\": {\r",
-											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"voivodeship\": {\r",
 											"                      \"type\": \"null\"\r",
@@ -3162,25 +2987,25 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"street\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"post\": {\r",
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"community\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"county\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"voivodeship\": {\r",
 											"                      \"type\": \"null\"\r",
@@ -3217,25 +3042,245 @@
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"street\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"house_number\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"number_of_premises\": {\r",
-											"                      \"type\": \"string\"\r",
+											"                      \"type\": \"null\"\r",
 											"                    },\r",
 											"                    \"city\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"post\": {\r",
 											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"community\": {\r",
-											"                      \"type\": \"null\"\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
 											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"is_same_address_type\": {\r",
+											"                      \"type\": \"integer\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"address_type\",\r",
+											"                    \"zip\",\r",
+											"                    \"street\",\r",
+											"                    \"house_number\",\r",
+											"                    \"number_of_premises\",\r",
+											"                    \"city\",\r",
+											"                    \"post\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"country\",\r",
+											"                    \"is_same_address_type\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"created_at\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"status\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"title\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"title\"\r",
+											"              ]\r",
+											"            }\r",
+											"          },\r",
+											"          \"required\": [\r",
+											"            \"id\",\r",
+											"            \"name\",\r",
+											"            \"short_name\",\r",
+											"            \"tax_id\",\r",
+											"            \"regon\",\r",
+											"            \"bdo\",\r",
+											"            \"phone_number\",\r",
+											"            \"slug\",\r",
+											"            \"user\",\r",
+											"            \"company_detail\",\r",
+											"            \"addresses\",\r",
+											"            \"created_at\",\r",
+											"            \"status\"\r",
+											"          ]\r",
+											"        },\r",
+											"        {\r",
+											"          \"type\": \"object\",\r",
+											"          \"properties\": {\r",
+											"            \"id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"short_name\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"tax_id\": {\r",
+											"              \"type\": \"integer\"\r",
+											"            },\r",
+											"            \"regon\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"bdo\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"phone_number\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"slug\": {\r",
+											"              \"type\": \"string\"\r",
+											"            },\r",
+											"            \"user\": {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"id\": {\r",
+											"                  \"type\": \"integer\"\r",
+											"                },\r",
+											"                \"name\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"email\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"created_at\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"id\",\r",
+											"                \"name\",\r",
+											"                \"email\",\r",
+											"                \"created_at\"\r",
+											"              ]\r",
+											"            },\r",
+											"            \"company_detail\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"key\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"value\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"key\",\r",
+											"                    \"value\"\r",
+											"                  ]\r",
+											"                }\r",
+											"              ]\r",
+											"            },\r",
+											"            \"addresses\": {\r",
+											"              \"type\": \"array\",\r",
+											"              \"items\": [\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"address_type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"house_number\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"number_of_premises\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"post\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"voivodeship\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"country\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"is_same_address_type\": {\r",
+											"                      \"type\": \"integer\"\r",
+											"                    }\r",
+											"                  },\r",
+											"                  \"required\": [\r",
+											"                    \"address_type\",\r",
+											"                    \"zip\",\r",
+											"                    \"street\",\r",
+											"                    \"house_number\",\r",
+											"                    \"number_of_premises\",\r",
+											"                    \"city\",\r",
+											"                    \"post\",\r",
+											"                    \"community\",\r",
+											"                    \"county\",\r",
+											"                    \"voivodeship\",\r",
+											"                    \"country\",\r",
+											"                    \"is_same_address_type\"\r",
+											"                  ]\r",
+											"                },\r",
+											"                {\r",
+											"                  \"type\": \"object\",\r",
+											"                  \"properties\": {\r",
+											"                    \"address_type\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"zip\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"street\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"house_number\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"number_of_premises\": {\r",
+											"                      \"type\": \"null\"\r",
+											"                    },\r",
+											"                    \"city\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"post\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"community\": {\r",
+											"                      \"type\": \"string\"\r",
+											"                    },\r",
+											"                    \"county\": {\r",
+											"                      \"type\": \"string\"\r",
 											"                    },\r",
 											"                    \"voivodeship\": {\r",
 											"                      \"type\": \"null\"\r",
@@ -3634,6 +3679,25 @@
 											"                \"label\",\r",
 											"                \"active\"\r",
 											"              ]\r",
+											"            },\r",
+											"            {\r",
+											"              \"type\": \"object\",\r",
+											"              \"properties\": {\r",
+											"                \"url\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"label\": {\r",
+											"                  \"type\": \"string\"\r",
+											"                },\r",
+											"                \"active\": {\r",
+											"                  \"type\": \"boolean\"\r",
+											"                }\r",
+											"              },\r",
+											"              \"required\": [\r",
+											"                \"url\",\r",
+											"                \"label\",\r",
+											"                \"active\"\r",
+											"              ]\r",
 											"            }\r",
 											"          ]\r",
 											"        },\r",
@@ -3685,6 +3749,16 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -4322,6 +4396,92 @@
 					]
 				},
 				{
+					"name": "Tax Office",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/tax-office?pagination=1&limit=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"tax-office"
+									],
+									"query": [
+										{
+											"key": "pagination",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Nfz Branch",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/nfz-branch?pagination=0&limit=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"nfz-branch"
+									],
+									"query": [
+										{
+											"key": "pagination",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "login",
 					"request": {
 						"auth": {
@@ -4357,7 +4517,7 @@
 								},
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "scodusnp@gmail.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -4401,7 +4561,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 11,\n    \"fullname\": \"Lal Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"slalbahadursss@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"registered\"\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"company_id\": 11,\n    \"first_name\": \"Lal\",\n    \"middle_name\": null,\n    \"last_name\" : \"Shreshta\",\n    \"pesel\": \"12345678912\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"asdasdasd@asd\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"permanent\",\n            \"same_address_type\": \"\"\n        },\n        {\n            \"zip\": \"446002\",\n            \"street\": \"street2\",\n            \"house_number\": \"house-12342\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu2\",\n            \"post\": \"post-1327462\",\n            \"community\": \"community shield2\",\n            \"county\": \"county-12\",\n            \"voivodeship\": \"voivodeship-21\",\n            \"country\": \"Nepal\",\n            \"type\": \"temporary\",\n            \"same_address_type\": \"\"\n        },\n        {\n            \"type\": \"new type 1\",\n            \"same_address_type\": \"temporary\"\n        },\n        {\n            \"type\": \"new type 2\",\n            \"same_address_type\": \"temporary\"\n        }\n    ],\n    \"status_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4437,7 +4597,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"default\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
+									"raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"first_name\": \"Bunu\",\n    \"middle_name\": \"Lal\",\n    \"last_name\": \"Shrestha\",\n    \"pesel\": \"12345678912\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"temporary\",\n            \"same_address_type\": \"\"\n        },\n        {\n            \"type\": \"new type 1\",\n            \"same_address_type\": \"temporary\"\n        },\n        {\n            \"type\": \"new type 2\",\n            \"same_address_type\": \"temporary\"\n        }\n    ],\n    \"status_id\": 0\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4456,7 +4616,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "48"
+											"value": "87"
 										}
 									]
 								}
@@ -4526,7 +4686,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "10"
+											"value": "11"
 										}
 									]
 								}
@@ -4589,7 +4749,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Department 1\",\n    \"status_id\": 1\n}",
+									"raw": "{\n    \"title\": \"Department 1\",\n    \"status_id\": 1\n\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4804,7 +4964,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2023-01-11\",\n            \"par_name\": \"pension_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": \"30\"\n        },\n        {\n            \"date_s\": \"2023-02-11\",\n            \"par_name\": \"disablitiy_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": 30\n        },\n        {\n            \"date_s\": \"2023-03-11\",\n            \"par_name\": \"sickness_insurance_employee\",\n            \"par_type\": \"integer\",\n            \"par_value\": 72\n        },\n        {\n            \"date_s\": \"2023-04-11\",\n            \"par_name\": \"accident-insurance_employer\",\n            \"par_type\": \"integer\",\n            \"par_value\": 90\n        }\n    ]\n}",
+									"raw": "{\n    \"parameter\": [\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par1\",\n            \"par_type\": \"integer\",\n            \"par_value\": 301\n        },\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par2\",\n            \"par_type\": \"integer\",\n            \"par_value\": 302\n        },\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par3\",\n            \"par_type\": \"integer\",\n            \"par_value\": 721\n        },\n        {\n            \"date_s\": \"2023-12-11\",\n            \"par_name\": \"par4\",\n            \"par_type\": \"integer\",\n            \"par_value\": 902\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4898,7 +5058,7 @@
 									"variable": [
 										{
 											"key": "parameter_id",
-											"value": "20"
+											"value": "68"
 										}
 									]
 								}
@@ -4997,6 +5157,55 @@
 							"response": []
 						},
 						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 2,\r\n    \"gross_salary\": 2000.222,\r\n    \"type\": \"type\",\r\n    \"date_of_signing\" : \"2022-02-02\",\r\n    \"start_date\": \"2022-02-04\",\r\n    \"end_date\": null,\r\n    \"position\": null,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": 2,\r\n        \"work_hour_denominator\": 4,\r\n        \"cost_of_getting_income\": \"lack\"\r\n    },\r\n    \"_method\": \"PUT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/agreement/:agreement_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement",
+										":agreement_id"
+									],
+									"variable": [
+										{
+											"key": "agreement_id",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "find",
 							"request": {
 								"auth": {
@@ -5030,6 +5239,47 @@
 										{
 											"key": "id",
 											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/agreement/:agreement_id/logs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement",
+										":agreement_id",
+										"logs"
+									],
+									"variable": [
+										{
+											"key": "agreement_id",
+											"value": "10"
 										}
 									]
 								}
@@ -5133,13 +5383,25 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "grgbishal360@gmail.com",
+											"value": "leon.schiffer360@gmail.com",
 											"type": "text"
 										},
 										{
 											"key": "password",
-											"value": "P@ssw0rd",
+											"value": "Asd@360",
 											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "scodusnp@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "tomnjerry8963@gmail.com",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -5211,7 +5473,7 @@
 									"variable": [
 										{
 											"key": "refresh_token",
-											"value": "def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f"
+											"value": "def50200c6875ba06dea2bf73fcf3a0bb01ace239fb4b7c45ae092e495825cf039b95e53249017909db6494d6c3fa0c48dbf5bef79f433fd803e5554a53c4d4f8c0f73e11702492720cec4fa1079b76249a85550d47af91547b78743d3024fece0c3836a9a1d2baae6b6e4ca456d065d21546598f1316766bd2709c26e4cd034e85e04dd97fcd4f0591648996ac494c893f552a5535f21b69083867eb5644017834c1e8b34f9be1e07664e4bf44f75aa76a961de9bdeb8d7da2742cb08cf85ba4974d343641cfd31df307dab0bef428857841a0b31cb2fd15720721be0a43ba51aa4c4aac6a920dd3b6bd00aa82b94ee3fe90b02ba2206da581bab1d13daf5cef21d7410580e17a0465ab101136dc9bb67d8812bfebee78640f0946354e25d3d80b1487b77cee7cdab57fd743ef17df426c9d7a65b988ccd1b81393d89dacbde46affbb46a458461b7d69019533cb94972f6d7d0322874772750af9ee4531076ad8d83b9"
 										}
 									]
 								}
@@ -5321,6 +5583,326 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Tax Office",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/tax-office?pagination=1&limit=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"tax-office"
+									],
+									"query": [
+										{
+											"key": "pagination",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Nfz Branch",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/nfz-branch?pagination=0&limit=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"nfz-branch"
+									],
+									"query": [
+										{
+											"key": "pagination",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "company data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/my-company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"my-company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "company data edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch"
+								},
+								{
+									"key": "name",
+									"value": "Company Two edit",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "three edit",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Kalikasthan edit",
+									"type": "text"
+								},
+								{
+									"key": "status_id",
+									"value": "1",
+									"description": "values-> 0:inactive, 1:active",
+									"type": "text"
+								},
+								{
+									"key": "tax_id",
+									"value": "1234567",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "regon",
+									"value": "1234as",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "bdo",
+									"value": "12345",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "98089081",
+									"type": "text"
+								},
+								{
+									"key": "company_detail[email]",
+									"value": "asdasds@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][country]",
+									"value": "Nepal",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][zip]",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][post]",
+									"value": "post edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][house_number]",
+									"value": "72",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][number_of_premises]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][street]",
+									"value": "kalika marg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][community]",
+									"value": "Kalika Tol",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][county]",
+									"value": "Kalika County",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][voivodeship]",
+									"value": "Kalika Voivodeship",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][type]",
+									"value": "default",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][same_address_type]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][city]",
+									"value": "bhairahawa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[1][country]",
+									"value": "India edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][street]",
+									"value": "Seto Pul edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][type]",
+									"value": "business",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][same_address_type]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "addresses[3][type]",
+									"value": "type 2",
+									"type": "text"
+								},
+								{
+									"key": "addresses[3][same_address_type]",
+									"value": "business",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/user--49/Pictures/x360.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "company-two-edit"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -5494,7 +6076,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "262"
+									"value": "2"
 								}
 							]
 						}
@@ -5524,7 +6106,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Sub Sub Sub Document 1\",\r\n    \"parent_id\": 10\r\n    \r\n}",
+							"raw": "{\r\n    \"name\": \"Sub Sub Sub Document 1\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5571,7 +6153,13 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Downloads/memes/3008924_01171de4a5d31he9.jpg"
+									"src": "/C:/Users/Leon Schiffer/Downloads/NTB-Logo-removebg-preview.png"
+								},
+								{
+									"key": "name",
+									"value": "asdw",
+									"description": "nullable",
+									"type": "text"
 								},
 								{
 									"key": "_method",
@@ -5594,8 +6182,55 @@
 							"variable": [
 								{
 									"key": "folder_id",
-									"value": "256"
+									"value": "252"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get private image",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "1/3008924_01171de4a5d31he9.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/get-image/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-image",
+								"7"
 							]
 						}
 					},
@@ -5628,6 +6263,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get folder id from employee id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:employee_id/folder-id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":employee_id",
+								"folder-id"
+							],
+							"variable": [
+								{
+									"key": "employee_id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -5635,7 +6312,14 @@
 			"name": "test",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{superadmin_token}}",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
