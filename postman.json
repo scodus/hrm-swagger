@@ -5774,7 +5774,7 @@
 							"response": []
 						},
 						{
-							"name": "Collective Payroll Copy",
+							"name": "Collective Filter",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -5849,7 +5849,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"year\":2022,\r\n    \"month\": 8,\r\n    \"agreement_type_id\":1\r\n}",
+									"raw": "{\r\n    \"collective_id\":1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5864,6 +5864,43 @@
 									"path": [
 										"payroll",
 										"close-general"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Collective Modify",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"collective_id\":2,\r\n    \"payment_date\":\"2022-09-30\",\r\n    \"closing_date\":\"2022-09-30\",\r\n    \"signature\":\"Bijay\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/payroll/modify-group",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"payroll",
+										"modify-group"
 									]
 								}
 							},
@@ -6299,6 +6336,74 @@
 											"key": "type",
 											"value": ""
 										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payroll Closing",
+					"item": [
+						{
+							"name": "Get Closing",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/company-payroll-closing",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"company-payroll-closing"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store Closing",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"automatic_closing\":1,\r\n    \"type\":\"current_month\",\r\n    \"day_of_month\":0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/company-payroll-closing",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"company-payroll-closing"
 									]
 								}
 							},
