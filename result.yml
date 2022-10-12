@@ -609,11 +609,6 @@ paths:
       security:
         - noauthAuth: []
       parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: slug
           in: path
           schema:
@@ -1555,6 +1550,7 @@ paths:
                 start_date: '2023-08-01'
                 end_date: '2023-11-10'
                 position: abc
+                department_id: 1
                 parameters:
                   work_hour_numerator: 2
                   work_hour_denominator: 3
@@ -1615,6 +1611,73 @@ paths:
           content:
             application/json: {}
   /agreement/{id}:
+    put:
+      tags:
+        - Company Admin > Agreement
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_id: 1
+                agreement_type_id: 1
+                gross_salary: 3000.222
+                type: indefinite
+                date_of_signing: '2022-09-03'
+                start_date: '2023-08-01'
+                end_date: '2023-11-10'
+                position: abc
+                department_id: 2
+                parameters:
+                  work_hour_numerator: 2
+                  work_hour_denominator: 3
+                  cost_of_getting_income: lack
+                allowance_deductions:
+                  - name: agree allowance
+                    type: allowance
+                    value: '500'
+                    one_time: false
+                    start_date: '2023-08-20'
+                    end_date: '2023-08-30'
+                    is_taxable: false
+                    include_socialsecurity_base: false
+                    include_sick_base: false
+                    include_vacation_base: false
+                    year: 2022
+                    month: 8
+                  - name: agree deduction
+                    type: deduction
+                    value: '1000'
+                    one_time: true
+                    start_date: null
+                    end_date: null
+                    is_taxable: true
+                    include_socialsecurity_base: true
+                    include_sick_base: true
+                    include_vacation_base: true
+                    year: 2023
+                    month: 8
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     get:
       tags:
         - Company Admin > Agreement
@@ -1672,26 +1735,29 @@ paths:
             schema:
               type: object
               example:
-                gross_salary: 3000
+                gross_salary: '10000'
                 type: indefinite
-                date_of_signing: '2022-07-13'
-                start_date: '2022-07-13'
+                date_of_signing: '2022-10-11'
+                start_date: '2022-10-11'
                 end_date: null
-                position: Manager
-                insurance: ''
-                occupation: ''
+                position: null
                 parameters:
-                  work_hour_numerator: '1'
-                  work_hour_denominator: '1'
+                  work_hour_numerator: 1
+                  work_hour_denominator: 1
                   cost_of_getting_income: usually
-                  labor_fund_insurance_employer: '1'
-                  fgsp_insurance_employer: '1'
-                  fep_insurance_employer: '1'
+                  labor_fund_insurance_employer: true
+                  fgsp_insurance_employer: true
+                  fep_insurance_employer: false
                   pit_exemption: null
-                  tax_rate: 17
-                  tax_relief: 2
-                id: 6
-                employee_id: 3
+                  tax_rate: ''
+                  tax_relief: 1
+                  insurance_code_id: ''
+                  occupation_code_id: ''
+                  terms_of_employment: ''
+                  contract_premium: ''
+                  contract_benefits: ''
+                  contract_deductions: ''
+                allowance_deductions: []
                 agreement_type_id: 1
       security:
         - bearerAuth: []
@@ -2025,6 +2091,57 @@ paths:
                 payment_date: '2022-09-30'
                 closing_date: '2022-09-30'
                 signature: Bijay
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /payroll/employee-holiday-basis:
+    get:
+      tags:
+        - Company Admin > Payroll
+      summary: Get Holiday Basis
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: '2022-12-10'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: vacation
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Company Admin > Payroll
+      summary: Update Holiday Basis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_id: 10
+                type: vacation
+                year: 2022
+                month: 10
+                value: 100
+                hours: 130
       security:
         - bearerAuth: []
       responses:
