@@ -5104,7 +5104,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 1,\r\n    \"gross_salary\": 3000.222,\r\n    \"type\": \"indefinite\",\r\n    \"date_of_signing\": \"2022-09-03\",\r\n    \"start_date\": \"2023-08-01\",\r\n    \"end_date\": \"2023-11-10\",\r\n    \"position\": \"abc\",\r\n    \"department_id\":1,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": 2,\r\n        \"work_hour_denominator\": 3,\r\n        \"cost_of_getting_income\": \"lack\"\r\n    },\r\n    \"allowance_deductions\": [\r\n        {\r\n            \"name\": \"agree allowance\",\r\n            \"type\": \"allowance\",\r\n            \"value\": \"500\",\r\n            \"one_time\": false,\r\n            \"start_date\": \"2023-08-20\",\r\n            \"end_date\": \"2023-08-30\",\r\n            \"is_taxable\": false,\r\n            \"include_socialsecurity_base\": false,\r\n            \"include_sick_base\": false,\r\n            \"include_vacation_base\": false,\r\n            \"year\": 2022,\r\n            \"month\": 8\r\n        },\r\n        {\r\n            \"name\": \"agree deduction\",\r\n            \"type\": \"deduction\",\r\n            \"value\": \"1000\",\r\n            \"one_time\": true,\r\n            \"start_date\": null,\r\n            \"end_date\": null,\r\n            \"is_taxable\": true,\r\n            \"include_socialsecurity_base\": true,\r\n            \"include_sick_base\": true,\r\n            \"include_vacation_base\": true,\r\n            \"year\": 2023,\r\n            \"month\": 8\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 1,\r\n    \"gross_salary\": 4000.222,\r\n    \"type\": \"indefinite\",\r\n    \"date_of_signing\": \"2024-07-03\",\r\n    \"start_date\": \"2024-08-01\",\r\n    \"end_date\": \"2024-11-10\",\r\n    \"position\": \"abc\",\r\n    \"department_id\": 1,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": 1,\r\n        \"work_hour_denominator\": 1,\r\n        \"cost_of_getting_income\": \"usually\",\r\n        \"labor_fund_insurance_employer\": true,\r\n        \"fgsp_insurance_employer\": true,\r\n        \"fep_insurance_employer\": false,\r\n        \"pit_exemption\": null,\r\n        \"tax_rate\": \"12\",\r\n        \"tax_relief\": 1,\r\n        \"insurance_code_id\": \"\",\r\n        \"occupation_code_id\": \"\",\r\n        \"terms_of_employment\": \"\",\r\n        \"shared_taxation\":1\r\n    },\r\n    \"allowance_deductions\": [\r\n        {\r\n            \"name\": \"agree allowance\",\r\n            \"type\": \"allowance\",\r\n            \"value\": \"500\",\r\n            \"one_time\": false,\r\n            \"start_date\": \"2023-08-20\",\r\n            \"end_date\": \"2023-08-30\",\r\n            \"is_taxable\": false,\r\n            \"include_socialsecurity_base\": false,\r\n            \"include_sick_base\": false,\r\n            \"include_vacation_base\": false,\r\n            \"year\": 2022,\r\n            \"month\": 8\r\n        },\r\n        {\r\n            \"name\": \"agree deduction\",\r\n            \"type\": \"deduction\",\r\n            \"value\": \"1000\",\r\n            \"one_time\": true,\r\n            \"start_date\": null,\r\n            \"end_date\": null,\r\n            \"is_taxable\": true,\r\n            \"include_socialsecurity_base\": true,\r\n            \"include_sick_base\": true,\r\n            \"include_vacation_base\": true,\r\n            \"year\": 2023,\r\n            \"month\": 8\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5146,7 +5146,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 1,\r\n    \"gross_salary\": 3000.222,\r\n    \"type\": \"indefinite\",\r\n    \"date_of_signing\": \"2022-09-03\",\r\n    \"start_date\": \"2023-08-01\",\r\n    \"end_date\": \"2023-11-10\",\r\n    \"position\": \"abc\",\r\n    \"department_id\":2,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": 2,\r\n        \"work_hour_denominator\": 3,\r\n        \"cost_of_getting_income\": \"lack\"\r\n    },\r\n    \"allowance_deductions\": [\r\n        {\r\n            \"name\": \"agree allowance\",\r\n            \"type\": \"allowance\",\r\n            \"value\": \"500\",\r\n            \"one_time\": false,\r\n            \"start_date\": \"2023-08-20\",\r\n            \"end_date\": \"2023-08-30\",\r\n            \"is_taxable\": false,\r\n            \"include_socialsecurity_base\": false,\r\n            \"include_sick_base\": false,\r\n            \"include_vacation_base\": false,\r\n            \"year\": 2022,\r\n            \"month\": 8\r\n        },\r\n        {\r\n            \"name\": \"agree deduction\",\r\n            \"type\": \"deduction\",\r\n            \"value\": \"1000\",\r\n            \"one_time\": true,\r\n            \"start_date\": null,\r\n            \"end_date\": null,\r\n            \"is_taxable\": true,\r\n            \"include_socialsecurity_base\": true,\r\n            \"include_sick_base\": true,\r\n            \"include_vacation_base\": true,\r\n            \"year\": 2023,\r\n            \"month\": 8\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"date_of_signing\": \"2022-08-11\",\r\n    \"start_date\": \"2022-08-11\",\r\n    \"end_date\": \"2022-12-10\",\r\n    \"gross_salary\": 23000,\r\n    \"type\": \"indefinite\",\r\n    \"position\": null,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": \"1\",\r\n        \"work_hour_denominator\": \"1\",\r\n        \"cost_of_getting_income\": \"usually\",\r\n        \"labor_fund_insurance_employer\": \"0\",\r\n        \"fgsp_insurance_employer\": \"0\",\r\n        \"fep_insurance_employer\": \"0\",\r\n        \"pit_exemption\": \"automatic\",\r\n        \"tax_rate\": \"\",\r\n        \"tax_relief\": \"1\",\r\n        \"insurance_code_id\": null,\r\n        \"occupation_code_id\": null,\r\n        \"terms_of_employment\": \"This is a term. Listen\",\r\n        \"contract_premium\": \"2000\",\r\n        \"contract_benefits\": \"30\",\r\n        \"contract_deductions\": \"40\",\r\n        \"shared_taxation\": 1\r\n    },\r\n    \"department_id\": null,\r\n    \"id\": 1,\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 1,\r\n    \"agreement_type_name\": \"Employment Contract\",\r\n    \"_method\": \"patch\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5165,7 +5165,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "22"
+											"value": "1"
 										}
 									]
 								}
@@ -6325,7 +6325,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"OVERTIME 1\",\r\n    \"employee_id\":1,\r\n    \"value\":500,\r\n    \"year\":2022,\r\n    \"month\":8\r\n}",
+									"raw": "{\r\n    \"name\":\"Night\",\r\n    \"employee_id\":1,\r\n    \"value\":500,\r\n    \"hours\":7.45,\r\n    \"year\":2022,\r\n    \"month\":9\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6362,7 +6362,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"OVERTIME 1 up\",\r\n    \"value\":550,\r\n    \"year\":2022,\r\n    \"month\":8\r\n}",
+									"raw": "{\r\n    \"name\":\"Night 2\",\r\n    \"value\":550,\r\n    \"hours\":8.25,\r\n    \"year\":2022,\r\n    \"month\":9\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6382,7 +6382,7 @@
 									"variable": [
 										{
 											"key": "overtime_id",
-											"value": "5"
+											"value": "40"
 										}
 									]
 								}

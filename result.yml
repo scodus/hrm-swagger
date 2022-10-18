@@ -1544,17 +1544,27 @@ paths:
               example:
                 employee_id: 1
                 agreement_type_id: 1
-                gross_salary: 3000.222
+                gross_salary: 4000.222
                 type: indefinite
-                date_of_signing: '2022-09-03'
-                start_date: '2023-08-01'
-                end_date: '2023-11-10'
+                date_of_signing: '2024-07-03'
+                start_date: '2024-08-01'
+                end_date: '2024-11-10'
                 position: abc
                 department_id: 1
                 parameters:
-                  work_hour_numerator: 2
-                  work_hour_denominator: 3
-                  cost_of_getting_income: lack
+                  work_hour_numerator: 1
+                  work_hour_denominator: 1
+                  cost_of_getting_income: usually
+                  labor_fund_insurance_employer: true
+                  fgsp_insurance_employer: true
+                  fep_insurance_employer: false
+                  pit_exemption: null
+                  tax_rate: '12'
+                  tax_relief: 1
+                  insurance_code_id: ''
+                  occupation_code_id: ''
+                  terms_of_employment: ''
+                  shared_taxation: 1
                 allowance_deductions:
                   - name: agree allowance
                     type: allowance
@@ -1621,44 +1631,35 @@ paths:
             schema:
               type: object
               example:
+                date_of_signing: '2022-08-11'
+                start_date: '2022-08-11'
+                end_date: '2022-12-10'
+                gross_salary: 23000
+                type: indefinite
+                position: null
+                parameters:
+                  work_hour_numerator: '1'
+                  work_hour_denominator: '1'
+                  cost_of_getting_income: usually
+                  labor_fund_insurance_employer: '0'
+                  fgsp_insurance_employer: '0'
+                  fep_insurance_employer: '0'
+                  pit_exemption: automatic
+                  tax_rate: ''
+                  tax_relief: '1'
+                  insurance_code_id: null
+                  occupation_code_id: null
+                  terms_of_employment: This is a term. Listen
+                  contract_premium: '2000'
+                  contract_benefits: '30'
+                  contract_deductions: '40'
+                  shared_taxation: 1
+                department_id: null
+                id: 1
                 employee_id: 1
                 agreement_type_id: 1
-                gross_salary: 3000.222
-                type: indefinite
-                date_of_signing: '2022-09-03'
-                start_date: '2023-08-01'
-                end_date: '2023-11-10'
-                position: abc
-                department_id: 2
-                parameters:
-                  work_hour_numerator: 2
-                  work_hour_denominator: 3
-                  cost_of_getting_income: lack
-                allowance_deductions:
-                  - name: agree allowance
-                    type: allowance
-                    value: '500'
-                    one_time: false
-                    start_date: '2023-08-20'
-                    end_date: '2023-08-30'
-                    is_taxable: false
-                    include_socialsecurity_base: false
-                    include_sick_base: false
-                    include_vacation_base: false
-                    year: 2022
-                    month: 8
-                  - name: agree deduction
-                    type: deduction
-                    value: '1000'
-                    one_time: true
-                    start_date: null
-                    end_date: null
-                    is_taxable: true
-                    include_socialsecurity_base: true
-                    include_sick_base: true
-                    include_vacation_base: true
-                    year: 2023
-                    month: 8
+                agreement_type_name: Employment Contract
+                _method: patch
       security:
         - bearerAuth: []
       parameters:
@@ -1672,7 +1673,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '22'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2338,11 +2339,12 @@ paths:
             schema:
               type: object
               example:
-                name: OVERTIME 1
+                name: Night
                 employee_id: 1
                 value: 500
+                hours: 7.45
                 year: 2022
-                month: 8
+                month: 9
       security:
         - bearerAuth: []
       responses:
@@ -2378,10 +2380,11 @@ paths:
             schema:
               type: object
               example:
-                name: OVERTIME 1 up
+                name: Night 2
                 value: 550
+                hours: 8.25
                 year: 2022
-                month: 8
+                month: 9
       security:
         - bearerAuth: []
       parameters:
@@ -2390,7 +2393,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '40'
       responses:
         '200':
           description: Successful response
