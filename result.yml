@@ -2151,10 +2151,32 @@ paths:
           content:
             application/json: {}
   /actions/allowance-deduction:
+    get:
+      tags:
+        - Company Admin > Actions
+      summary: Get Deduction/Payroll
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: agreement_id
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - Company Admin > Actions
-      summary: Add Deduction/Payroll
+      summary: Add Deduction/Allowance
       requestBody:
         content:
           application/json:
@@ -2182,33 +2204,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - Company Admin > Actions
-      summary: Get Deduction/Payroll
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: employee_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: agreement_id
-          in: query
-          schema:
-            type: integer
-          example: '5'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /actions/allowance-deduction/{id}:
     put:
       tags:
         - Company Admin > Actions
-      summary: Add Deduction/Payroll Copy
+      summary: Edit Deduction/Allowance
       requestBody:
         content:
           application/json:
@@ -2242,7 +2242,42 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    delete:
+      tags:
+        - Company Admin > Actions
+      summary: Delete Deduction/Allowance
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /actions/vacation-sick-leave:
+    get:
+      tags:
+        - Company Admin > Actions
+      summary: Get Vacation/Sick Leave
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - Company Admin > Actions
@@ -2265,28 +2300,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - Company Admin > Actions
-      summary: Get Vacation/Sick Leave
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: employee_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /actions/vacation-sick-leave/{id}:
     put:
       tags:
         - Company Admin > Actions
-      summary: Add Vacation/Sick Leave Copy
+      summary: Edit Vacation/Sick Leave
       requestBody:
         content:
           application/json:
@@ -2329,6 +2347,23 @@ paths:
           content:
             application/json: {}
   /actions/overtime-amount:
+    get:
+      tags:
+        - Company Admin > Actions
+      summary: Get overtime amount
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - Company Admin > Actions
@@ -2352,23 +2387,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - Company Admin > Actions
-      summary: Get overtime amount
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: employee_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /actions/overtime-amount/{overtime_id}:
     put:
       tags:
@@ -2385,6 +2403,24 @@ paths:
                 hours: 8.25
                 year: 2022
                 month: 9
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: overtime_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '40'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Company Admin > Actions
+      summary: Delete Overtime Amount
       security:
         - bearerAuth: []
       parameters:

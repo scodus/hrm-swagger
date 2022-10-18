@@ -6040,7 +6040,45 @@
 					"name": "Actions",
 					"item": [
 						{
-							"name": "Add Deduction/Payroll",
+							"name": "Get Deduction/Payroll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actions/allowance-deduction?employee_id=1&agreement_id=5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actions",
+										"allowance-deduction"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "1"
+										},
+										{
+											"key": "agreement_id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Deduction/Allowance",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -6077,7 +6115,7 @@
 							"response": []
 						},
 						{
-							"name": "Add Deduction/Payroll Copy",
+							"name": "Edit Deduction/Allowance",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -6121,7 +6159,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Deduction/Payroll",
+							"name": "Delete Deduction/Allowance",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -6133,100 +6171,16 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/actions/allowance-deduction?employee_id=1&agreement_id=5",
+									"raw": "{{url}}/actions/allowance-deduction/:id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"actions",
-										"allowance-deduction"
-									],
-									"query": [
-										{
-											"key": "employee_id",
-											"value": "1"
-										},
-										{
-											"key": "agreement_id",
-											"value": "5"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Vacation/Sick Leave",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"employee_id\":1,\r\n    \"name\":\"3rd\",\r\n    \"type\":\"vacation_leave\",\r\n    \"start_date\":\"2022-08-20\",\r\n    \"end_date\":\"2022-08-30\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/vacation-sick-leave",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"vacation-sick-leave"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Vacation/Sick Leave Copy",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"sick-leave\",\r\n    \"start_date\":\"2022-07-21\",\r\n    \"end_date\":\"2022-08-21\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/vacation-sick-leave/:id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"vacation-sick-leave",
+										"allowance-deduction",
 										":id"
 									],
 									"variable": [
@@ -6274,6 +6228,87 @@
 							"response": []
 						},
 						{
+							"name": "Add Vacation/Sick Leave",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"employee_id\":1,\r\n    \"name\":\"3rd\",\r\n    \"type\":\"vacation_leave\",\r\n    \"start_date\":\"2022-08-20\",\r\n    \"end_date\":\"2022-08-30\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/actions/vacation-sick-leave",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actions",
+										"vacation-sick-leave"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Vacation/Sick Leave",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"sick-leave\",\r\n    \"start_date\":\"2022-07-21\",\r\n    \"end_date\":\"2022-08-21\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/actions/vacation-sick-leave/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actions",
+										"vacation-sick-leave",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get Vacation/Sick Leave Copy",
 							"request": {
 								"auth": {
@@ -6302,6 +6337,40 @@
 										{
 											"key": "id",
 											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get overtime amount",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actions/overtime-amount?employee_id=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actions",
+										"overtime-amount"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "1"
 										}
 									]
 								}
@@ -6390,7 +6459,7 @@
 							"response": []
 						},
 						{
-							"name": "Get overtime amount",
+							"name": "Delete Overtime Amount",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -6402,21 +6471,22 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/actions/overtime-amount?employee_id=1",
+									"raw": "{{url}}/actions/overtime-amount/:overtime_id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"actions",
-										"overtime-amount"
+										"overtime-amount",
+										":overtime_id"
 									],
-									"query": [
+									"variable": [
 										{
-											"key": "employee_id",
-											"value": "1"
+											"key": "overtime_id",
+											"value": "40"
 										}
 									]
 								}
