@@ -4409,6 +4409,123 @@
 					]
 				},
 				{
+					"name": "Miscellaneous",
+					"item": [
+						{
+							"name": "Tax offices",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/tax-office",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"tax-office"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nfz Branches",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/nfz-branch",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"nfz-branch"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disease Codes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/disease-codes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"disease-codes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Break Benefit Types",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/break-benefit-types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"break-benefit-types"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "login",
 					"event": [
 						{
@@ -5882,6 +5999,53 @@
 							"response": []
 						},
 						{
+							"name": "Collective Print",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/payroll/collective/print?collective_id=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"payroll",
+										"collective",
+										"print"
+									],
+									"query": [
+										{
+											"key": "collective_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Collective close",
 							"request": {
 								"auth": {
@@ -6534,6 +6698,34 @@
 											"key": "type",
 											"value": ""
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disease Code and Holiday Benefit Type",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actions/holiday-addons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actions",
+										"holiday-addons"
 									]
 								}
 							},
