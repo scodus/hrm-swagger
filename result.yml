@@ -444,6 +444,8 @@ paths:
       tags:
         - Super admin > Company
       summary: all
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -586,6 +588,8 @@ paths:
                 _method:
                   type: string
                   example: put
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -625,6 +629,8 @@ paths:
       tags:
         - Super admin > Company
       summary: delete
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -659,6 +665,8 @@ paths:
                 _method:
                   type: string
                   example: patch
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -670,7 +678,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-one
+          example: company-two
       responses:
         '200':
           description: Successful response
@@ -1115,7 +1123,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: scodusnp@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -1848,7 +1856,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: n_bipin.bhattrai@cashdirector.com
+                  example: tomnjerry8963@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2677,6 +2685,134 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /my-company:
+    get:
+      tags:
+        - Company Admin
+      summary: company data
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /company/{slug}:
+    post:
+      tags:
+        - Company Admin
+      summary: company data edit
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                name:
+                  type: string
+                  example: Company Two edit
+                short_name:
+                  type: string
+                  example: three edit
+                address:
+                  type: string
+                  example: Kalikasthan edit
+                status_id:
+                  type: integer
+                  description: values-> 0:inactive, 1:active
+                  example: '1'
+                tax_id:
+                  type: integer
+                  example: '1234567'
+                regon:
+                  type: string
+                  example: 1234as
+                bdo:
+                  type: integer
+                  example: '12345'
+                phone_number:
+                  type: integer
+                  example: '98089081'
+                company_detail[email]:
+                  type: string
+                  example: asdasds@gmail.com
+                addresses[0][country]:
+                  type: string
+                  example: Nepal
+                addresses[0][zip]:
+                  type: integer
+                  example: '12'
+                addresses[0][post]:
+                  type: string
+                  example: post edit
+                addresses[0][house_number]:
+                  type: integer
+                  example: '72'
+                addresses[0][number_of_premises]:
+                  type: integer
+                  example: '5'
+                addresses[0][street]:
+                  type: string
+                  example: kalika marg
+                addresses[0][community]:
+                  type: string
+                  example: Kalika Tol
+                addresses[0][county]:
+                  type: string
+                  example: Kalika County
+                addresses[0][voivodeship]:
+                  type: string
+                  example: Kalika Voivodeship
+                addresses[0][type]:
+                  type: string
+                  example: default
+                addresses[0][same_address_type]:
+                  type: string
+                addresses[0][city]:
+                  type: string
+                  example: bhairahawa
+                addresses[1][country]:
+                  type: string
+                  example: India edit
+                addresses[1][street]:
+                  type: string
+                  example: Seto Pul edit
+                addresses[1][type]:
+                  type: string
+                  example: business
+                addresses[1][same_address_type]:
+                  type: string
+                addresses[3][type]:
+                  type: string
+                  example: type 2
+                addresses[3][same_address_type]:
+                  type: string
+                  example: business
+                logo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: company-two-edit
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/password-reset:
     post:
       tags:
@@ -2786,7 +2922,117 @@ paths:
           schema:
             type: integer
           required: true
-          example: '262'
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: rename folder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '13'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{file_id}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: rename file
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: asdw
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: file_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}:
+    delete:
+      tags:
+        - Folder
+      summary: delete folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{file_id}:
+    delete:
+      tags:
+        - Folder
+      summary: delete file
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: file_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -2826,7 +3072,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '8'
       responses:
         '200':
           description: Successful response

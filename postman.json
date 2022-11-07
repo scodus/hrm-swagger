@@ -783,6 +783,16 @@
 						{
 							"name": "update",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -935,6 +945,16 @@
 						{
 							"name": "change active status",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -972,7 +992,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one"
+											"value": "company-two"
 										}
 									]
 								}
@@ -1278,6 +1298,16 @@
 						{
 							"name": "delete",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -3690,6 +3720,16 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -4573,7 +4613,7 @@
 								},
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "scodusnp@gmail.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -5516,6 +5556,18 @@
 											"key": "password",
 											"value": "P@ssw0rd",
 											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "scodusnp@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "tomnjerry8963@gmail.com",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -6201,608 +6253,45 @@
 					]
 				},
 				{
-					"name": "Actions",
-					"item": [
-						{
-							"name": "Get Deduction/Payroll",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/allowance-deduction?employee_id=1&agreement_id=5",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"allowance-deduction"
-									],
-									"query": [
-										{
-											"key": "employee_id",
-											"value": "1"
-										},
-										{
-											"key": "agreement_id",
-											"value": "5"
-										}
-									]
+					"name": "company data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
 								}
-							},
-							"response": []
+							]
 						},
-						{
-							"name": "Add Deduction/Allowance",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"employee_id\":1,\r\n    \"name\":\"second allowance\",\r\n    \"agreement_id\":1,\r\n    \"type\":\"allowance\",\r\n    \"value\":\"100\",\r\n    \"one_time\":false,\r\n    \"start_date\":\"2022-08-20\",\r\n    \"end_date\":\"2022-08-30\",\r\n    \"is_taxable\":false,\r\n    \"include_socialsecurity_base\":false,\r\n    \"include_sick_base\":false,\r\n    \"include_vacation_base\":false,\r\n    \"year\":2022,\r\n    \"month\":8\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/allowance-deduction",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"allowance-deduction"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit Deduction/Allowance",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"one_time\": false,\r\n    \"agreement_id\": \"5\",\r\n    \"type\": \"allowance\",\r\n    \"value\": 100,\r\n    \"name\": \"Festival Bonus\",\r\n    \"is_taxable\": true,\r\n    \"include_socialsecurity_base\": true,\r\n    \"include_sick_base\": true,\r\n    \"include_vacation_base\": false,\r\n    \"start_date\": \"2022-08-24\",\r\n    \"end_date\": \"2022-08-31\",\r\n    \"year\": null,\r\n    \"month\": null\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/allowance-deduction/:id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"allowance-deduction",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Deduction/Allowance",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/allowance-deduction/:id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"allowance-deduction",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Vacation/Sick Leave",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/vacation-sick-leave?employee_id=1",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"vacation-sick-leave"
-									],
-									"query": [
-										{
-											"key": "employee_id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Vacation/Sick Leave",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"employee_id\":1,\r\n    \"name\":\"3rd\",\r\n    \"type\":\"vacation_leave\",\r\n    \"start_date\":\"2022-08-20\",\r\n    \"end_date\":\"2022-08-30\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/vacation-sick-leave",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"vacation-sick-leave"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit Vacation/Sick Leave",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"sick-leave\",\r\n    \"start_date\":\"2022-07-21\",\r\n    \"end_date\":\"2022-08-21\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/vacation-sick-leave/:id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"vacation-sick-leave",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Vacation/Sick Leave Copy",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/vacation-sick-leave/:id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"vacation-sick-leave",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get overtime amount",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/overtime-amount?employee_id=1",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"overtime-amount"
-									],
-									"query": [
-										{
-											"key": "employee_id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add overtime amount",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"Night\",\r\n    \"employee_id\":1,\r\n    \"value\":500,\r\n    \"hours\":7.45,\r\n    \"year\":2022,\r\n    \"month\":9\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/overtime-amount",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"overtime-amount"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Overtime Amount",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"Night 2\",\r\n    \"value\":550,\r\n    \"hours\":8.25,\r\n    \"year\":2022,\r\n    \"month\":9\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/actions/overtime-amount/:overtime_id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"overtime-amount",
-										":overtime_id"
-									],
-									"variable": [
-										{
-											"key": "overtime_id",
-											"value": "40"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Overtime Amount",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/overtime-amount/:overtime_id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"overtime-amount",
-										":overtime_id"
-									],
-									"variable": [
-										{
-											"key": "overtime_id",
-											"value": "40"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Events",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/all?start_date=2022-07-03&end_date=2022-09-01&employee_id&type=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"all"
-									],
-									"query": [
-										{
-											"key": "start_date",
-											"value": "2022-07-03"
-										},
-										{
-											"key": "end_date",
-											"value": "2022-09-01"
-										},
-										{
-											"key": "employee_id",
-											"value": null
-										},
-										{
-											"key": "type",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Disease Code and Holiday Benefit Type",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/actions/holiday-addons",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"actions",
-										"holiday-addons"
-									]
-								}
-							},
-							"response": []
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/my-company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"my-company"
+							]
 						}
-					]
+					},
+					"response": []
 				},
 				{
-					"name": "Payroll Closing",
-					"item": [
+					"name": "company data edit",
+					"event": [
 						{
-							"name": "Get Closing",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/company-payroll-closing",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"company-payroll-closing"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Store Closing",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{admin_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"automatic_closing\":1,\r\n    \"type\":\"current_month\",\r\n    \"day_of_month\":0\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/company-payroll-closing",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"company-payroll-closing"
-									]
-								}
-							},
-							"response": []
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				{
-					"name": "Profile",
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -6815,68 +6304,121 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "company_detail_email",
-									"value": " n_bipin.bhattrai@cashdirector.com",
+									"key": "_method",
+									"value": "patch"
+								},
+								{
+									"key": "name",
+									"value": "Company Two edit",
 									"type": "text"
 								},
 								{
-									"key": "addresse.0.zip",
-									"value": " 72505",
+									"key": "short_name",
+									"value": "three edit",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.street",
-									"value": " 728-Gulam Road",
+									"key": "address",
+									"value": "Kalikasthan edit",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.house_number",
-									"value": "",
+									"key": "status_id",
+									"value": "1",
+									"description": "values-> 0:inactive, 1:active",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.number_of_premises",
-									"value": "",
+									"key": "tax_id",
+									"value": "1234567",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "regon",
+									"value": "1234as",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "bdo",
+									"value": "12345",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "98089081",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.city",
-									"value": " Kathmandu",
+									"key": "company_detail[email]",
+									"value": "asdasds@gmail.com",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.post",
-									"value": " 44600",
+									"key": "addresses[0][country]",
+									"value": "Nepal",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.community",
-									"value": " Kathmandu",
+									"key": "addresses[0][zip]",
+									"value": "12",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.county",
-									"value": " Dillibazar",
+									"key": "addresses[0][post]",
+									"value": "post edit",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.voivodeship",
-									"value": "",
+									"key": "addresses[0][house_number]",
+									"value": "72",
 									"type": "text"
 								},
 								{
-									"key": "addresses.0.country",
-									"value": " Nepal",
+									"key": "addresses[0][number_of_premises]",
+									"value": "5",
 									"type": "text"
+								},
+								{
+									"key": "addresses[0][street]",
+									"value": "kalika marg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][community]",
+									"value": "Kalika Tol",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][county]",
+									"value": "Kalika County",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][voivodeship]",
+									"value": "Kalika Voivodeship",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "addresses[0][type]",
-									"value": " home",
+									"value": "default",
 									"type": "text"
 								},
 								{
@@ -6885,90 +6427,62 @@
 									"type": "text"
 								},
 								{
+									"key": "addresses[0][city]",
+									"value": "bhairahawa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[1][country]",
+									"value": "India edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][street]",
+									"value": "Seto Pul edit",
+									"type": "text"
+								},
+								{
 									"key": "addresses[1][type]",
-									"value": " registered",
+									"value": "business",
 									"type": "text"
 								},
 								{
 									"key": "addresses[1][same_address_type]",
-									"value": " home",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "phone_number",
-									"value": " 9803379001",
+									"key": "addresses[3][type]",
+									"value": "type 2",
 									"type": "text"
 								},
 								{
-									"key": "bdo",
-									"value": " 2918-29391",
-									"type": "text"
-								},
-								{
-									"key": "regon",
-									"value": " 12389-29391",
-									"type": "text"
-								},
-								{
-									"key": "tax_id",
-									"value": " 2930223003",
-									"type": "text"
-								},
-								{
-									"key": "short_name",
-									"value": " Magnolia",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": " Magnolia IT Solutions",
+									"key": "addresses[3][same_address_type]",
+									"value": "business",
 									"type": "text"
 								},
 								{
 									"key": "logo",
 									"type": "file",
-									"src": "/C:/Users/Bijay/Downloads/20210911_115055_1655364410.jpg"
-								},
-								{
-									"key": "_method",
-									"value": " patch",
-									"type": "text",
-									"disabled": true
+									"src": "/home/user--49/Pictures/x360.jpeg"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/my-company/:slug",
+							"raw": "{{url}}/company/:slug",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"my-company",
+								"company",
 								":slug"
 							],
 							"variable": [
 								{
 									"key": "slug",
-									"value": "magnolia-it-solutions"
+									"value": "company-two-edit"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PayrollSetting",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/payroll-setting",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"payroll-setting"
 							]
 						}
 					},
@@ -7146,7 +6660,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "262"
+									"value": "8"
 								}
 							]
 						}
@@ -7191,6 +6705,208 @@
 							"path": [
 								"api",
 								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rename folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Edited Name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rename file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"asdw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/file/:file_id/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":file_id",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/file/:file_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":file_id"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -7252,7 +6968,7 @@
 							"variable": [
 								{
 									"key": "folder_id",
-									"value": "1"
+									"value": "8"
 								}
 							]
 						}
