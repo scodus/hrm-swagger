@@ -793,6 +793,16 @@
 						{
 							"name": "update",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -945,6 +955,16 @@
 						{
 							"name": "change active status",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -982,7 +1002,7 @@
 									"variable": [
 										{
 											"key": "slug",
-											"value": "company-one"
+											"value": "company-two"
 										}
 									]
 								}
@@ -1288,6 +1308,16 @@
 						{
 							"name": "delete",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -3719,6 +3749,16 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -4477,7 +4517,7 @@
 								},
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "scodusnp@gmail.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -5350,6 +5390,18 @@
 											"key": "password",
 											"value": "Asd@360",
 											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "scodusnp@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "tomnjerry8963@gmail.com",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -5615,6 +5667,242 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "company data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/my-company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"my-company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "company data edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch"
+								},
+								{
+									"key": "name",
+									"value": "Company Two edit",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "three edit",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Kalikasthan edit",
+									"type": "text"
+								},
+								{
+									"key": "status_id",
+									"value": "1",
+									"description": "values-> 0:inactive, 1:active",
+									"type": "text"
+								},
+								{
+									"key": "tax_id",
+									"value": "1234567",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "regon",
+									"value": "1234as",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "bdo",
+									"value": "12345",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "98089081",
+									"type": "text"
+								},
+								{
+									"key": "company_detail[email]",
+									"value": "asdasds@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][country]",
+									"value": "Nepal",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][zip]",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][post]",
+									"value": "post edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][house_number]",
+									"value": "72",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][number_of_premises]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][street]",
+									"value": "kalika marg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][community]",
+									"value": "Kalika Tol",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][county]",
+									"value": "Kalika County",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][voivodeship]",
+									"value": "Kalika Voivodeship",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[0][type]",
+									"value": "default",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][same_address_type]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "addresses[0][city]",
+									"value": "bhairahawa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "addresses[1][country]",
+									"value": "India edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][street]",
+									"value": "Seto Pul edit",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][type]",
+									"value": "business",
+									"type": "text"
+								},
+								{
+									"key": "addresses[1][same_address_type]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "addresses[3][type]",
+									"value": "type 2",
+									"type": "text"
+								},
+								{
+									"key": "addresses[3][same_address_type]",
+									"value": "business",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/user--49/Pictures/x360.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "company-two-edit"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -5788,7 +6076,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "8"
 								}
 							]
 						}
@@ -5833,6 +6121,208 @@
 							"path": [
 								"api",
 								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rename folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Edited Name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rename file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"asdw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/file/:file_id/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":file_id",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/file/:file_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":file_id"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -5894,7 +6384,7 @@
 							"variable": [
 								{
 									"key": "folder_id",
-									"value": "2"
+									"value": "8"
 								}
 							]
 						}
