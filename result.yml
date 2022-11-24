@@ -31,6 +31,7 @@ tags:
   - name: Super admin > Company > Verify Mail
   - name: Super admin > Company > Insurance Code
   - name: Super admin > Company > Occupation Code
+  - name: Super admin > Company Admin
   - name: Super admin > Status
   - name: Super admin > Parameter
   - name: Super admin > Agreement
@@ -588,8 +589,6 @@ paths:
                 _method:
                   type: string
                   example: put
-      security:
-        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -629,8 +628,6 @@ paths:
       tags:
         - Super admin > Company
       summary: delete
-      security:
-        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -665,8 +662,6 @@ paths:
                 _method:
                   type: string
                   example: patch
-      security:
-        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -678,7 +673,45 @@ paths:
           schema:
             type: string
           required: true
-          example: company-two
+          example: company-one
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/company-admin:
+    get:
+      tags:
+        - Super admin > Company Admin
+      summary: List Company Admins
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_slug
+          in: query
+          schema:
+            type: string
+          example: tenetur-quis-molliti
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super admin > Company Admin
+      summary: Create Company Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: tenetur-quis-molliti
+                user_name: Bipin bhattarai
+                user_email: n_bipin.bhattrai@cashdirector.com
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -1123,12 +1156,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: scodusnp@gmail.com
+                  example: tomnjerry8963@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
-      security:
-        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -1189,6 +1220,11 @@ paths:
                 status_id: 1
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1237,6 +1273,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employee_id
           in: path
           schema:
@@ -1255,6 +1295,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employee_id
           in: path
           schema:
@@ -1273,6 +1317,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employee_id
           in: path
           schema:
@@ -1320,6 +1368,11 @@ paths:
                     value: null
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1340,6 +1393,11 @@ paths:
                 status_id: 1
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1362,6 +1420,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: department_id
           in: path
           schema:
@@ -1380,6 +1442,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: department_id
           in: path
           schema:
@@ -1398,6 +1464,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: department_id
           in: path
           schema:
@@ -1445,6 +1515,11 @@ paths:
                     value: null
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1457,6 +1532,11 @@ paths:
       summary: get parameters added by superadmin
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1492,6 +1572,11 @@ paths:
                     par_value: 902
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1533,6 +1618,11 @@ paths:
                     value: null
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1546,6 +1636,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: parameter_id
           in: path
           schema:
@@ -1565,6 +1659,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: parameter_id
           in: path
           schema:
@@ -1583,6 +1681,11 @@ paths:
       summary: Active tax rates
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1655,6 +1758,10 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1667,11 +1774,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: employee_id
-          in: query
+        - name: CompanyId
+          in: header
           schema:
             type: integer
-          example: '1'
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -1725,6 +1832,10 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: id
           in: path
           schema:
@@ -1748,6 +1859,10 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: id
           in: path
           schema:
@@ -1771,6 +1886,10 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: id
           in: path
           schema:
@@ -1793,32 +1912,40 @@ paths:
             schema:
               type: object
               example:
-                gross_salary: '10000'
-                type: indefinite
-                date_of_signing: '2022-10-11'
-                start_date: '2022-10-11'
-                end_date: null
-                position: null
+                gross_salary: 3500
+                type: fixed
+                date_of_signing: '2022-10-01'
+                start_date: '2022-10-01'
+                end_date: '2022-10-31'
+                position: Księgowa
                 parameters:
-                  work_hour_numerator: 1
-                  work_hour_denominator: 1
+                  work_hour_numerator: '1'
+                  work_hour_denominator: '2'
                   cost_of_getting_income: usually
-                  labor_fund_insurance_employer: true
-                  fgsp_insurance_employer: true
-                  fep_insurance_employer: false
-                  pit_exemption: null
-                  tax_rate: ''
-                  tax_relief: 1
-                  insurance_code_id: ''
-                  occupation_code_id: ''
-                  terms_of_employment: ''
-                  contract_premium: ''
-                  contract_benefits: ''
-                  contract_deductions: ''
-                allowance_deductions: []
+                  labor_fund_insurance_employer: '1'
+                  fgsp_insurance_employer: '1'
+                  fep_insurance_employer: '0'
+                  pit_exemption: automatic
+                  tax_rate: '12'
+                  tax_relief: '1'
+                  insurance_code_id: '1'
+                  occupation_code_id: '205'
+                  terms_of_employment: null
+                  contract_premium: null
+                  contract_benefits: null
+                  contract_deductions: null
+                department_id: 6
+                id: 18
+                employee_id: 23
                 agreement_type_id: 1
+                agreement_type_name: Employment Contract
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1832,12 +1959,41 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employee_id
           in: path
           schema:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement-terminate:
+    post:
+      tags:
+        - Company Admin > Agreement
+      summary: Terminate Agreement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agreement_id: 7
+                date: '2022-12-30'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1856,7 +2012,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: soges92677@lutota.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -1934,6 +2090,10 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1946,6 +2106,11 @@ paths:
       summary: all
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1958,6 +2123,11 @@ paths:
       summary: get active
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1971,6 +2141,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employeeId
           in: path
           schema:
@@ -2011,6 +2185,11 @@ paths:
                   example: '2000'
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2024,6 +2203,15 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: XLocalization
+          in: header
+          schema:
+            type: string
+          example: pl
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: year
           in: query
           schema:
@@ -2033,7 +2221,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '9'
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -2055,6 +2243,11 @@ paths:
                 overwrite_value: 1.3
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2068,6 +2261,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: year
           in: query
           schema:
@@ -2091,6 +2288,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: start_date
           in: query
           schema:
@@ -2123,11 +2324,37 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: collective_id
           in: query
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /payroll/collective/details:
+    get:
+      tags:
+        - Company Admin > Payroll
+      summary: Collective Details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+        - name: collective_id
+          in: query
+          schema:
+            type: integer
+          example: '15'
       responses:
         '200':
           description: Successful response
@@ -2144,9 +2371,38 @@ paths:
             schema:
               type: object
               example:
-                collective_id: 1
+                collective_id: 25
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /payroll/generate-correction:
+    post:
+      tags:
+        - Company Admin > Payroll
+      summary: Generate Correction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paylist_id: 28
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2169,6 +2425,11 @@ paths:
                 signature: Bijay
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2182,6 +2443,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employee_id
           in: query
           schema:
@@ -2220,6 +2485,11 @@ paths:
                 hours: 130
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2233,6 +2503,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: employee_id
           in: query
           schema:
@@ -2274,6 +2548,11 @@ paths:
                 month: 8
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2306,6 +2585,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: id
           in: path
           schema:
@@ -2324,6 +2607,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
         - name: id
           in: path
           schema:
@@ -2365,9 +2652,15 @@ paths:
               example:
                 employee_id: 1
                 name: 3rd
-                type: vacation_leave
-                start_date: '2022-08-20'
-                end_date: '2022-08-30'
+                type: sick_leave
+                start_date: '2022-02-20'
+                end_date: '2022-02-28'
+                disease_code_id: 1
+                break_benefit_type_id: 1
+                print_series_number: '123'
+                hospital_treatment: 0
+                date_of_release: '2022-11-22'
+                date_of_delivery: null
       security:
         - bearerAuth: []
       responses:
@@ -2685,134 +2978,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /my-company:
-    get:
-      tags:
-        - Company Admin
-      summary: company data
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /company/{slug}:
-    post:
-      tags:
-        - Company Admin
-      summary: company data edit
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                _method:
-                  type: string
-                  example: patch
-                name:
-                  type: string
-                  example: Company Two edit
-                short_name:
-                  type: string
-                  example: three edit
-                address:
-                  type: string
-                  example: Kalikasthan edit
-                status_id:
-                  type: integer
-                  description: values-> 0:inactive, 1:active
-                  example: '1'
-                tax_id:
-                  type: integer
-                  example: '1234567'
-                regon:
-                  type: string
-                  example: 1234as
-                bdo:
-                  type: integer
-                  example: '12345'
-                phone_number:
-                  type: integer
-                  example: '98089081'
-                company_detail[email]:
-                  type: string
-                  example: asdasds@gmail.com
-                addresses[0][country]:
-                  type: string
-                  example: Nepal
-                addresses[0][zip]:
-                  type: integer
-                  example: '12'
-                addresses[0][post]:
-                  type: string
-                  example: post edit
-                addresses[0][house_number]:
-                  type: integer
-                  example: '72'
-                addresses[0][number_of_premises]:
-                  type: integer
-                  example: '5'
-                addresses[0][street]:
-                  type: string
-                  example: kalika marg
-                addresses[0][community]:
-                  type: string
-                  example: Kalika Tol
-                addresses[0][county]:
-                  type: string
-                  example: Kalika County
-                addresses[0][voivodeship]:
-                  type: string
-                  example: Kalika Voivodeship
-                addresses[0][type]:
-                  type: string
-                  example: default
-                addresses[0][same_address_type]:
-                  type: string
-                addresses[0][city]:
-                  type: string
-                  example: bhairahawa
-                addresses[1][country]:
-                  type: string
-                  example: India edit
-                addresses[1][street]:
-                  type: string
-                  example: Seto Pul edit
-                addresses[1][type]:
-                  type: string
-                  example: business
-                addresses[1][same_address_type]:
-                  type: string
-                addresses[3][type]:
-                  type: string
-                  example: type 2
-                addresses[3][same_address_type]:
-                  type: string
-                  example: business
-                logo:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: company-two-edit
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/password-reset:
     post:
       tags:
@@ -2922,117 +3087,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '8'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{folder_id}/rename:
-    patch:
-      tags:
-        - Folder
-      summary: rename folder
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: Edited Name
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: folder_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '13'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/file/{file_id}/rename:
-    patch:
-      tags:
-        - Folder
-      summary: rename file
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: asdw
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: file_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{folder_id}:
-    delete:
-      tags:
-        - Folder
-      summary: delete folder
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: folder_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '8'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/file/{file_id}:
-    delete:
-      tags:
-        - Folder
-      summary: delete file
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: file_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '10'
+          example: '262'
       responses:
         '200':
           description: Successful response
@@ -3072,7 +3127,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '8'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3108,6 +3163,110 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api​/file​/{file_id}:
+    delete:
+      tags:
+        - Folder
+      summary: Delete File
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+        - name: file_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api​/folder​/{file_id}:
+    delete:
+      tags:
+        - Folder
+      summary: Delete folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+        - name: file_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename Folder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+        - name: folder_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename Folder Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+        - name: fileId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /test:
     get:
       tags:
@@ -3120,11 +3279,33 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /client/my-company:
+  /my-company:
     get:
       tags:
         - default
       summary: my company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /all-companies:
+    get:
+      tags:
+        - default
+      summary: my company Copy
       security:
         - bearerAuth: []
       parameters:
