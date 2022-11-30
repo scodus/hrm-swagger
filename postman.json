@@ -3695,6 +3695,70 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Remove Admin",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{superadmin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"company_slug\":\"tenetur-quis-molliti\",\n    \"user_id\":3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/admin/company-admin/remove",
+                  "host": ["{{url}}"],
+                  "path": ["admin", "company-admin", "remove"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Admin Status (toggle)",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{superadmin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"company_slug\":\"tenetur-quis-molliti\",\n    \"user_id\":3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/admin/company-admin/change-status",
+                  "host": ["{{url}}"],
+                  "path": ["admin", "company-admin", "change-status"]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -4450,13 +4514,13 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"company_id\": 1,\n    \"first_name\": \"Lal\",\n    \"last_name\": \"Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"slalbahadurssss@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"permanent\",\n            \"same_address_type\":null\n        }\n    ],\n    \"is_same_registered_address\": 0,\n    \"status_id\": 1\n}",
+                  "raw": "{\n    \"company_id\": 1,\n    \"first_name\": \"Lal\",\n    \"last_name\": \"Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"slalbahadurssss@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"home\",\n            \"same_address_type\":null\n        }\n    ],\n    \"status_id\": 1,\n    \"bank_name\":\"Himalayan\",\n    \"account_number\":\"13000012390\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4488,13 +4552,13 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"fullname\": \"lal Jung Bahadur\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"permanent\"\n        }\n    ],\n    \"is_same_registered_address\": 1,\n    \"status_id\": 0\n}",
+                  "raw": "{\n    \"method\": \"put\",\n    \"company_id\": 1,\n    \"first_name\": \"lal\",\n    \"last_name\":\"Bahadur\",\n    \"pesel\": \"12345678901\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"lalbahadur@email.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"mother_name\": \"Mina dhan Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"home\",\n            \"same_address_type\":null\n        }\n    ],\n    \"status_id\": 0,\n    \"bank_name\":\"Nabil\",\n    \"account_number\":\"445566\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4508,7 +4572,7 @@
                   "variable": [
                     {
                       "key": "employee_id",
-                      "value": "2"
+                      "value": "57"
                     }
                   ]
                 }
@@ -4532,7 +4596,7 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
@@ -4570,7 +4634,7 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
@@ -4581,7 +4645,7 @@
                   "variable": [
                     {
                       "key": "employee_id",
-                      "value": "10"
+                      "value": "57"
                     }
                   ]
                 }
@@ -5075,13 +5139,13 @@
                   },
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 1,\r\n    \"gross_salary\": 4000.222,\r\n    \"type\": \"indefinite\",\r\n    \"date_of_signing\": \"2024-07-03\",\r\n    \"start_date\": \"2024-08-01\",\r\n    \"end_date\": \"2024-11-10\",\r\n    \"position\": \"abc\",\r\n    \"department_id\": 1,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": 1,\r\n        \"work_hour_denominator\": 1,\r\n        \"cost_of_getting_income\": \"usually\",\r\n        \"labor_fund_insurance_employer\": true,\r\n        \"fgsp_insurance_employer\": true,\r\n        \"fep_insurance_employer\": false,\r\n        \"pit_exemption\": null,\r\n        \"tax_rate\": \"12\",\r\n        \"tax_relief\": 1,\r\n        \"insurance_code_id\": \"\",\r\n        \"occupation_code_id\": \"\",\r\n        \"terms_of_employment\": \"\",\r\n        \"shared_taxation\":1\r\n    },\r\n    \"allowance_deductions\": [\r\n        {\r\n            \"name\": \"agree allowance\",\r\n            \"type\": \"allowance\",\r\n            \"value\": \"500\",\r\n            \"one_time\": false,\r\n            \"start_date\": \"2023-08-20\",\r\n            \"end_date\": \"2023-08-30\",\r\n            \"is_taxable\": false,\r\n            \"include_socialsecurity_base\": false,\r\n            \"include_sick_base\": false,\r\n            \"include_vacation_base\": false,\r\n            \"year\": 2022,\r\n            \"month\": 8\r\n        },\r\n        {\r\n            \"name\": \"agree deduction\",\r\n            \"type\": \"deduction\",\r\n            \"value\": \"1000\",\r\n            \"one_time\": true,\r\n            \"start_date\": null,\r\n            \"end_date\": null,\r\n            \"is_taxable\": true,\r\n            \"include_socialsecurity_base\": true,\r\n            \"include_sick_base\": true,\r\n            \"include_vacation_base\": true,\r\n            \"year\": 2023,\r\n            \"month\": 8\r\n        }\r\n    ]\r\n}",
+                  "raw": "{\r\n    \"employee_id\": 1,\r\n    \"agreement_type_id\": 1,\r\n    \"gross_salary\": 4000,\r\n    \"type\": \"indefinite\",\r\n    \"date_of_signing\": \"2022-11-11\",\r\n    \"start_date\": \"2022-11-12\",\r\n    \"end_date\": \"2022-12-30\",\r\n    \"position\": \"abc\",\r\n    \"department_id\": 1,\r\n    \"parameters\": {\r\n        \"work_hour_numerator\": \"1\",\r\n        \"work_hour_denominator\": \"1\",\r\n        \"cost_of_getting_income\": \"usually\",\r\n        \"labor_fund_insurance_employer\": \"0\",\r\n        \"fgsp_insurance_employer\": \"0\",\r\n        \"fep_insurance_employer\": \"0\",\r\n        \"pit_exemption\": \"automatic\",\r\n        \"tax_rate\": \"12\",\r\n        \"tax_relief\": \"1\",\r\n        \"insurance_code_id\": \"1\",\r\n        \"occupation_code_id\": \"2\",\r\n        \"terms_of_employment\": \"This is a term. Listen carefully\"\r\n    },\r\n    \"allowance_deductions\":[]\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5167,7 +5231,7 @@
                   },
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "11",
                     "type": "text"
                   }
                 ],
@@ -5178,7 +5242,7 @@
                   "variable": [
                     {
                       "key": "id",
-                      "value": "1"
+                      "value": "36"
                     }
                   ]
                 }
@@ -5316,7 +5380,7 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
@@ -5731,7 +5795,7 @@
                   },
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
@@ -5862,7 +5926,7 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
@@ -5876,21 +5940,22 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/payroll/collective/filter?start_date=2022-08-12&end_date=2022-09-14&status=OPEN&agreement_type_id",
+                  "raw": "{{url}}/payroll/collective/filter?start_date=2022-10-01&end_date=2022-10-30&agreement_type_id",
                   "host": ["{{url}}"],
                   "path": ["payroll", "collective", "filter"],
                   "query": [
                     {
                       "key": "start_date",
-                      "value": "2022-08-12"
+                      "value": "2022-10-01"
                     },
                     {
                       "key": "end_date",
-                      "value": "2022-09-14"
+                      "value": "2022-10-30"
                     },
                     {
                       "key": "status",
-                      "value": "OPEN"
+                      "value": "OPEN",
+                      "disabled": true
                     },
                     {
                       "key": "agreement_type_id",
@@ -5921,7 +5986,7 @@
                 "header": [
                   {
                     "key": "CompanyId",
-                    "value": "",
+                    "value": "1",
                     "type": "text"
                   }
                 ],
@@ -5935,13 +6000,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/payroll/collective/print?collective_id=1",
+                  "raw": "{{url}}/payroll/collective/print?collective_id=54",
                   "host": ["{{url}}"],
                   "path": ["payroll", "collective", "print"],
                   "query": [
                     {
                       "key": "collective_id",
-                      "value": "1"
+                      "value": "54"
                     }
                   ]
                 }
@@ -6105,6 +6170,44 @@
                   "raw": "{{url}}/payroll/modify-group",
                   "host": ["{{url}}"],
                   "path": ["payroll", "modify-group"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Initiate Payouts on closed Paylists",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "CompanyId",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"collective_id\":5\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/payroll/collective/payout",
+                  "host": ["{{url}}"],
+                  "path": ["payroll", "collective", "payout"]
                 }
               },
               "response": []
@@ -6522,10 +6625,16 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "CompanyId",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"name\":\"Night\",\r\n    \"employee_id\":1,\r\n    \"value\":500,\r\n    \"hours\":7.45,\r\n    \"year\":2022,\r\n    \"month\":9\r\n}",
+                  "raw": "{\r\n    \"name\":\"Night\",\r\n    \"employee_id\":1,\r\n    \"value\":500,\r\n    \"hours\":7.45,\r\n    \"year\":2022,\r\n    \"month\":8\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6727,6 +6836,81 @@
                   "raw": "{{url}}/company-payroll-closing",
                   "host": ["{{url}}"],
                   "path": ["company-payroll-closing"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Payout",
+          "item": [
+            {
+              "name": "Payout By Employee",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "CompanyId",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/payouts/employee/:employeeId",
+                  "host": ["{{url}}"],
+                  "path": ["payouts", "employee", ":employeeId"],
+                  "variable": [
+                    {
+                      "key": "employeeId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Payout By Payroll Group",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "CompanyId",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/payouts/collective/:collectiveId",
+                  "host": ["{{url}}"],
+                  "path": ["payouts", "collective", ":collectiveId"],
+                  "variable": [
+                    {
+                      "key": "collectiveId",
+                      "value": "5"
+                    }
+                  ]
                 }
               },
               "response": []
