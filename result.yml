@@ -31,6 +31,7 @@ tags:
   - name: Super admin > Company > Verify Mail
   - name: Super admin > Company > Insurance Code
   - name: Super admin > Company > Occupation Code
+  - name: Super admin > Account Office
   - name: Super admin > Company Admin
   - name: Super admin > Status
   - name: Super admin > Parameter
@@ -51,7 +52,11 @@ tags:
   - name: Company Admin > Payroll
   - name: Company Admin > Actions
   - name: Company Admin > Payroll Closing
+  - name: Company Admin > Ezla Setting
   - name: Company Admin > Payout
+  - name: Company Admin > Bulk Payroll Actions
+  - name: Company Admin > Accounting
+  - name: Company Admin > Accounting > Company Users
   - name: Password Reset
   - name: Folder
 paths:
@@ -680,6 +685,128 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/account-office:
+    get:
+      tags:
+        - Super admin > Account Office
+      summary: List Accountant
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: perPage
+          in: query
+          schema:
+            type: integer
+          example: '20'
+        - name: name
+          in: query
+          schema:
+            type: string
+        - name: email
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super admin > Account Office
+      summary: Create Account Office
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: office second
+                email: office@mail.com
+                short_name: office
+                status_id: 1
+                tax_id: 123
+                bdo: 456
+                phone_number: '123412'
+                user_name: test office
+                user_email: testOffice@gmail.com
+                addresses:
+                  - type: default
+                    country: Nepal
+                    same_address_type: ''
+                  - type: business
+                    same_address_type: default
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/accounting-office/{slug}/admin:
+    put:
+      tags:
+        - Super admin > Account Office
+      summary: Change Accounting Office Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_name: test rename 2
+                user_email: testOffice2@gmail.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: office-second
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/account-office/company-without-accountoffice:
+    get:
+      tags:
+        - Super admin > Account Office
+      summary: Company Without offcie
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/account-office/company-assign:
+    patch:
+      tags:
+        - Super admin > Account Office
+      summary: Company Without offcie Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: magnolia-it-solutions
+                accounting_office_slug: office-second
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /admin/company-admin:
     get:
       tags:
@@ -692,7 +819,7 @@ paths:
           in: query
           schema:
             type: string
-          example: tenetur-quis-molliti
+          example: magnolia-it-solutions
       responses:
         '200':
           description: Successful response
@@ -708,9 +835,10 @@ paths:
             schema:
               type: object
               example:
-                company_slug: tenetur-quis-molliti
-                user_name: Bipin bhattarai
-                user_email: n_bipin.bhattrai@cashdirector.com
+                company_slug: magnolia-it-solutions
+                user_name: New Admin
+                user_email: n_bijay.niraula@cashdirector.com
+                is_admin: 1
       security:
         - bearerAuth: []
       responses:
@@ -749,8 +877,10 @@ paths:
             schema:
               type: object
               example:
-                company_slug: tenetur-quis-molliti
-                user_id: 3
+                company_slug: magnolia-it-solutions
+                user_id: 26
+                status: 0
+                is_admin: 0
       security:
         - bearerAuth: []
       responses:
@@ -1223,13 +1353,12 @@ paths:
             schema:
               type: object
               example:
-                company_id: 1
                 first_name: Lal
                 last_name: Bahadur
                 pesel: pesel
                 tax_id: 123
                 gender: male
-                email: slalbahadurssss@semail.com
+                email: asdas@semail.com
                 department_id: 2
                 employeed_from: '2022-01-01'
                 employeed_to: ''
@@ -1259,7 +1388,7 @@ paths:
                     same_address_type: null
                 status_id: 1
                 bank_name: Himalayan
-                account_number: '13000012390'
+                account_number: '222'
       security:
         - bearerAuth: []
       parameters:
@@ -1421,7 +1550,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '25'
       responses:
         '200':
           description: Successful response
@@ -1888,13 +2017,13 @@ paths:
           in: header
           schema:
             type: integer
-          example: '11'
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '36'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1971,7 +2100,8 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2026,6 +2156,23 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /agreement-type:
+    get:
+      tags:
+        - Company Admin > Agreement Type
+      summary: get active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/login:
     post:
       tags:
@@ -2039,7 +2186,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: soges92677@lutota.com
+                  example: testOffice2@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2143,23 +2290,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /agreement-type:
-    get:
-      tags:
-        - Company Admin > Agreement Type
-      summary: get active
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: CompanyId
-          in: header
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /opening-balance/{employeeId}:
     get:
       tags:
@@ -2239,7 +2369,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '21'
         - name: year
           in: query
           schema:
@@ -2249,7 +2379,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '11'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -2325,12 +2455,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2022-10-01'
+          example: '2022-01-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2022-10-30'
+          example: '2022-12-30'
         - name: agreement_type_id
           in: query
           schema:
@@ -2460,31 +2590,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payroll/collective/payout:
-    post:
-      tags:
-        - Company Admin > Payroll
-      summary: Initiate Payouts on closed Paylists
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                collective_id: 5
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: CompanyId
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /payroll/employee-holiday-basis:
     get:
       tags:
@@ -2496,22 +2601,23 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: employee_id
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '1'
         - name: date
           in: query
           schema:
             type: string
-          example: '2022-12-10'
+          example: '2023-01-05'
         - name: type
           in: query
           schema:
             type: string
-          example: vacation
+          example: vacation_leave
       responses:
         '200':
           description: Successful response
@@ -2680,6 +2786,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: employee_id
           in: query
           schema:
@@ -2722,7 +2833,7 @@ paths:
     put:
       tags:
         - Company Admin > Actions
-      summary: Edit Vacation/Sick Leave
+      summary: Update Vacation/Sick Leave
       requestBody:
         content:
           application/json:
@@ -2732,15 +2843,26 @@ paths:
                 name: sick-leave
                 start_date: '2022-07-21'
                 end_date: '2022-08-21'
+                disease_code_id: 1
+                break_benefit_type_id: 1
+                print_series_number: '123'
+                date_of_release: '2022-11-10'
+                date_of_delivery: '2022-11-10'
+                hospital_treatment: '1'
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '147'
       responses:
         '200':
           description: Successful response
@@ -2909,6 +3031,12 @@ paths:
       summary: Get Closing
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2926,9 +3054,134 @@ paths:
               example:
                 automatic_closing: 1
                 type: current_month
-                day_of_month: 0
+                day_of_month: 3
+                representative: Sam tim
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /company-ezla-setting:
+    get:
+      tags:
+        - Company Admin > Ezla Setting
+      summary: Get Ezla Setting
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Company Admin > Ezla Setting
+      summary: Store Ezla Setting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: 1
+                period: daily
+                period_value: 1
+                email: user@mail.com
+                user_password: password
+                zip_password: password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /ezla-data:
+    get:
+      tags:
+        - Company Admin > Ezla Setting
+      summary: Get Data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /payouts/collective/{collectiveId}:
+    post:
+      tags:
+        - Company Admin > Payout
+      summary: Initiate Payouts on closed Paylists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: collectiveId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Company Admin > Payout
+      summary: Payout By Payroll Group
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: collectiveId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -2958,11 +3211,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payouts/collective/{collectiveId}:
-    get:
+  /payouts/mail:
+    post:
       tags:
         - Company Admin > Payout
-      summary: Payout By Payroll Group
+      summary: Send Paylist mail to employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                collective_id: 14
       security:
         - bearerAuth: []
       parameters:
@@ -2971,12 +3231,520 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: collectiveId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/collective:
+    get:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: Bulk List Payroll Group
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2022-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2022-12-30'
+        - name: company_id
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/action_data:
+    get:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: Bulk All Action Polling
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: collective_ids
+          in: query
+          schema:
+            type: integer
+          example: '14'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/close_paylist:
+    post:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: Close Bulk Payrolls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                collective_ids:
+                  - 60
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/send_payouts:
+    post:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: Bulk Send Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                collective_ids:
+                  - 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/send_mail:
+    post:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: Bulk Send Mail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                collective_ids:
+                  - 14
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/all-actions:
+    post:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: Bulk All Action
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                collective_ids:
+                  - 14
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/collective/details:
+    get:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: View Details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: collective_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: company_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bulk_action/collective/print:
+    get:
+      tags:
+        - Company Admin > Bulk Payroll Actions
+      summary: View Details Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: collective_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: company_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company-admin:
+    get:
+      tags:
+        - Company Admin > Accounting > Company Users
+      summary: List Company Admins
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_slug
+          in: query
+          schema:
+            type: string
+          example: magnolia-it-solutions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Company Admin > Accounting > Company Users
+      summary: Create Company Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: magnolia-it-solutions
+                user_name: New Admin
+                user_email: n_bijay.niraula@cashdirector.com
+                is_admin: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company-admin/remove:
+    patch:
+      tags:
+        - Company Admin > Accounting > Company Users
+      summary: Remove Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: tenetur-quis-molliti
+                user_id: 3
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company-admin/change-status:
+    patch:
+      tags:
+        - Company Admin > Accounting > Company Users
+      summary: Change Admin Status (toggle)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: magnolia-it-solutions
+                user_id: 26
+                status: 0
+                is_admin: 0
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company:
+    get:
+      tags:
+        - Company Admin > Accounting
+      summary: List Companies
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Company Admin > Accounting
+      summary: Create Company
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Fourth Company
+                short_name:
+                  type: string
+                  example: 4th
+                address:
+                  type: string
+                  example: Kalikasthan
+                status_id:
+                  type: integer
+                  description: values-> 0:inactive, 1:active
+                  example: '1'
+                tax_id:
+                  type: integer
+                  example: '3341114'
+                regon:
+                  type: string
+                  example: 1234as
+                bdo:
+                  type: integer
+                  example: '443233'
+                phone_number:
+                  type: integer
+                  example: '98089081'
+                company_detail_email:
+                  type: string
+                  example: fourth@gmail.com
+                addresses[0][country]:
+                  type: string
+                  example: Nepal
+                addresses[0][zip]:
+                  type: integer
+                  example: '12'
+                addresses[0][post]:
+                  type: string
+                  example: post
+                addresses[0][house_number]:
+                  type: integer
+                  example: '72'
+                addresses[0][number_of_premises]:
+                  type: integer
+                  example: '5'
+                addresses[0][same_address_type]:
+                  type: string
+                addresses[0][community]:
+                  type: string
+                  example: Kalika Tol
+                addresses[0][county]:
+                  type: string
+                  example: Kalika County
+                addresses[0][voivodeship]:
+                  type: string
+                  example: Kalika Voivodeship
+                addresses[0][type]:
+                  type: string
+                  example: default
+                addresses[0][city]:
+                  type: string
+                  example: bhairahawa
+                addresses[1][country]:
+                  type: string
+                  example: India
+                addresses[1][same_address_type]:
+                  type: string
+                  example: default
+                addresses[1][street]:
+                  type: string
+                  example: default
+                addresses[1][type]:
+                  type: string
+                  example: business
+                is_business_address_same:
+                  type: integer
+                  example: '1'
+                user_name:
+                  type: string
+                  example: Piyog
+                user_email:
+                  type: string
+                  example: fourthtier@ukgent.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company/{slug}:
+    get:
+      tags:
+        - Company Admin > Accounting
+      summary: Company Detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: third-company
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Company Admin > Accounting
+      summary: Update Company
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Company One
+                short_name:
+                  type: string
+                  example: one
+                address:
+                  type: string
+                  example: Kalikasthan
+                status_id:
+                  type: integer
+                  example: '0'
+                tax_id:
+                  type: integer
+                  example: '12333'
+                regon:
+                  type: string
+                  example: 1234ads
+                bdo:
+                  type: string
+                  example: 12345asd
+                phone_number:
+                  type: integer
+                  example: '9808908'
+                company_detail_email:
+                  type: string
+                  example: mmm@gmail.com
+                addresses[0][country]:
+                  type: string
+                  example: Nepal
+                addresses[0][zip_code]:
+                  type: integer
+                  example: '12'
+                addresses[0][street]:
+                  type: string
+                  example: kalika marg
+                addresses[0][community]:
+                  type: string
+                  example: Kalika Tol
+                addresses[0][county]:
+                  type: string
+                  example: Kalika County
+                addresses[0][voivodeship]:
+                  type: string
+                  example: Kalika Voivodeship
+                addresses[0][type]:
+                  type: string
+                  example: default
+                addresses[0][same_address_type]:
+                  type: string
+                addresses[1][same_address_type]:
+                  type: string
+                  example: default
+                addresses[1][type]:
+                  type: string
+                  example: business
+                is_business_address_same:
+                  type: integer
+                  example: '0'
+                _method:
+                  type: string
+                  example: put
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: company-one
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company/{company_id}/admin:
+    put:
+      tags:
+        - Company Admin > Accounting
+      summary: Update company super-admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: newww
+                email: thirdtiersrk@ukgent.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_id
           in: path
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -3072,16 +3840,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payroll-setting:
-    get:
-      tags:
-        - Company Admin
-      summary: PayrollSetting
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/password-reset:
     post:
       tags:
@@ -3095,9 +3853,9 @@ paths:
               properties:
                 email:
                   type: string
-                  example: leon.schiffer360@gmail.com
+                  example: thirdtier@ukgent.com
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: Accept
           in: header
@@ -3122,13 +3880,13 @@ paths:
               properties:
                 token:
                   type: string
-                  example: 0jAgPYYbWXFPUKhaLP7l
+                  example: 0nnYGsQe1EWOra0dyUi8
                 new_password:
                   type: string
-                  example: asdf
+                  example: P@ssw0rd
                 new_password_confirmation:
                   type: string
-                  example: asdf
+                  example: P@ssw0rd
       security:
         - bearerAuth: []
       parameters:
@@ -3346,7 +4104,7 @@ paths:
     patch:
       tags:
         - Folder
-      summary: Rename Folder Copy
+      summary: Rename File
       requestBody:
         content:
           application/json:
@@ -3409,7 +4167,7 @@ paths:
     get:
       tags:
         - default
-      summary: my company Copy
+      summary: user all companies
       security:
         - bearerAuth: []
       parameters:
