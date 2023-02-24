@@ -44,6 +44,7 @@ tags:
   - name: Company Admin > Department
   - name: Company Admin > Parameter
   - name: Company Admin > Agreement
+  - name: Company Admin > AgreementStatement
   - name: Company Admin > auth
   - name: Company Admin > Insurance Code
   - name: Company Admin > Occupation Code
@@ -652,22 +653,19 @@ paths:
           content:
             application/json: {}
   /admin/company/{slug}/change-active:
-    post:
+    patch:
       tags:
         - Super admin > Company
       summary: change active status
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                value:
-                  type: integer
-                  example: '1'
-                _method:
-                  type: string
-                  example: patch
+              example:
+                value: 0
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -679,7 +677,7 @@ paths:
           schema:
             type: string
           required: true
-          example: company-one
+          example: company-4th
       responses:
         '200':
           description: Successful response
@@ -802,6 +800,25 @@ paths:
                 accounting_office_slug: office-second
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/account-office/{accountOfficeSlug}/existing-companies:
+    get:
+      tags:
+        - Super admin > Account Office
+      summary: Companies of accouting office
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accountOfficeSlug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: office-second
       responses:
         '200':
           description: Successful response
@@ -1353,8 +1370,8 @@ paths:
             schema:
               type: object
               example:
-                first_name: Lal
-                last_name: Bahadur
+                first_name: Sam
+                last_name: Billing
                 pesel: pesel
                 tax_id: 123
                 gender: male
@@ -1510,39 +1527,10 @@ paths:
           content:
             application/json: {}
   /all-employee:
-    post:
+    get:
       tags:
         - Company Admin > Employee
       summary: get all employee
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                paginate: 0
-                limit: null
-                search_keyword:
-                  - column_name: null
-                    value: null
-                where_condition:
-                  - column_name: null
-                    value: null
-                operator_condition:
-                  - column_name: null
-                    operator: null
-                    value: null
-                between_condition:
-                  - column_name: null
-                    value:
-                      - null
-                      - null
-                sort_condition:
-                  - column_name: null
-                    sort: null
-                custom_condition:
-                  - name: null
-                    value: null
       security:
         - bearerAuth: []
       parameters:
@@ -1550,7 +1538,12 @@ paths:
           in: header
           schema:
             type: integer
-          example: '25'
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
       responses:
         '200':
           description: Successful response
@@ -1880,8 +1873,8 @@ paths:
             schema:
               type: object
               example:
-                employee_id: 1
-                agreement_type_id: 1
+                employee_id: 81
+                agreement_type_id: 2
                 gross_salary: 4000
                 type: indefinite
                 date_of_signing: '2022-11-11'
@@ -1890,18 +1883,19 @@ paths:
                 position: abc
                 department_id: 1
                 parameters:
+                  rate: hourly
                   work_hour_numerator: '1'
                   work_hour_denominator: '1'
-                  cost_of_getting_income: usually
+                  cost_of_getting_income: standard
                   labor_fund_insurance_employer: '0'
                   fgsp_insurance_employer: '0'
                   fep_insurance_employer: '0'
                   pit_exemption: automatic
                   tax_rate: '12'
-                  tax_relief: '1'
+                  tax_relief: one_third
                   insurance_code_id: '1'
                   occupation_code_id: '2'
-                  terms_of_employment: This is a term. Listen carefully
+                  terms_of_mandate: This is a term. Listen carefully
                 allowance_deductions: []
       security:
         - bearerAuth: []
@@ -1932,7 +1926,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '9'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1949,35 +1943,33 @@ paths:
             schema:
               type: object
               example:
-                date_of_signing: '2022-08-11'
-                start_date: '2022-08-11'
-                end_date: '2022-12-10'
-                gross_salary: 23000
+                gross_salary: 4200
                 type: indefinite
-                position: null
+                date_of_signing: '2022-11-11'
+                start_date: '2022-11-12'
+                end_date: '2022-12-30'
+                position: def
+                department_id: 1
                 parameters:
-                  work_hour_numerator: '1'
-                  work_hour_denominator: '1'
-                  cost_of_getting_income: usually
-                  labor_fund_insurance_employer: '0'
-                  fgsp_insurance_employer: '0'
-                  fep_insurance_employer: '0'
+                  rate: monthly
+                  cost_of_getting_income: standard
+                  pension_insurance: 0
+                  disability_insurance: 0
+                  accident_insurance: 0
+                  sickness_insurance: 0
+                  fgsp_insurance: 0
+                  fep_insurance: 0
+                  labor_fund_insurance: 0
+                  nfz_contribution: 0
                   pit_exemption: automatic
-                  tax_rate: ''
-                  tax_relief: '1'
-                  insurance_code_id: null
-                  occupation_code_id: null
-                  terms_of_employment: This is a term. Listen
-                  contract_premium: '2000'
-                  contract_benefits: '30'
-                  contract_deductions: '40'
-                  shared_taxation: 1
-                department_id: null
-                id: 1
-                employee_id: 1
-                agreement_type_id: 1
-                agreement_type_name: Employment Contract
-                _method: patch
+                  tax_rate: '12'
+                  tax_relief: half
+                  insurance_code_id: '1'
+                  occupation_code_id: '2'
+                  terms_of_mandate: This is a new term. Read carefully
+                id: 78
+                employee_id: 79
+                agreement_type_id: 2
       security:
         - bearerAuth: []
       parameters:
@@ -1989,13 +1981,14 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '78'
       responses:
         '200':
           description: Successful response
@@ -2023,7 +2016,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '78'
       responses:
         '200':
           description: Successful response
@@ -2067,32 +2060,32 @@ paths:
             schema:
               type: object
               example:
-                gross_salary: 3500
-                type: fixed
-                date_of_signing: '2022-10-01'
-                start_date: '2022-10-01'
-                end_date: '2022-10-31'
-                position: Księgowa
+                gross_salary: 900
+                type: indefinite
+                date_of_signing: '2022-11-11'
+                start_date: '2022-11-12'
+                end_date: '2022-12-30'
+                position: def
                 parameters:
-                  work_hour_numerator: '1'
-                  work_hour_denominator: '2'
-                  cost_of_getting_income: usually
-                  labor_fund_insurance_employer: '1'
-                  fgsp_insurance_employer: '1'
-                  fep_insurance_employer: '0'
+                  rate: monthly
+                  cost_of_getting_income: standard
+                  pension_insurance: 1
+                  disability_insurance: 1
+                  accident_insurance: 1
+                  sickness_insurance: 1
+                  fgsp_insurance: 1
+                  labor_fund_insurance: 1
+                  nfz_contribution: 1
                   pit_exemption: automatic
-                  tax_rate: '12'
-                  tax_relief: '1'
+                  tax_rate: '0'
+                  tax_relief: single
                   insurance_code_id: '1'
-                  occupation_code_id: '205'
-                  terms_of_employment: null
-                  contract_premium: null
-                  contract_benefits: null
-                  contract_deductions: null
+                  occupation_code_id: '2'
+                  terms_of_mandate: This is a new term. Read carefully
                 department_id: 6
-                id: 18
-                employee_id: 23
-                agreement_type_id: 1
+                id: 78
+                employee_id: 78
+                agreement_type_id: 2
                 agreement_type_name: Employment Contract
       security:
         - bearerAuth: []
@@ -2173,6 +2166,81 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /agreement-statement:
+    get:
+      tags:
+        - Company Admin > AgreementStatement
+      summary: List statement by agreement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: agreement_id
+          in: query
+          schema:
+            type: integer
+          example: '78'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Company Admin > AgreementStatement
+      summary: Upsert Agreement Statement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agreement_id: 78
+                rate: hourly
+                value: 35
+                year: 2023
+                month: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement-statement/{id}:
+    delete:
+      tags:
+        - Company Admin > AgreementStatement
+      summary: Delete Agreement Statement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/login:
     post:
       tags:
@@ -2235,7 +2303,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - noauthAuth: []
       parameters:
@@ -2369,17 +2436,17 @@ paths:
           in: header
           schema:
             type: integer
-          example: '21'
+          example: '1'
         - name: year
           in: query
           schema:
             type: integer
-          example: '2022'
+          example: '2023'
         - name: month
           in: query
           schema:
             type: integer
-          example: '7'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2504,12 +2571,13 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: collective_id
           in: query
           schema:
             type: integer
-          example: '15'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2612,7 +2680,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-01-05'
+          example: '2022-11-01'
         - name: type
           in: query
           schema:
@@ -2708,7 +2776,8 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2813,17 +2882,25 @@ paths:
               example:
                 employee_id: 1
                 name: 3rd
-                type: sick_leave
-                start_date: '2022-02-20'
-                end_date: '2022-02-28'
+                type: care_leave
+                start_date: '2023-02-11'
+                end_date: '2023-02-12'
                 disease_code_id: 1
                 break_benefit_type_id: 1
                 print_series_number: '123'
                 hospital_treatment: 0
-                date_of_release: '2022-11-22'
+                date_of_release: '2023-02-12'
                 date_of_delivery: null
+                care_type: child_care
+                care_person: ''
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2989,6 +3066,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: start_date
           in: query
           schema:
@@ -3254,10 +3336,6 @@ paths:
           schema:
             type: string
           example: '2022-12-30'
-        - name: company_id
-          in: query
-          schema:
-            type: string
         - name: status
           in: query
           schema:
@@ -3492,6 +3570,74 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /accounting/my-accounting-office:
+    get:
+      tags:
+        - Company Admin > Accounting
+      summary: My Accounting Office
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/my-accounting-office/update:
+    post:
+      tags:
+        - Company Admin > Accounting
+      summary: Update My Accounting Office
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Updated office
+                short_name:
+                  type: string
+                  example: UpDTP
+                email:
+                  type: string
+                  example: upd.off@accounting.com
+                tax_id:
+                  type: integer
+                  example: '221411111'
+                regon:
+                  type: integer
+                  example: '5235112421'
+                bdo:
+                  type: integer
+                  example: '3421215'
+                phone_number:
+                  type: integer
+                  example: '3245241'
+                addresses[0][country]:
+                  type: string
+                  example: Poland
+                addresses[0][type]:
+                  type: string
+                  example: home
+                addresses[0][same_address_type]:
+                  type: string
+                addresses[1][type]:
+                  type: string
+                  example: registered
+                addresses[1][same_address_type]:
+                  type: string
+                  example: default
+                logo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /accounting/company:
     get:
       tags:
@@ -3621,13 +3767,13 @@ paths:
           schema:
             type: string
           required: true
-          example: third-company
+          example: fourth-company
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-    put:
+    post:
       tags:
         - Company Admin > Accounting
       summary: Update Company
@@ -3639,7 +3785,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Company One
+                  example: Company 4th
                 short_name:
                   type: string
                   example: one
@@ -3699,6 +3845,8 @@ paths:
                 _method:
                   type: string
                   example: put
+                '':
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -3745,6 +3893,37 @@ paths:
             type: integer
           required: true
           example: '24'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company/{slug}/change-active:
+    patch:
+      tags:
+        - Company Admin > Accounting
+      summary: change active status (by accounting)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                value: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: magnolia-it-solutions
       responses:
         '200':
           description: Successful response
