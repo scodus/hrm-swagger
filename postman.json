@@ -3911,7 +3911,7 @@
 							"response": []
 						},
 						{
-							"name": "Company Without offcie Copy",
+							"name": "Assign Company To Accounting Office",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3927,7 +3927,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_slug\":\"magnolia-it-solutions\",\n    \"accounting_office_slug\":\"office-second\"\n}",
+									"raw": "{\n    \"company_slug\":\"magnolia-it-solutions\",\n    \"accounting_office_slug\":\"illum-aut-est-sed-e\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3943,6 +3943,44 @@
 										"admin",
 										"account-office",
 										"company-assign"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Company from Accounting Office Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_slug\":\"magnolia-it-solutions\",\n    \"accounting_office_slug\":\"illum-aut-est-sed-e\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin/account-office/company-assign-remove",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"account-office",
+										"company-assign-remove"
 									]
 								}
 							},
@@ -4649,22 +4687,16 @@
 										}
 									]
 								},
-								"method": "POST",
+								"method": "PATCH",
 								"header": [],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "status_id",
-											"value": "0",
-											"type": "text"
-										},
-										{
-											"key": "_method",
-											"value": "patch",
-											"type": "text"
+									"mode": "raw",
+									"raw": "{\n    \"status_id\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "{{url}}/admin/agreement-type/:slug/update-status",
@@ -4712,12 +4744,12 @@
 									"formdata": [
 										{
 											"key": "title",
-											"value": "closing period 2",
+											"value": "from admin jan",
 											"type": "text"
 										},
 										{
 											"key": "closing_date",
-											"value": "2022-01-01",
+											"value": "2023-01-04",
 											"type": "text"
 										}
 									]
@@ -5015,7 +5047,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"first_name\": \"Sam\",\n    \"last_name\": \"Billing\",\n    \"pesel\": \"pesel\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"asdas@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"home\",\n            \"same_address_type\":null\n        }\n    ],\n    \"status_id\": 1,\n    \"bank_name\":\"Himalayan\",\n    \"account_number\":\"222\"\n}",
+									"raw": "{\n    \"first_name\": \"Bill\",\n    \"last_name\": \"Murray\",\n    \"pesel\": \"11223344551\",\n    \"tax_id\": 123,\n    \"gender\": \"male\",\n    \"email\": \"bill@semail.com\",\n    \"department_id\": 2,\n    \"employeed_from\": \"2022-01-01\",\n    \"employeed_to\": \"\",\n    \"employee_detail\": {\n        \"father_name\": \"Dhan Bahadur\",\n        \"mother_name\": \"Mina Bahadur\",\n        \"citizenship\": \"Nepal\",\n        \"dob\": \"1990-01-01\",\n        \"pob\": \"Nepal\",\n        \"identification_type\": \"passport\",\n        \"identification_number\": \"1234-346-5678-6709\",\n        \"state_issued_document\": \"Nepal\",\n        \"bank_name\": \"Global Ime Bank\",\n        \"bank_account_number\": \"9203847520398475\",\n        \"foreigner\" : \"a\"\n    },\n    \"address\": [\n        {\n            \"zip\": \"44600\",\n            \"street\": \"street\",\n            \"house_number\": \"house-1234\",\n            \"number_of_premises\": \"4\",\n            \"city\": \"kathmandu\",\n            \"post\": \"post-132746\",\n            \"community\": \"community shield\",\n            \"county\": \"county-1\",\n            \"voivodeship\": \"voivodeship-1\",\n            \"country\": \"Nepal\",\n            \"type\": \"home\",\n            \"same_address_type\":null\n        }\n    ],\n    \"status_id\": 1,\n    \"bank_name\":\"NIC\",\n    \"account_number\":\"2322\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5209,6 +5241,55 @@
 											"key": "employee_id",
 											"value": "1"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Import Employee",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "excel",
+											"type": "file",
+											"src": "/Users/bijay/Documents/Book1.xlsx"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8084/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8084",
+									"path": [
+										"api",
+										"login"
 									]
 								}
 							},
@@ -5426,6 +5507,141 @@
 										{
 											"key": "department_id",
 											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Closing Period",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "april closing",
+											"type": "text"
+										},
+										{
+											"key": "closing_date",
+											"value": "2023-04-06",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/closing-period",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"closing-period"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"date\":\"2023-04-06\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/closing-period/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"closing-period",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "yearly closing period",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/yearly-closing-period?year=2023",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"yearly-closing-period"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2023"
 										}
 									]
 								}
@@ -5770,7 +5986,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"gross_salary\": 4200,\r\n    \"type\": \"indefinite\",\r\n    \"date_of_signing\": \"2022-11-11\",\r\n    \"start_date\": \"2022-11-12\",\r\n    \"end_date\": \"2022-12-30\",\r\n    \"position\": \"def\",\r\n    \"department_id\": 1,\r\n    \"parameters\": {\r\n        \"rate\":\"monthly\",\r\n        \"cost_of_getting_income\": \"standard\",\r\n        \"pension_insurance\":0,\r\n        \"disability_insurance\":0,\r\n        \"accident_insurance\":0,\r\n        \"sickness_insurance\":0,\r\n        \"fgsp_insurance\":0,\r\n        \"fep_insurance\":0,\r\n        \"labor_fund_insurance\":0,\r\n        \"nfz_contribution\":0,\r\n        \"pit_exemption\": \"automatic\",\r\n        \"tax_rate\": \"12\",\r\n        \"tax_relief\": \"half\",\r\n        \"insurance_code_id\": \"1\",\r\n        \"occupation_code_id\": \"2\",\r\n        \"terms_of_mandate\": \"This is a new term. Read carefully\"\r\n    },\r\n    \"id\": 78,\r\n    \"employee_id\": 79,\r\n    \"agreement_type_id\": 2\r\n}",
+									"raw": "{\r\n    \"date_of_signing\": \"2022-11-11\",\r\n    \"start_date\": \"2022-11-12\",\r\n    \"end_date\": null,\r\n    \"gross_salary\": 9000,\r\n    \"type\": \"indefinite\",\r\n    \"parameters\": {\r\n        \"rate\": \"monthly\",\r\n        \"cost_of_getting_income\": \"standard\",\r\n        \"pit_exemption\": \"automatic\",\r\n        \"tax_rate\": \"12\",\r\n        \"tax_relief\": \"single\",\r\n        \"insurance_code_id\": \"1\",\r\n        \"occupation_code_id\": \"2\",\r\n        \"terms_of_mandate\": \"This is a new term. Read carefully\",\r\n        \"pension_insurance\": \"1\",\r\n        \"disability_insurance\": \"1\",\r\n        \"accident_insurance\": \"1\",\r\n        \"sickness_insurance\": \"1\",\r\n        \"fgsp_insurance\": \"1\",\r\n        \"fep_insurance\": \"1\",\r\n        \"labor_fund_insurance\": \"1\",\r\n        \"nfz_contribution\": \"1\"\r\n    },\r\n    \"id\": 78,\r\n    \"contract_number\": \"2/2023\",\r\n    \"employee_id\": 79,\r\n    \"agreement_type_id\": 2,\r\n    \"agreement_type_name\": \"Contract of Mandate\",\r\n    \"position\": \"def\",\r\n    \"department_id\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5908,7 +6124,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/agreement",
+									"raw": "{{url}}/agreement?employee_id=1&start_date=2021-01-01&end_date=2022-12-29",
 									"host": [
 										"{{url}}"
 									],
@@ -5918,8 +6134,20 @@
 									"query": [
 										{
 											"key": "employee_id",
-											"value": "1",
+											"value": "1"
+										},
+										{
+											"key": "agreement_type_id",
+											"value": "2",
 											"disabled": true
+										},
+										{
+											"key": "start_date",
+											"value": "2021-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2022-12-29"
 										}
 									]
 								}
@@ -6002,7 +6230,7 @@
 									"variable": [
 										{
 											"key": "employee_id",
-											"value": "1"
+											"value": "79"
 										}
 									]
 								}
@@ -6026,13 +6254,13 @@
 								"header": [
 									{
 										"key": "CompanyId",
-										"value": "",
+										"value": "1",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"agreement_id\" : 7,\n    \"date\": \"2022-12-30\"\n}",
+									"raw": "{\n    \"agreement_id\": 1,\n    \"date\": \"2023-04-30\",\n    \"vacation_days\":10\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6145,7 +6373,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"agreement_id\":78,\n    \"rate\":\"hourly\",\n    \"value\":35,\n    \"year\":2023,\n    \"month\":1\n}",
+									"raw": "{\n    \"agreement_id\": 79,\n    \"rate\": \"monthly\",\n    \"year\": 2023,\n    \"month\": 4,\n    \"value\": \"4130\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6259,7 +6487,7 @@
 										},
 										{
 											"key": "email",
-											"value": "testOffice2@gmail.com",
+											"value": "koweh21461@aosod.com",
 											"type": "text",
 											"disabled": true
 										}
@@ -6333,7 +6561,7 @@
 									"variable": [
 										{
 											"key": "refresh_token",
-											"value": "def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f"
+											"value": "def502002e1432e1e8bd931a66bdbec3ad7b50f85d88984f4ceabf40a824606fe8ca186e056d6d684feed83c8c3afe10f5bc334c3f4ae94d2be1eaf180f1c754949f9a353490b4358ef952d9543b00d24a4aa33f2ed6263566c000e45d53ac8d19c369a7a7375e09e39729c265a198654c6f1e84da06654268d9d9592226bf6624abaacf139605e3104fac53e86d4c80aef7f0d3d1d5b7679524baf4b9216ef2a218cc1e449db5c514bcc7c9e2b744363153b5f27bed9c109825a173dd31c7dcab871190547246d53d2e3041a00c30bec2b5bdb893af16916f2194fc6ea0abcb56c148bfea656092ccd23a317eaf0cde6b72631324c95dfdce0d509ec27f0286ba55b0fa96c508cd57c472f5753c90562c30b304b51f80aa79cddca9f59a83c2552a27318bbc077b80f0fbb5dd2030fe3fdc0847c205fe44a91e16fdc5134fa9101456925f144d89932facc732536c51c22ce568cf55ffcb921befcdc6365c7ec3231a5b"
 										}
 									]
 								}
@@ -6484,7 +6712,7 @@
 								"header": [
 									{
 										"key": "CompanyId",
-										"value": "",
+										"value": "1",
 										"type": "text"
 									}
 								],
@@ -6500,7 +6728,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/opening-balance/:employeeId",
+									"raw": "{{url}}/opening-balance/:employeeId?agreement_type=contract-of-mandate",
 									"host": [
 										"{{url}}"
 									],
@@ -6508,10 +6736,16 @@
 										"opening-balance",
 										":employeeId"
 									],
+									"query": [
+										{
+											"key": "agreement_type",
+											"value": "contract-of-mandate"
+										}
+									],
 									"variable": [
 										{
 											"key": "employeeId",
-											"value": "3"
+											"value": "1"
 										}
 									]
 								}
@@ -6535,7 +6769,7 @@
 								"header": [
 									{
 										"key": "CompanyId",
-										"value": "",
+										"value": "1",
 										"type": "text"
 									}
 								],
@@ -6544,18 +6778,18 @@
 									"formdata": [
 										{
 											"key": "employee_id",
-											"value": "3",
+											"value": "1",
 											"description": "nullable",
 											"type": "text"
 										},
 										{
 											"key": "year",
-											"value": "2022",
+											"value": "2023",
 											"type": "text"
 										},
 										{
 											"key": "month",
-											"value": "8",
+											"value": "1",
 											"type": "text"
 										},
 										{
@@ -6565,7 +6799,12 @@
 										},
 										{
 											"key": "social_contribution_base",
-											"value": "2000",
+											"value": "3000",
+											"type": "text"
+										},
+										{
+											"key": "agreement_type",
+											"value": "contract-of-mandate",
 											"type": "text"
 										}
 									]
@@ -6606,7 +6845,8 @@
 									{
 										"key": "XLocalization",
 										"value": "pl",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									},
 									{
 										"key": "CompanyId",
@@ -6615,7 +6855,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/payroll/monthly?year=2023&month=2",
+									"raw": "{{url}}/payroll/monthly?year=2023&month=1",
 									"host": [
 										"{{url}}"
 									],
@@ -6630,7 +6870,7 @@
 										},
 										{
 											"key": "month",
-											"value": "2"
+											"value": "1"
 										}
 									]
 								}
@@ -6771,7 +7011,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/payroll/collective/filter?start_date=2022-01-01&end_date=2022-12-30&agreement_type_id",
+									"raw": "{{url}}/payroll/collective/filter?start_date=2023-01-01&end_date=2023-12-30&agreement_type_id",
 									"host": [
 										"{{url}}"
 									],
@@ -6783,11 +7023,11 @@
 									"query": [
 										{
 											"key": "start_date",
-											"value": "2022-01-01"
+											"value": "2023-01-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2022-12-30"
+											"value": "2023-12-30"
 										},
 										{
 											"key": "status",
@@ -7637,6 +7877,62 @@
 							"response": []
 						},
 						{
+							"name": "Overtime Amount Calulate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/actions/overtime-amount-calulate?employee_id=1&agreement_id=1&value=200&month=1&year=2023",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actions",
+										"overtime-amount-calulate"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "1"
+										},
+										{
+											"key": "agreement_id",
+											"value": "1"
+										},
+										{
+											"key": "value",
+											"value": "200"
+										},
+										{
+											"key": "month",
+											"value": "1"
+										},
+										{
+											"key": "year",
+											"value": "2023"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get All Events",
 							"request": {
 								"auth": {
@@ -7658,7 +7954,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/actions/all?start_date=2022-07-03&end_date=2022-09-01&employee_id&type=",
+									"raw": "{{url}}/actions/all?start_date=2022-07-03&end_date=2023-05-20 ",
 									"host": [
 										"{{url}}"
 									],
@@ -7673,15 +7969,17 @@
 										},
 										{
 											"key": "end_date",
-											"value": "2022-09-01"
+											"value": "2023-05-20 "
 										},
 										{
 											"key": "employee_id",
-											"value": null
+											"value": null,
+											"disabled": true
 										},
 										{
 											"key": "type",
-											"value": ""
+											"value": "contract_termination",
+											"disabled": true
 										}
 									]
 								}
@@ -7740,6 +8038,12 @@
 										"key": "CompanyId",
 										"value": "1",
 										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -7777,7 +8081,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"automatic_closing\":1,\r\n    \"type\":\"current_month\",\r\n    \"day_of_month\":3,\r\n    \"representative\":\"Sam tim\"\r\n}",
+									"raw": "{\r\n    \"closing\":[\r\n        {\r\n            \"agreement_type\":\"employment-contract\",\r\n            \"automatic_closing\":1,\r\n            \"type\":\"current_month\",\r\n            \"day_of_month\":3\r\n        },\r\n        {\r\n            \"agreement_type\":\"contract-of-mandate\",\r\n            \"automatic_closing\":1,\r\n            \"type\":\"current_month\",\r\n            \"day_of_month\":2\r\n        }\r\n    ],\r\n    \"representative\":\"Sam tim\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7857,7 +8161,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"status\":1,\r\n    \"period\":\"daily\",\r\n    \"period_value\":1,\r\n    \"email\":\"user@mail.com\",\r\n    \"user_password\":\"password\",\r\n    \"zip_password\":\"password\"\r\n}",
+									"raw": "{\r\n    \"status\":1,\r\n    \"period\":\"daily\",\r\n    \"period_value\":1,\r\n    \"email\":\"user@mail.com\",\r\n    \"user_password\":\"password1\",\r\n    \"zip_password\":\"password1\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7898,12 +8202,34 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/ezla-data",
+									"raw": "{{url}}/ezla-data?username=kwodzinski@cashdirector.com&password=C@shDirector1&zipPassword=C@shDirector1&nip=9151680204&date=2023-05-01",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"ezla-data"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "kwodzinski@cashdirector.com"
+										},
+										{
+											"key": "password",
+											"value": "C@shDirector1"
+										},
+										{
+											"key": "zipPassword",
+											"value": "C@shDirector1"
+										},
+										{
+											"key": "nip",
+											"value": "9151680204"
+										},
+										{
+											"key": "date",
+											"value": "2023-05-01"
+										}
 									]
 								}
 							},
@@ -8605,6 +8931,191 @@
 							]
 						},
 						{
+							"name": "User Assigned",
+							"item": [
+								{
+									"name": "User assigned",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/accounting/user-assigned",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"accounting",
+												"user-assigned"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "User Companies",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/accounting/user-assigned/:userId",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"accounting",
+												"user-assigned",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "27"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Assign Company To User",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"company_slug\":\"company-4th\",\n    \"is_admin\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/accounting/user-assigned/:userId",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"accounting",
+												"user-assigned",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "27"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Assign Company To User Copy",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/accounting/user-assigned/:userId/:company_slug",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"accounting",
+												"user-assigned",
+												":userId",
+												":company_slug"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "27"
+												},
+												{
+													"key": "company_slug",
+													"value": "proident-et-tenetur"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Company Assigned",
+							"item": [
+								{
+									"name": "Company With Users",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/accounting/company-user-assigned",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"accounting",
+												"company-user-assigned"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "My Accounting Office",
 							"request": {
 								"auth": {
@@ -8692,7 +9203,7 @@
 										},
 										{
 											"key": "addresses[0][type]",
-											"value": "home",
+											"value": "default",
 											"type": "text"
 										},
 										{
@@ -8747,13 +9258,23 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/accounting/company",
+									"raw": "{{url}}/accounting/company?name=&status=",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"accounting",
 										"company"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": ""
+										},
+										{
+											"key": "status",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -9268,6 +9789,78 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Accounting Dashboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/accounting/dashboard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounting",
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove My Company",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_slug\":\"laborum-numquam-eos\",\n    \"accounting_office_slug\":\"illum-aut-est-sed-e\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounting/company-assign-remove",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounting",
+										"company-assign-remove"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -9285,7 +9878,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -9397,7 +9996,7 @@
 								{
 									"key": "logo",
 									"type": "file",
-									"src": "/C:/Users/Bijay/Downloads/20210911_115055_1655364410.jpg"
+									"src": "/Users/bijay/Pictures/musiclogo.webp"
 								},
 								{
 									"key": "_method",
@@ -9421,6 +10020,39 @@
 									"key": "slug",
 									"value": "magnolia-it-solutions"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company-dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company-dashboard"
 							]
 						}
 					},
@@ -9549,7 +10181,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/folder",
 							"host": [
@@ -9577,7 +10215,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/folder/:id",
 							"host": [
@@ -9591,7 +10235,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "262"
+									"value": "1"
 								}
 							]
 						}
@@ -9660,6 +10304,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -9668,11 +10317,11 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Downloads/memes/hair remover.png"
+									"src": "/Users/bijay/Pictures/musiclogo.webp"
 								},
 								{
 									"key": "name",
-									"value": "asdw",
+									"value": "sc2",
 									"description": "nullable",
 									"type": "text"
 								},
@@ -9705,7 +10354,7 @@
 					"response": []
 				},
 				{
-					"name": "get private image",
+					"name": "get private media",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -9723,16 +10372,22 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{url}}/get-image/7",
+							"raw": "{{url}}/api/get-media/36",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"get-image",
-								"7"
+								"api",
+								"get-media",
+								"36"
 							]
 						}
 					},
@@ -9752,7 +10407,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/get-employee-folders",
 							"host": [
@@ -9761,47 +10422,6 @@
 							"path": [
 								"api",
 								"get-employee-folders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete File",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "CompanyId",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api​/file​/:file_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api​",
-								"file​",
-								":file_id"
-							],
-							"variable": [
-								{
-									"key": "file_id",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -9824,24 +10444,75 @@
 						"header": [
 							{
 								"key": "CompanyId",
-								"value": "",
+								"value": "1",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api​/folder​/:file_id",
+							"raw": "http://127.0.0.1:8000/api/folder/:folderId",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
-								"api​",
-								"folder​",
-								":file_id"
+								"api",
+								"folder",
+								":folderId"
 							],
 							"variable": [
 								{
-									"key": "file_id",
-									"value": "1"
+									"key": "folderId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "CompanyId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/file/:fileId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"file",
+								":fileId"
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "42"
 								}
 							]
 						}
@@ -9949,6 +10620,25 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Logo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/get-logo/39",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-logo",
+								"39"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -10022,7 +10712,7 @@
 					},
 					{
 						"key": "CompanyId",
-						"value": "",
+						"value": "1",
 						"type": "text"
 					}
 				],

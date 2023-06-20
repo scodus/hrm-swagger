@@ -17,6 +17,8 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
+  - url: http://127.0.0.1:8084
+  - url: http://127.0.0.1:8000
 components:
   securitySchemes:
     noauthAuth:
@@ -42,6 +44,7 @@ tags:
   - name: Company Admin
   - name: Company Admin > Employee
   - name: Company Admin > Department
+  - name: Company Admin > Closing Period
   - name: Company Admin > Parameter
   - name: Company Admin > Agreement
   - name: Company Admin > AgreementStatement
@@ -58,6 +61,8 @@ tags:
   - name: Company Admin > Bulk Payroll Actions
   - name: Company Admin > Accounting
   - name: Company Admin > Accounting > Company Users
+  - name: Company Admin > Accounting > User Assigned
+  - name: Company Admin > Accounting > Company Assigned
   - name: Password Reset
   - name: Folder
 paths:
@@ -789,7 +794,7 @@ paths:
     patch:
       tags:
         - Super admin > Account Office
-      summary: Company Without offcie Copy
+      summary: Assign Company To Accounting Office
       requestBody:
         content:
           application/json:
@@ -797,7 +802,27 @@ paths:
               type: object
               example:
                 company_slug: magnolia-it-solutions
-                accounting_office_slug: office-second
+                accounting_office_slug: illum-aut-est-sed-e
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/account-office/company-assign-remove:
+    patch:
+      tags:
+        - Super admin > Account Office
+      summary: Remove Company from Accounting Office Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: magnolia-it-solutions
+                accounting_office_slug: illum-aut-est-sed-e
       security:
         - bearerAuth: []
       responses:
@@ -1189,22 +1214,17 @@ paths:
           content:
             application/json: {}
   /admin/agreement-type/{slug}/update-status:
-    post:
+    patch:
       tags:
         - Super admin > Agreement Type
       summary: update active status
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                status_id:
-                  type: integer
-                  example: '0'
-                _method:
-                  type: string
-                  example: patch
+              example:
+                status_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -1232,10 +1252,10 @@ paths:
               properties:
                 title:
                   type: string
-                  example: closing period 2
+                  example: from admin jan
                 closing_date:
                   type: string
-                  example: '2022-01-01'
+                  example: '2023-01-04'
       security:
         - bearerAuth: []
       responses:
@@ -1370,12 +1390,12 @@ paths:
             schema:
               type: object
               example:
-                first_name: Sam
-                last_name: Billing
-                pesel: pesel
+                first_name: Bill
+                last_name: Murray
+                pesel: '11223344551'
                 tax_id: 123
                 gender: male
-                email: asdas@semail.com
+                email: bill@semail.com
                 department_id: 2
                 employeed_from: '2022-01-01'
                 employeed_to: ''
@@ -1390,6 +1410,7 @@ paths:
                   state_issued_document: Nepal
                   bank_name: Global Ime Bank
                   bank_account_number: '9203847520398475'
+                  foreigner: a
                 address:
                   - zip: '44600'
                     street: street
@@ -1404,8 +1425,8 @@ paths:
                     type: home
                     same_address_type: null
                 status_id: 1
-                bank_name: Himalayan
-                account_number: '222'
+                bank_name: NIC
+                account_number: '2322'
       security:
         - bearerAuth: []
       parameters:
@@ -1544,6 +1565,36 @@ paths:
           schema:
             type: integer
           example: '0'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Company Admin > auth
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: koweh21461@aosod.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -1691,6 +1742,84 @@ paths:
           in: header
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /closing-period:
+    post:
+      tags:
+        - Company Admin > Closing Period
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: april closing
+                closing_date:
+                  type: string
+                  example: '2023-04-06'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /closing-period/delete:
+    post:
+      tags:
+        - Company Admin > Closing Period
+      summary: delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                date: '2023-04-06'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /yearly-closing-period:
+    get:
+      tags:
+        - Company Admin > Closing Period
+      summary: yearly closing period
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2023'
       responses:
         '200':
           description: Successful response
@@ -1927,6 +2056,21 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2021-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2022-12-29'
       responses:
         '200':
           description: Successful response
@@ -1943,33 +2087,35 @@ paths:
             schema:
               type: object
               example:
-                gross_salary: 4200
-                type: indefinite
                 date_of_signing: '2022-11-11'
                 start_date: '2022-11-12'
-                end_date: '2022-12-30'
-                position: def
-                department_id: 1
+                end_date: null
+                gross_salary: 9000
+                type: indefinite
                 parameters:
                   rate: monthly
                   cost_of_getting_income: standard
-                  pension_insurance: 0
-                  disability_insurance: 0
-                  accident_insurance: 0
-                  sickness_insurance: 0
-                  fgsp_insurance: 0
-                  fep_insurance: 0
-                  labor_fund_insurance: 0
-                  nfz_contribution: 0
                   pit_exemption: automatic
                   tax_rate: '12'
-                  tax_relief: half
+                  tax_relief: single
                   insurance_code_id: '1'
                   occupation_code_id: '2'
                   terms_of_mandate: This is a new term. Read carefully
+                  pension_insurance: '1'
+                  disability_insurance: '1'
+                  accident_insurance: '1'
+                  sickness_insurance: '1'
+                  fgsp_insurance: '1'
+                  fep_insurance: '1'
+                  labor_fund_insurance: '1'
+                  nfz_contribution: '1'
                 id: 78
+                contract_number: 2/2023
                 employee_id: 79
                 agreement_type_id: 2
+                agreement_type_name: Contract of Mandate
+                position: def
+                department_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -2118,7 +2264,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '79'
       responses:
         '200':
           description: Successful response
@@ -2135,15 +2281,17 @@ paths:
             schema:
               type: object
               example:
-                agreement_id: 7
-                date: '2022-12-30'
+                agreement_id: 1
+                date: '2023-04-30'
+                vacation_days: 10
       security:
         - bearerAuth: []
       parameters:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2199,11 +2347,11 @@ paths:
             schema:
               type: object
               example:
-                agreement_id: 78
-                rate: hourly
-                value: 35
+                agreement_id: 79
+                rate: monthly
                 year: 2023
-                month: 1
+                month: 4
+                value: '4130'
       security:
         - bearerAuth: []
       parameters:
@@ -2236,36 +2384,6 @@ paths:
             type: integer
           required: true
           example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/login:
-    post:
-      tags:
-        - Company Admin > auth
-      summary: login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: testOffice2@gmail.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: Successful response
@@ -2312,7 +2430,7 @@ paths:
             type: string
           required: true
           example: >-
-            def502001612c0d795ce7a42743c6d781fd223d5c7844e3c8d877ad6e42dd40df067dfe6b6064c86537bb625a4e6341caa51ff91de6a8b75880f1b468a08aa600ff2efdc30ee03ec8636c77f49230387acc81854d253efbabb06b335c807682efb2a2555020df09824b7c3f9b3154a42f9da39bec0d322a9afb207f4306c7008c4175ae9b25be75f75ba971d0be5ff32c18cc72c9727fa9a3f5206d137fa417f09be404cc4efb0741e072985f9f9278c7f9ef7fd4b46abe110d36a15e9c6635c01bd997ce94bdeaa2141c53edc5300fa2538b7a2d8d4c4fabc13dfb4df62c2c73870ea74845b1d1c24e430f8ae421fb96632c3ef957e0a0286fd9930f41873e2f6b8771a087b779fd3c6c08ed60021897269e2e7b86ba5e82f962a2a8c98e7456182230b822173bdc207006ecb68dc1bf768b7aafaeddfbfbd4020414bb22b4ae862f5a601f2a194ec90d5cbfb76599ca3d11eddf41d4462eecfe615dc93e2fa6e18704f
+            def502002e1432e1e8bd931a66bdbec3ad7b50f85d88984f4ceabf40a824606fe8ca186e056d6d684feed83c8c3afe10f5bc334c3f4ae94d2be1eaf180f1c754949f9a353490b4358ef952d9543b00d24a4aa33f2ed6263566c000e45d53ac8d19c369a7a7375e09e39729c265a198654c6f1e84da06654268d9d9592226bf6624abaacf139605e3104fac53e86d4c80aef7f0d3d1d5b7679524baf4b9216ef2a218cc1e449db5c514bcc7c9e2b744363153b5f27bed9c109825a173dd31c7dcab871190547246d53d2e3041a00c30bec2b5bdb893af16916f2194fc6ea0abcb56c148bfea656092ccd23a317eaf0cde6b72631324c95dfdce0d509ec27f0286ba55b0fa96c508cd57c472f5753c90562c30b304b51f80aa79cddca9f59a83c2552a27318bbc077b80f0fbb5dd2030fe3fdc0847c205fe44a91e16fdc5134fa9101456925f144d89932facc732536c51c22ce568cf55ffcb921befcdc6365c7ec3231a5b
       responses:
         '200':
           description: Successful response
@@ -2368,13 +2486,19 @@ paths:
         - name: CompanyId
           in: header
           schema:
+            type: integer
+          example: '1'
+        - name: agreement_type
+          in: query
+          schema:
             type: string
+          example: contract-of-mandate
         - name: employeeId
           in: path
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2394,26 +2518,30 @@ paths:
                 employee_id:
                   type: integer
                   description: nullable
-                  example: '3'
+                  example: '1'
                 year:
                   type: integer
-                  example: '2022'
+                  example: '2023'
                 month:
                   type: integer
-                  example: '8'
+                  example: '1'
                 tax_base:
                   type: integer
                   example: '3000'
                 social_contribution_base:
                   type: integer
-                  example: '2000'
+                  example: '3000'
+                agreement_type:
+                  type: string
+                  example: contract-of-mandate
       security:
         - bearerAuth: []
       parameters:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2427,11 +2555,6 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: XLocalization
-          in: header
-          schema:
-            type: string
-          example: pl
         - name: CompanyId
           in: header
           schema:
@@ -2446,7 +2569,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2522,12 +2645,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2022-01-01'
+          example: '2023-01-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2022-12-30'
+          example: '2023-12-30'
         - name: agreement_type_id
           in: query
           schema:
@@ -3058,6 +3181,49 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /actions/overtime-amount-calulate:
+    get:
+      tags:
+        - Company Admin > Actions
+      summary: Overtime Amount Calulate
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: agreement_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: value
+          in: query
+          schema:
+            type: integer
+          example: '200'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2023'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /actions/all:
     get:
       tags:
@@ -3080,15 +3246,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2022-09-01'
-        - name: employee_id
-          in: query
-          schema:
-            type: string
-        - name: type
-          in: query
-          schema:
-            type: string
+          example: '2023-05-20 '
       responses:
         '200':
           description: Successful response
@@ -3134,9 +3292,15 @@ paths:
             schema:
               type: object
               example:
-                automatic_closing: 1
-                type: current_month
-                day_of_month: 3
+                closing:
+                  - agreement_type: employment-contract
+                    automatic_closing: 1
+                    type: current_month
+                    day_of_month: 3
+                  - agreement_type: contract-of-mandate
+                    automatic_closing: 1
+                    type: current_month
+                    day_of_month: 2
                 representative: Sam tim
       security:
         - bearerAuth: []
@@ -3183,8 +3347,8 @@ paths:
                 period: daily
                 period_value: 1
                 email: user@mail.com
-                user_password: password
-                zip_password: password
+                user_password: password1
+                zip_password: password1
       security:
         - bearerAuth: []
       parameters:
@@ -3211,6 +3375,31 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: username
+          in: query
+          schema:
+            type: string
+          example: kwodzinski@cashdirector.com
+        - name: password
+          in: query
+          schema:
+            type: string
+          example: C@shDirector1
+        - name: zipPassword
+          in: query
+          schema:
+            type: string
+          example: C@shDirector1
+        - name: nip
+          in: query
+          schema:
+            type: integer
+          example: '9151680204'
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: '2023-05-01'
       responses:
         '200':
           description: Successful response
@@ -3570,6 +3759,100 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /accounting/user-assigned:
+    get:
+      tags:
+        - Company Admin > Accounting > User Assigned
+      summary: User assigned
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/user-assigned/{userId}:
+    get:
+      tags:
+        - Company Admin > Accounting > User Assigned
+      summary: User Companies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '27'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Company Admin > Accounting > User Assigned
+      summary: Assign Company To User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: company-4th
+                is_admin: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '27'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/user-assigned/{userId}/{company_slug}:
+    delete:
+      tags:
+        - Company Admin > Accounting > User Assigned
+      summary: Assign Company To User Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '27'
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: proident-et-tenetur
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company-user-assigned:
+    get:
+      tags:
+        - Company Admin > Accounting > Company Assigned
+      summary: Company With Users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /accounting/my-accounting-office:
     get:
       tags:
@@ -3619,7 +3902,7 @@ paths:
                   example: Poland
                 addresses[0][type]:
                   type: string
-                  example: home
+                  example: default
                 addresses[0][same_address_type]:
                   type: string
                 addresses[1][type]:
@@ -3645,6 +3928,15 @@ paths:
       summary: List Companies
       security:
         - bearerAuth: []
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -3929,6 +4221,38 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /accounting/dashboard:
+    get:
+      tags:
+        - Company Admin > Accounting
+      summary: Accounting Dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounting/company-assign-remove:
+    patch:
+      tags:
+        - Company Admin > Accounting
+      summary: Remove My Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: laborum-numquam-eos
+                accounting_office_slug: illum-aut-est-sed-e
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /my-company/{slug}:
     post:
       tags:
@@ -4008,12 +4332,35 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: slug
           in: path
           schema:
             type: string
           required: true
           example: magnolia-it-solutions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /company-dashboard:
+    get:
+      tags:
+        - Company Admin
+      summary: Company Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4086,6 +4433,12 @@ paths:
       summary: index
       security:
         - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4123,12 +4476,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '262'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4151,7 +4509,7 @@ paths:
                 name:
                   type: string
                   description: nullable
-                  example: asdw
+                  example: sc2
                 _method:
                   type: string
                   example: PUT
@@ -4163,6 +4521,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: folder_id
           in: path
           schema:
@@ -4174,11 +4537,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /get-image/7:
+  /api/get-media/36:
     get:
       tags:
         - Folder
-      summary: get private image
+      summary: get private media
       security:
         - bearerAuth: []
       parameters:
@@ -4187,6 +4550,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4199,35 +4567,18 @@ paths:
       summary: get employee folders
       security:
         - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api​/file​/{file_id}:
-    delete:
-      tags:
-        - Folder
-      summary: Delete File
-      security:
-        - bearerAuth: []
       parameters:
         - name: CompanyId
           in: header
           schema:
-            type: string
-        - name: file_id
-          in: path
-          schema:
             type: integer
-          required: true
           example: '1'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api​/folder​/{file_id}:
+  /api/folder/{folderId}:
     delete:
       tags:
         - Folder
@@ -4238,13 +4589,38 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
-        - name: file_id
+            type: integer
+          example: '1'
+        - name: folderId
           in: path
           schema:
             type: integer
           required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}:
+    delete:
+      tags:
+        - Folder
+      summary: Delete File
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
           example: '1'
+        - name: fileId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '42'
       responses:
         '200':
           description: Successful response
@@ -4308,6 +4684,16 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/get-logo/39:
+    get:
+      tags:
+        - Folder
+      summary: Get Logo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /test:
     get:
       tags:
@@ -4336,7 +4722,8 @@ paths:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
