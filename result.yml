@@ -17,7 +17,6 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
-  - url: http://127.0.0.1:8084
   - url: http://127.0.0.1:8000
 components:
   securitySchemes:
@@ -1196,6 +1195,30 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/agreement-termination-data/expiration-codes:
+    get:
+      tags:
+        - Super admin > Agreement
+      summary: Termination Data - Expiration codes
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/agreement-termination-data/deregistration-reasons:
+    get:
+      tags:
+        - Super admin > Agreement
+      summary: Termination Data - Deregistration Reasons
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /admin/agreement-type:
     get:
       tags:
@@ -1559,7 +1582,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '24'
         - name: paginate
           in: query
           schema:
@@ -1570,31 +1593,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/login:
+  /employee-import:
     post:
       tags:
-        - Company Admin > auth
-      summary: login
+        - Company Admin > Employee
+      summary: Import Employee
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                email:
+                excel:
                   type: string
-                  example: koweh21461@aosod.com
-                password:
-                  type: string
-                  example: P@ssw0rd
+                  format: binary
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       parameters:
-        - name: Accept
+        - name: CompanyId
           in: header
           schema:
-            type: string
-          example: application/json
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2162,7 +2182,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '78'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2282,8 +2302,12 @@ paths:
               type: object
               example:
                 agreement_id: 1
-                date: '2023-04-30'
+                date: '2023-12-30'
                 vacation_days: 10
+                expiration_code_id: '10'
+                deregistration_reason_id: '12'
+                legal_basis: basis
+                initiator_party: employer
       security:
         - bearerAuth: []
       parameters:
@@ -2309,6 +2333,18 @@ paths:
           in: header
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agreement-termination-data:
+    get:
+      tags:
+        - Company Admin > Agreement
+      summary: Termination Data (Codes)
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -2384,6 +2420,36 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Company Admin > auth
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: koweh21461@aosod.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -2547,6 +2613,143 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /opening-social-security/{employeeId}:
+    get:
+      tags:
+        - Company Admin > Opening Balance
+      summary: Opening Social Security
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '24'
+        - name: agreement_type
+          in: query
+          schema:
+            type: string
+          example: employment-contract
+        - name: employeeId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '116'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /opening-social-security/upsert:
+    post:
+      tags:
+        - Company Admin > Opening Balance
+      summary: Social Security Upsert
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  description: nullable
+                  example: '116'
+                year:
+                  type: integer
+                  example: '2023'
+                month:
+                  type: integer
+                  example: '1'
+                social_contribution_base:
+                  type: integer
+                  example: '31000'
+                agreement_type:
+                  type: string
+                  example: employment-contract
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '24'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /social-security-limit/upsert:
+    post:
+      tags:
+        - Company Admin > Opening Balance
+      summary: Update Social Security Limit
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  description: nullable
+                  example: '116'
+                exceed_date:
+                  type: string
+                  example: '2023-09-10'
+                submitted_by:
+                  type: string
+                  example: Insured
+                agreement_type:
+                  type: string
+                  example: employment-contract
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '24'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /social-security-limit/remove:
+    post:
+      tags:
+        - Company Admin > Opening Balance
+      summary: Remove Social Security Limit
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  description: nullable
+                  example: '116'
+                limit_id:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: CompanyId
+          in: header
+          schema:
+            type: integer
+          example: '24'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /payroll/monthly:
     get:
       tags:
@@ -2559,7 +2762,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '24'
         - name: year
           in: query
           schema:
@@ -2569,7 +2772,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2717,14 +2920,15 @@ paths:
             schema:
               type: object
               example:
-                collective_id: 25
+                collective_id: 139
       security:
         - bearerAuth: []
       parameters:
         - name: CompanyId
           in: header
           schema:
-            type: string
+            type: integer
+          example: '24'
       responses:
         '200':
           description: Successful response

@@ -4634,6 +4634,64 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Termination Data - Expiration codes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/agreement-termination-data/expiration-codes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"agreement-termination-data",
+										"expiration-codes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Termination Data - Deregistration Reasons",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{superadmin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/agreement-termination-data/deregistration-reasons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"agreement-termination-data",
+										"deregistration-reasons"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -5135,7 +5193,7 @@
 								"header": [
 									{
 										"key": "CompanyId",
-										"value": "1",
+										"value": "24",
 										"type": "text"
 									}
 								],
@@ -5278,18 +5336,12 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8084/api/login",
-									"protocol": "http",
+									"raw": "{{url}}/employee-import",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8084",
 									"path": [
-										"api",
-										"login"
+										"employee-import"
 									]
 								}
 							},
@@ -6050,7 +6102,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "78"
+											"value": "1"
 										}
 									]
 								}
@@ -6260,7 +6312,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"agreement_id\": 1,\n    \"date\": \"2023-04-30\",\n    \"vacation_days\":10\n}",
+									"raw": "{\n    \"agreement_id\": 1,\n    \"date\": \"2023-12-30\",\n    \"vacation_days\": 10,\n    \"expiration_code_id\": \"10\",\n    \"deregistration_reason_id\": \"12\",\n    \"legal_basis\": \"basis\",\n    \"initiator_party\": \"employer\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6301,6 +6353,33 @@
 									],
 									"path": [
 										"agreement-type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Termination Data (Codes)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/agreement-termination-data",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"agreement-termination-data"
 									]
 								}
 							},
@@ -6821,6 +6900,227 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Opening Social Security",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "24",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/opening-social-security/:employeeId?agreement_type=employment-contract",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"opening-social-security",
+										":employeeId"
+									],
+									"query": [
+										{
+											"key": "agreement_type",
+											"value": "employment-contract"
+										}
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "116"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Social Security Upsert",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "24",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employee_id",
+											"value": "116",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2023",
+											"type": "text"
+										},
+										{
+											"key": "month",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "social_contribution_base",
+											"value": "31000",
+											"type": "text"
+										},
+										{
+											"key": "agreement_type",
+											"value": "employment-contract",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/opening-social-security/upsert",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"opening-social-security",
+										"upsert"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Social Security Limit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "24",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employee_id",
+											"value": "116",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "exceed_date",
+											"value": "2023-09-10",
+											"type": "text"
+										},
+										{
+											"key": "submitted_by",
+											"value": "Insured",
+											"type": "text"
+										},
+										{
+											"key": "agreement_type",
+											"value": "employment-contract",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/social-security-limit/upsert",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"social-security-limit",
+										"upsert"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Social Security Limit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "CompanyId",
+										"value": "24",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employee_id",
+											"value": "116",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "limit_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/social-security-limit/remove",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"social-security-limit",
+										"remove"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -6850,12 +7150,12 @@
 									},
 									{
 										"key": "CompanyId",
-										"value": "1",
+										"value": "24",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{url}}/payroll/monthly?year=2023&month=1",
+									"raw": "{{url}}/payroll/monthly?year=2023&month=2",
 									"host": [
 										"{{url}}"
 									],
@@ -6870,7 +7170,7 @@
 										},
 										{
 											"key": "month",
-											"value": "1"
+											"value": "2"
 										}
 									]
 								}
@@ -7166,13 +7466,13 @@
 								"header": [
 									{
 										"key": "CompanyId",
-										"value": "",
+										"value": "24",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"collective_id\":25\r\n}",
+									"raw": "{\r\n    \"collective_id\":139\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
